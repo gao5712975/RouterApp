@@ -8,14 +8,8 @@ var del = require('del'); //文件删除
 var assign = require('lodash.merge'); //lodash.merge 对象继承
 var runSequence = require('run-sequence'); //异步任务
 var gulpWatch = require('gulp-watch'); //监听插件
-
-function onError(err){
-    console.error(err.toString());
-}
-
-function onLog(log){
-    console.log((log = log.split(' '), log[0] = pretty(log[0]), log.join(' ')));
-}
+var babelES2015Preset = require('babel-preset-es2015');//解析ES6
+var babelDecoratorsTransform = require('babel-plugin-transform-decorators-legacy').default; //解析ES7
 
 /**
  * js文件编译
@@ -31,7 +25,10 @@ function buildBrowserify(options) {
     var b = browserify({
         entries: ['app/app.js'],
         debug: false
-    }).transform(babelify, {presets: ["es2015"]});
+    }).transform(babelify, {
+        presets: [babelES2015Preset],
+        plugins: [babelDecoratorsTransform]
+    });
 
     if(options.watch){
         b = watchify(b);
@@ -106,6 +103,27 @@ gulp.task('css',function () {
  * 拷贝js文件
  */
 gulp.task('js',function () {
-    return gulp.src(['static/lib/**'])
+    return gulp.src(['static/lib/**','node_modules/zone.js/dist/zone.js','node_modules/reflect-metadata/Reflect.js'])
         .pipe(gulp.dest('www/build/js'));
 });
+
+
+
+function onError(err){
+    console.error(err.toString());
+}
+
+Date.prototype.dateFormat = function (str) {
+    str = str || "yyyy-MM-dd";
+    var y = this.getFullYear();
+    var M = this.getMonth() + 1;
+    var d = this.getDate();
+    var H = this.getHours();
+    var m = this.getMinutes();
+    var s = this.getSeconds();
+    return str.replace("yyyy", y).replace("MM", M).replace("dd", d).replace("HH", H).replace("mm", m).replace("ss", s);
+};
+
+function onLog(log){
+    console.log((log = log.split(' '), log[0] = pretty(log[0]), log.join(' '), log += ' ' + new Date().dateFormat("yyyy-MM-dd HH:mm:ss")));
+}
