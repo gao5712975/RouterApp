@@ -10,6 +10,8 @@ var runSequence = require('run-sequence'); //异步任务
 var gulpWatch = require('gulp-watch'); //监听插件
 var babelES2015Preset = require('babel-preset-es2015');//解析ES6
 var babelDecoratorsTransform = require('babel-plugin-transform-decorators-legacy').default; //解析ES7
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');//根据设置浏览器版本自动处理浏览器前缀
 
 /**
  * js文件编译
@@ -52,7 +54,7 @@ gulp.task('default',['clean'],function (done) {
         gulpWatch('app/**/*.html',function () {
             gulp.start('html')
         });
-        gulpWatch('app/**/*.css',function () {
+        gulpWatch(['app/**/*.css','app/**/*.scss'],function () {
             gulp.start('css')
         });
         buildBrowserify({watch:true}).on('end', done);
@@ -92,11 +94,38 @@ gulp.task('html',function () {
 });
 
 /**
- * 拷贝css文件
+ * 拷贝css文件 编译scss文件
  */
 gulp.task('css',function () {
-    return gulp.src(['app/**/*.css','static/theme/app.md.css'])
-        .pipe(gulp.dest('www/build/css'));
+    var options = {
+        src: 'app/theme/app.+(md).scss',
+        dest: 'www/build/css',
+        sassOptions: {
+            includePaths: [
+                'node_modules/ionic-angular',
+                'node_modules/ionicons/dist/scss'
+            ]
+        },
+        onError: function(err) {
+            console.error(err.message);
+            this.emit('end');
+        },
+        autoprefixerOptions:{
+            browsers: [
+                'last 2 versions',
+                'iOS >= 7',
+                'Android >= 4',
+                'Explorer >= 10',
+                'ExplorerMobile >= 11'
+            ],
+            cascade: false
+        }
+    }
+    return gulp.src(options.src)
+        .pipe(sass(options.sassOptions))
+        .on('error', options.onError)
+        .pipe(autoprefixer(options.autoprefixerOptions))
+        .pipe(gulp.dest(options.dest))
 });
 
 /**
@@ -106,7 +135,6 @@ gulp.task('js',function () {
     return gulp.src(['static/lib/**','node_modules/zone.js/dist/zone.js','node_modules/reflect-metadata/Reflect.js'])
         .pipe(gulp.dest('www/build/js'));
 });
-
 
 
 function onError(err){
@@ -127,3 +155,4 @@ Date.prototype.dateFormat = function (str) {
 function onLog(log){
     console.log((log = log.split(' '), log[0] = pretty(log[0]), log.join(' '), log += ' ' + new Date().dateFormat("yyyy-MM-dd HH:mm:ss")));
 }
+

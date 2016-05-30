@@ -1,21 +1,8 @@
-<h1>
-    ionic hello
-</h1>
-<button></button>
-<ion-list>
-    <ion-item>
-        <ion-label>Pepperoni</ion-label>
-        <ion-checkbox [(ngModel)]="pepperoni"></ion-checkbox>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Sausage</ion-label>
-        <ion-checkbox [(ngModel)]="sausage" disabled="true"></ion-checkbox>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Mushrooms</ion-label>
-        <ion-checkbox [(ngModel)]="mushrooms"></ion-checkbox>
-    </ion-item>
-
-</ion-list>
+<ion-navbar *navbar>
+    <ion-title>
+        小橙路由
+    </ion-title>
+</ion-navbar>
+<ion-content>
+    <button (click)="goToHome1()">开始设置</button>
+</ion-content>

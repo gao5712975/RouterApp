@@ -1,15 +1,26 @@
 /**
  * Created by moka on 16-5-26.
  */
-import {Page} from 'ionic-angular';
+import {Page,NavController} from 'ionic-angular'
+import {Home1} from './home1'
 
 @Page({
     templateUrl: 'build/business/home/home.html'
 })
-export class Home {
-    constructor() {
-        this.pepperoni = false;
-        this.sausage = false;
-        this.mushrooms = false;
+
+export class Home{
+    static get parameters() {
+        return [
+            [NavController]
+        ];
     }
+
+    constructor(nav){
+        this.nav = nav;
+    }
+    
+    goToHome1(){
+        this.nav.push(Home1)
+    }
+    
 }
