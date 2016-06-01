@@ -5,7 +5,7 @@ www/build
 #resources
 #config.xml
 #platforms
-#ionic.project
+ionic.project
 #README.md
 #hooks
 #plugins

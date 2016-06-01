@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>index</ion-title>
+</ion-navbar>
+<ion-content class=outer-content>
+    <ion-item>
+        <ion-label>Daenerys Targaryen</ion-label>
+        <ion-checkbox dark checked="true"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Arya Stark</ion-label>
+        <ion-checkbox disabled="true"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+        <ion-label>Start Time</ion-label>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" ></ion-datetime>
+    </ion-item>
+</ion-content>
