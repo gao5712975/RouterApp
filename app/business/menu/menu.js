@@ -22,9 +22,4 @@ export class GetMenuPage{
             }
         )
     }
-    
-    getMenuPageByIndex(index){
-        console.info(this.pages)
-        return this.pages[index]
-    }
 }

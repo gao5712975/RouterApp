@@ -1,4 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
-#node_modules
+node_modules
 .idea
 www/build
+resources
+config.xml
+platforms
+ionic.project
+README.md

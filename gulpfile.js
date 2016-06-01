@@ -81,7 +81,7 @@ gulp.task('clean', function(){
  * 拷贝字体文件
  */
 gulp.task('font',function () {
-    return gulp.src(['static/fonts/**'])
+    return gulp.src(['node_modules/ionic-angular/fonts/**/*.+(ttf|woff|woff2)'])
         .pipe(gulp.dest('www/build/fonts'));
 });
 
@@ -98,7 +98,7 @@ gulp.task('html',function () {
  */
 gulp.task('css',function () {
     var options = {
-        src: 'app/theme/app.+(md).scss',
+        src: 'app/theme/app.+(md|ios).scss',
         dest: 'www/build/css',
         sassOptions: {
             includePaths: [
@@ -120,11 +120,11 @@ gulp.task('css',function () {
             ],
             cascade: false
         }
-    }
+    };
     return gulp.src(options.src)
         .pipe(sass(options.sassOptions))
         .on('error', options.onError)
-        .pipe(autoprefixer(options.autoprefixerOptions))
+        // .pipe(autoprefixer(options.autoprefixerOptions))
         .pipe(gulp.dest(options.dest))
 });
 
@@ -132,7 +132,13 @@ gulp.task('css',function () {
  * 拷贝js文件
  */
 gulp.task('js',function () {
-    return gulp.src(['static/lib/**','node_modules/zone.js/dist/zone.js','node_modules/reflect-metadata/Reflect.js'])
+    return gulp.src(
+        [
+            'static/lib/**', 'node_modules/zone.js/dist/zone.js',
+            'node_modules/reflect-metadata/Reflect.js',
+            'node_modules/es6-shim/es6-shim.min.js'
+        ]
+    )
         .pipe(gulp.dest('www/build/js'));
 });
 
