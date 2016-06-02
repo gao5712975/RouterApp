@@ -8,5 +8,14 @@ import {Page} from 'ionic-angular'
 })
 
 export class ConfigPage{
-    
+    constructor(){
+        this.items = [
+            {title:"Pokémon Yellow"},
+            {title:"Pokémon Yellow"},
+            {title:"Pokémon Yellow"}
+        ]
+    }
+    itemSelected(a){
+        console.info(a);
+    }
 }

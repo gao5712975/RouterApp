@@ -1,12 +1,11 @@
-<ion-navbar *navbar>
+<ion-navbar *navbar wifi>
     <button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>config</ion-title>
 </ion-navbar>
-<ion-content class="outer-content">
+<ion-content class="outer-content" overflow-scroll="false">
     <ion-list>
-
         <ion-item>
             <ion-label fixed>Username</ion-label>
             <ion-input type="text" value=""></ion-input>
@@ -18,4 +17,53 @@
         </ion-item>
 
     </ion-list>
+    
+    <button light>Light</button>
+    <button>Primary</button>
+    <button secondary>Secondary</button>
+    <button danger>Danger</button>
+    <button dark>Dark</button>
+    
+    <button light outline>Light Outline</button>
+    <button outline>outline Primary Outline</button>
+    <button secondary outline>Secondary Outline</button>
+    <button danger outline>Danger Outline</button>
+    <button dark outline>Dark Outline</button>
+    
+    <button light clear>Light Clear</button>
+    <button clear>Primary Clear</button>
+    <button secondary clear>Secondary Clear</button>
+    <button danger clear>Danger Clear</button>
+    <button dark clear>Dark Clear</button>
+    
+    <button light round>Light Round</button>
+    <button round>Primary Round</button>
+    <button secondary round>Secondary Round</button>
+    <button danger round>Danger Round</button>
+    <button dark round>Dark Round</button>
+    
+    <button yc block outline width-90 margin-auto>outline Primary Outline</button>
+    <button wifi block width-90 margin-auto>Block Button</button>
+    <button wifi block clear>block Clear</button>
+    
+    <button>
+        <ion-icon name="home"></ion-icon>
+        Left Icon
+    </button>
+    
+    <ion-card>
+    <ion-card-header>
+        Header
+    </ion-card-header>
+    <ion-card-content>
+        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+    </ion-card-content>
+    </ion-card>
+    
+    <ion-list>
+        <ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+            {{item.title}}
+        </ion-item>
+    </ion-list>
+    
 </ion-content>

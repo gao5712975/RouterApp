@@ -98,7 +98,7 @@ gulp.task('html',function () {
  */
 gulp.task('css',function () {
     var options = {
-        src: 'app/theme/app.+(md|ios).scss',
+        src: 'app/theme/app.+(md).scss',
         dest: 'www/build/css',
         sassOptions: {
             includePaths: [

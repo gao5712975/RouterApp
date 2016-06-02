@@ -3,6 +3,7 @@
  */
 import {IndexPage} from '../index/index'
 import {ConfigPage} from '../config/config'
+import {ActionSheetPage} from '../actionSheet/actionSheet'
 
 export class GetMenuPage{
 
@@ -15,10 +16,17 @@ export class GetMenuPage{
                 title:"工作模式",
                 icon: 'calendar'
             },
-            {page:ConfigPage,
+            {
+                page:ConfigPage,
                 index:1,
                 title:"网络设置",
                 icon: 'contacts'
+            },
+            {
+                page:ActionSheetPage,
+                index:2,
+                title:"ActionSheetPage",
+                icon:"contacts"
             }
         )
     }
