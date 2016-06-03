@@ -50,7 +50,7 @@ function buildBrowserify(options) {
  * 任务监听
  */
 gulp.task('default',['clean'],function (done) {
-    runSequence(['font','html','css','js'],function () {
+    runSequence(['font','html','css','js','static'],function () {
         gulpWatch('app/**/*.html',function () {
             gulp.start('html')
         });
@@ -65,7 +65,7 @@ gulp.task('default',['clean'],function (done) {
  * 手动编译
  */
 gulp.task('build',['clean'],function (done) {
-    runSequence(['font','html','css','js'],function () {
+    runSequence(['font','html','css','js','static'],function () {
         buildBrowserify({watch:false}).on('end', done);
     })
 });
@@ -75,6 +75,14 @@ gulp.task('build',['clean'],function (done) {
  */
 gulp.task('clean', function(){
     return del('www/build');
+});
+
+/**
+ * 拷贝静态资源
+ */
+gulp.task('static',function () {
+    return gulp.src(['static/**'])
+        .pipe(gulp.dest('www/build/static'));
 });
 
 /**
@@ -103,7 +111,8 @@ gulp.task('css',function () {
         sassOptions: {
             includePaths: [
                 'node_modules/ionic-angular',
-                'node_modules/ionicons/dist/scss'
+                'node_modules/ionicons/dist/scss',
+                'app/business/home'
             ]
         },
         onError: function(err) {

@@ -31,7 +31,6 @@ export class Home{
         // Use the blackOpaque statusbar (light text, for dark backgrounds).
         //
         // backgroundColorByName(colorName)
-        
     }
     
     goToHome1(){
@@ -39,3 +38,5 @@ export class Home{
     }
     
 }
+
+

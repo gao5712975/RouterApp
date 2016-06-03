@@ -5,24 +5,26 @@ import {ViewChild} from '@angular/core';
 import {App, Platform,MenuController,Events,Keyboard} from 'ionic-angular';
 import {StatusBar, Splashscreen,BatteryStatus} from 'ionic-native';
 import {Home} from './business/home/home';
-import {GetMenuPage} from './business/menu/menu'
+import {GetMenuPage} from './business/menu/menu';
+import {LoginProvider} from './providers/LoginProvider';
 
 @App({
     templateUrl: 'build/app.html',
     queries: {
         nav: new ViewChild('content')
     },
-    tabbarPlacement: "bottom"
+    tabbarPlacement: "bottom",
+    providers:[LoginProvider]
 })
 
 class RouterApp {
     static get parameters() {
         return [
-            [Platform],[MenuController],[Events]
+            [Platform],[MenuController],[Events],[LoginProvider]
         ];
     }
 
-    constructor(platform,menu,events) {
+    constructor(platform,menu,events,login) {
         this.events = events;
         this.menu = menu;
         this.rootPage = Home;
@@ -39,13 +41,21 @@ class RouterApp {
             StatusBar.styleBlackTranslucent();
         });
 
+        console.info(login.login({
+          username:"admin",
+          password:"25d55ad283aa400af464c76d713c07ad",
+          init:"1"
+        }).then(data => {
+          console.info(data);
+        }));
+
         this.appPages = new GetMenuPage().pages;
-        
+
         this.events.subscribe('backButton',() => {
             this.nav.pop();
         })
     }
-    
+
     openPage(p){
         this.menu.close().then((bo) => {
             this.nav.setRoot(p);

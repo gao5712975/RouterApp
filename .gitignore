@@ -6,6 +6,6 @@ resources
 config.xml
 platforms
 ionic.project
-README.md
+#README.md
 hooks
 plugins
