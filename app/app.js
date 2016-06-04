@@ -2,11 +2,14 @@
  * Created by moka on 16-5-25. 入口文件
  */
 import {ViewChild} from '@angular/core';
-import {App, Platform,MenuController,Events,Keyboard} from 'ionic-angular';
+import {App, Platform,MenuController,Events} from 'ionic-angular';
 import {StatusBar, Splashscreen,BatteryStatus} from 'ionic-native';
 import {Home} from './business/home/home';
 import {GetMenuPage} from './business/menu/menu';
-import {LoginProvider} from './providers/LoginProvider';
+
+import * as helpers from './helpers/helpers';
+import {Http,Headers} from '@angular/http';
+import {interceptor} from './interceptor/HttpInterceptor';
 
 @App({
     templateUrl: 'build/app.html',
@@ -14,20 +17,20 @@ import {LoginProvider} from './providers/LoginProvider';
         nav: new ViewChild('content')
     },
     tabbarPlacement: "bottom",
-    providers:[LoginProvider]
+    providers: [interceptor]
 })
-
 class RouterApp {
     static get parameters() {
         return [
-            [Platform],[MenuController],[Events],[LoginProvider]
+            [Platform],[MenuController],[Events],[Http]
         ];
     }
 
-    constructor(platform,menu,events,login) {
+    constructor(platform,menu,events,http) {
         this.events = events;
         this.menu = menu;
         this.rootPage = Home;
+        this.http = http;
         // this.rootPage = new GetMenuPage().pages[0].page;
         // Call any initial plugins when ready
         platform.ready().then(() => {
@@ -41,18 +44,19 @@ class RouterApp {
             StatusBar.styleBlackTranslucent();
         });
 
-        console.info(login.login({
-          username:"admin",
-          password:"25d55ad283aa400af464c76d713c07ad",
-          init:"1"
-        }).then(data => {
-          console.info(data);
-        }));
-
         this.appPages = new GetMenuPage().pages;
 
         this.events.subscribe('backButton',() => {
             this.nav.pop();
+        })
+
+        // let headers = new Headers();
+        // headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+        var body = `query=There+may+be+cases+where+it+makes+sense+to+extend+the+base+request+options%2C+such+as+to+add+a+search+string+to+be+appended+to+all+URLs.+To+accomplish+this%2C+a+new+provider+for+RequestOptions+should+be+added+in+the+same+injector+as+HTTP_PROVIDERS.&from=en&to=zh`
+
+        this.http.post('http://fanyi.baidu.com/basetrans',body).subscribe(data => {
+          console.info(data);
         })
     }
 
