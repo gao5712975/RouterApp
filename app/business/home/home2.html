@@ -1,9 +1,9 @@
 <ion-navbar *navbar hideBackButton="true" wifi>
-    <ion-title>
-        小橙路由
+    <ion-title class="text-center">
+        上网方式
     </ion-title>
 </ion-navbar>
 <ion-content class="outer-content" overflow-scroll="false">
-    跳过 wifi设置
-    <button (click)="goToHome3()">设置上网方式 宽带POP 动态IP 静态IP</button>
+  <button wifi block width-90 margin-auto (click)="goToHome3()" class="wf-next-button">下一步</button>
+  <button wifi block clear class="wf-cancel-button">跳过，暂不设置</button>
 </ion-content>

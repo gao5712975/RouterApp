@@ -1,8 +1,9 @@
 <ion-navbar *navbar hideBackButton="true" wifi>
-    <ion-title>
-        小橙路由
+    <ion-title class="text-center">
+        WIFI设置
     </ion-title>
 </ion-navbar>
 <ion-content class="outer-content" overflow-scroll="false">
-    <button (click)="goToHome4()">wifi设置</button>
+  <button wifi block width-90 margin-auto (click)="goToHome4()" class="wf-next-button">下一步</button>
+  <button wifi block clear class="wf-cancel-button">跳过，暂不设置</button>
 </ion-content>

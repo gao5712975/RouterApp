@@ -1,11 +1,14 @@
 .md .button{
-  height: 3.9rem;
+  height: 4.5rem;
+}
+.md .button span{
+  font-size: 18px;
 }
 .wf-home-button{
   border: 2px solid #fff;
   color: #fff;
   position: relative;
-  top: 36rem;
+  top: 41rem;
 }
 .wf-home-bj{
   width: 100%;
@@ -14,13 +17,16 @@
 }
 .wf-home-img{
 	position: absolute;
-  top: 35%;
+  top: 39%;
   left: 50%;
-  margin-top: -6rem;
-  margin-left: -6rem;
+  margin-top: -7.5rem;
+  margin-left: -7.5rem;
 }
 .wf-home-img img{
-  width: 12rem
+  width: 15rem
+}
+.wf-home-img p{
+  font-size: 1.6rem;
 }
 .wf-home-img p{
   color: #fff;

@@ -1,4 +1,5 @@
 @import "home";
+@import "home1";
 
 .md .button-margin-auto{
     margin: 0.4rem auto;
@@ -16,16 +17,31 @@
     width:90%;
 }
 
+.md .text-center{
+  text-align: center;
+}
+/**
+ * 下一步按钮绝对定位
+ */
+.md .wf-next-button{
+  position: relative;
+  top: 47.5rem;
+}
+.md .wf-cancel-button{
+  position: relative;
+  top: 48rem;
+}
+
 @media screen and (max-width: 720px) {
     .md{
       $fontSize:16px;
-      font-size: 16px;
+      font-size: 1.6rem;
     }
 }
 @media screen and (max-width: 480px) {
     .md{
       $fontSize:14px;
-      font-size: 1.4;
+      font-size: 1.4rem;
     }
 }
 @media screen and (max-width: 360px) {

@@ -1,8 +1,18 @@
 <ion-navbar *navbar hideBackButton="true" wifi>
-    <ion-title>
-        小橙路由
+    <ion-title class="text-center">
+        连线提示
     </ion-title>
 </ion-navbar>
 <ion-content class="outer-content" overflow-scroll="false">
-    <button (click)="goToHome2()">下一步</button>
+  <div class="wf-home1-bj">
+  	<div class="wf-home1-img">
+  		<img src="./build/static/img/home/guidance2.png">
+  	</div>
+    <div class="wf-home1-text">
+      <span>请检查WAN口连接</span>
+      <span>以确保配置完成后您能够正常上网</span>
+    </div>
+
+    <button wifi block width-90 margin-auto (click)="goToHome2()" class="wf-next-button">下一步</button>
+  </div>
 </ion-content>
