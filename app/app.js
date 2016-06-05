@@ -7,8 +7,6 @@ import {StatusBar, Splashscreen,BatteryStatus} from 'ionic-native';
 import {Home} from './business/home/home';
 import {GetMenuPage} from './business/menu/menu';
 
-import * as helpers from './helpers/helpers';
-import {Http,Headers} from '@angular/http';
 import {interceptor} from './interceptor/HttpInterceptor';
 
 @App({
@@ -16,21 +14,25 @@ import {interceptor} from './interceptor/HttpInterceptor';
     queries: {
         nav: new ViewChild('content')
     },
-    tabbarPlacement: "bottom",
+    // tabbarPlacement: "bottom",
     providers: [interceptor]
 })
 class RouterApp {
     static get parameters() {
         return [
-            [Platform],[MenuController],[Events],[Http]
+            [Platform],[MenuController],[Events]
         ];
     }
-
     constructor(platform,menu,events,http) {
         this.events = events;
+
         this.menu = menu;
+
+        //默认为首次加载app 给引导页面 之后直接给首页
+        //首页
+        // this.rootPage = new GetMenuPage().getMenuPage()[0].page;
         this.rootPage = Home;
-        this.http = http;
+
         // this.rootPage = new GetMenuPage().pages[0].page;
         // Call any initial plugins when ready
         platform.ready().then(() => {
@@ -44,20 +46,19 @@ class RouterApp {
             StatusBar.styleBlackTranslucent();
         });
 
-        this.appPages = new GetMenuPage().pages;
+        //获取菜单
+        this.appPages = new GetMenuPage().getMenuPage();
 
         this.events.subscribe('backButton',() => {
             this.nav.pop();
         })
 
-        // let headers = new Headers();
-        // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
-        var body = `query=There+may+be+cases+where+it+makes+sense+to+extend+the+base+request+options%2C+such+as+to+add+a+search+string+to+be+appended+to+all+URLs.+To+accomplish+this%2C+a+new+provider+for+RequestOptions+should+be+added+in+the+same+injector+as+HTTP_PROVIDERS.&from=en&to=zh`
-
-        this.http.post('http://fanyi.baidu.com/basetrans',body).subscribe(data => {
-          console.info(data);
-        })
+        //测试
+        //this.http = http;
+        // var body = `from=zh&to=en&query=你好&simple_means_flag=3`
+        // this.http.post('//fanyi.baidu.com/v2transapi',body).subscribe(data => {
+        //   console.info(data);
+        // })
     }
 
     openPage(p){

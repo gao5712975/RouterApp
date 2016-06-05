@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var watchify = require('watchify');//加速browserify编译
-var babelify = require('babelify'); 
-var browserify = require('browserify'); 
+var babelify = require('babelify');
+var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var pretty = require('prettysize'); //文字格式化
 var del = require('del'); //文件删除
@@ -11,6 +11,8 @@ var gulpWatch = require('gulp-watch'); //监听插件
 var babelES2015Preset = require('babel-preset-es2015');//解析ES6
 var babelDecoratorsTransform = require('babel-plugin-transform-decorators-legacy').default; //解析ES7
 var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
+var buffer = require('gulp-buffer');
 var autoprefixer = require('gulp-autoprefixer');//根据设置浏览器版本自动处理浏览器前缀
 
 /**
@@ -23,7 +25,7 @@ function buildBrowserify(options) {
         watch:false
     };
     options = assign(defaultOptions,options);
-    
+
     var b = browserify({
         entries: ['app/app.js'],
         debug: false
@@ -42,6 +44,8 @@ function buildBrowserify(options) {
         return b.bundle()  // 多个文件打包成一个文件
             .on('error', onError)
             .pipe(source('app.bundle.js'))
+            // .pipe(buffer())
+            // .pipe(uglify())
             .pipe(gulp.dest('www/build/js'));
     }
 }
@@ -148,7 +152,8 @@ gulp.task('js',function () {
             'node_modules/es6-shim/es6-shim.min.js'
         ]
     )
-        .pipe(gulp.dest('www/build/js'));
+    .pipe(uglify())
+    .pipe(gulp.dest('www/build/js'));
 });
 
 
@@ -170,4 +175,3 @@ Date.prototype.dateFormat = function (str) {
 function onLog(log){
     console.log((log = log.split(' '), log[0] = pretty(log[0]), log.join(' '), log += ' ' + new Date().dateFormat("yyyy-MM-dd HH:mm:ss")));
 }
-
