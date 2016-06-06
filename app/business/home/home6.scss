@@ -1,0 +1,38 @@
+.wf-success-img{
+  position: absolute;
+    top: 18%;
+    left: 50%;
+    margin-left: -4.25rem;
+}
+.wf-success-img img{
+    width: 8.5rem;
+}
+.wf-success-text{
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 36%;
+  border-bottom: 1px solid #ccc;
+  margin: 0 1.8rem;
+}
+.wf-success-text span:first-child{
+  color: #8A8A8A;
+}
+.wf-success-text span:last-child{
+  color: #5A5A5A;
+  font-size: 23px;
+}
+.wf-success-manager{
+  padding-top: 1rem;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 47%;
+}
+.wf-success-manager span.name{
+  color: #8a8a8a;
+}
+.wf-success-manager span.value{
+  color: blue;
+  font-size: 20px;
+}

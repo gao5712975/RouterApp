@@ -3,7 +3,7 @@
         上网方式
     </ion-title>
 </ion-navbar>
-<ion-content class="outer-content" overflow-scroll="false">
+<ion-content overflow-scroll="false">
 
     <div padding class="wf-segment-button">
         <ion-segment [(ngModel)]="wifi">
@@ -29,9 +29,9 @@
 
                 <ion-item>
                     <ion-label fixed>上网密码</ion-label>
-                    <ion-input type="text" placeholder="请输入您的上网密码"></ion-input>
+                    <ion-input [type]='inputType' placeholder="请输入您的上网密码"></ion-input>
                     <button clear item-right>
-                        <img class="password-show" src="./build/static/img/home/guidance-eye.png" alt="">
+                        <img class="password-show" (click)="updateImg()" [src]='src'>
                     </button>
                 </ion-item>
             </ion-list>

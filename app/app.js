@@ -15,7 +15,8 @@ import {interceptor} from './interceptor/HttpInterceptor';
         nav: new ViewChild('content')
     },
     // tabbarPlacement: "bottom",
-    providers: [interceptor]
+    providers: [interceptor],
+    modu:"md"
 })
 class RouterApp {
     static get parameters() {

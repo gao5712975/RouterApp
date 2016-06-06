@@ -3,7 +3,7 @@
         WIFI设置
     </ion-title>
 </ion-navbar>
-<ion-content class="outer-content" overflow-scroll="false">
+<ion-content overflow-scroll="false">
   <div class="wf-wifi-config">
     <ion-list>
         <ion-item>
@@ -13,9 +13,9 @@
 
         <ion-item>
             <ion-label fixed>WIFI密码</ion-label>
-            <ion-input type="text" placeholder="请输入至少8位数密码"></ion-input>
+            <ion-input [type]="inputType" placeholder="请输入至少8位数密码"></ion-input>
             <button clear item-right>
-                <img class="password-show" src="./build/static/img/home/guidance-eye.png" alt="">
+                <img class="password-show" (click)='updateImg()' [src]='src'>
             </button>
         </ion-item>
     </ion-list>

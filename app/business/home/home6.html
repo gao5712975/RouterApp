@@ -3,7 +3,37 @@
         WIFI设置成功
     </ion-title>
 </ion-navbar>
-<ion-content class="outer-content" overflow-scroll="false">
+<ion-content overflow-scroll="false">
+
+  <div class="wf-success-img">
+    <img src="./build/static/img/home/guidance7.png">
+  </div>
+  <div class="wf-success-text">
+    <p text-center>
+      <span>请连接一下网络</span><br>
+      <span>{{'ycmedia-sj'}}</span>
+    </p>
+  </div>
+  <div class="wf-success-manager">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-33 text-right>
+          <span class="name">管理员密码</span>
+        </ion-col>
+        <ion-col width-67 text-left>
+          <span class="value">{{'Xiaocheng-C9'}}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-33 text-right>
+          <span class="name">WIFI密码</span>
+        </ion-col>
+        <ion-col width-67 text-left>
+          <span class="value">{{'Xiaocheng-C9'}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
   <div class="wf-next-button">
     <button wifi block (click)="goToIndexPage()">管理我的小橙</button>

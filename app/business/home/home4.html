@@ -3,7 +3,7 @@
         后台登陆密码设置
     </ion-title>
 </ion-navbar>
-<ion-content class="outer-content" overflow-scroll="false">
+<ion-content overflow-scroll="false">
   <div class="wf-wifi-admin">
     <ion-list>
         <ion-item>
@@ -13,12 +13,15 @@
 
         <ion-item>
             <ion-label fixed>管理密码</ion-label>
-            <ion-input type="text" placeholder="请输入至少8位数密码"></ion-input>
+            <ion-input [type]="inputType" placeholder="请输入至少8位数密码"></ion-input>
             <button clear item-right>
-                <img class="password-show" src="./build/static/img/home/guidance-eye.png" alt="">
+                <img class="password-show" (click)='updateImg()' [src]='src'>
             </button>
         </ion-item>
     </ion-list>
+    <p text-right>
+      <ion-checkbox vertical-middle checked="true"></ion-checkbox><span padding>与WIFI密码相同</span>
+    </p>
   </div>
   <div class="wf-next-button">
     <button wifi block (click)="goToHome5()" >下一步</button>
