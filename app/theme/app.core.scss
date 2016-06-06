@@ -8,16 +8,21 @@
 $theme: #2F83F5;
 
 /**
- *
+ * 更改ionic默认样式
  */
 .md ion-label[fixed] {
     flex: 0 0 70px;
     width: 70px;
     min-width: 70px;
 }
+
+/**
+ * 自定义样式
+ */
 [vertical-middle]{
   vertical-align: middle;
 }
+
 /**
  * 下一步按钮绝对定位
  */
