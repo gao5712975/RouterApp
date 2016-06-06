@@ -1,8 +1,27 @@
 <ion-navbar *navbar hideBackButton="true" wifi>
-    <ion-title class="text-center">
+    <ion-title text-center>
         后台登陆密码设置
     </ion-title>
 </ion-navbar>
 <ion-content class="outer-content" overflow-scroll="false">
-    <button wifi block width-90 margin-auto (click)="goToHome5()" class="wf-next-button">下一步</button>
+  <div class="wf-wifi-admin">
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>路由名称</ion-label>
+            <ion-input type="text" value="Cheng-C9"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>管理密码</ion-label>
+            <ion-input type="text" placeholder="请输入至少8位数密码"></ion-input>
+            <button clear item-right>
+                <img class="password-show" src="./build/static/img/home/guidance-eye.png" alt="">
+            </button>
+        </ion-item>
+    </ion-list>
+  </div>
+  <div class="wf-next-button">
+    <button wifi block (click)="goToHome5()" >下一步</button>
+    <div class="hide-button"></div>
+  </div>
 </ion-content>

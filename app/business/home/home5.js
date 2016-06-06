@@ -2,7 +2,7 @@
  * Created by moka on 16-5-26.
  */
 import {Page,NavController} from 'ionic-angular'
-import {IndexPage} from '../index/index'
+import {Home6} from './home6'
 
 @Page({
     templateUrl: 'build/business/home/home5.html'
@@ -17,9 +17,9 @@ export class Home5{
 
     constructor(nav){
         this.nav = nav;
+        setTimeout(() => {
+          console.info("ok");
+          nav.setRoot(Home6);
+        },3000)
     }
-
-    goToIndexPage(){
-        this.nav.setRoot(IndexPage);
-    }    
 }

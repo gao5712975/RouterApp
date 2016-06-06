@@ -1,9 +1,30 @@
 <ion-navbar *navbar hideBackButton="true" wifi>
-    <ion-title class="text-center">
+    <ion-title text-center>
         WIFI设置
     </ion-title>
 </ion-navbar>
 <ion-content class="outer-content" overflow-scroll="false">
-  <button wifi block width-90 margin-auto (click)="goToHome4()" class="wf-next-button">下一步</button>
-  <button wifi block clear class="wf-cancel-button">跳过，暂不设置</button>
+  <div class="wf-wifi-config">
+    <ion-list>
+        <ion-item>
+            <ion-label fixed>WIFI名称</ion-label>
+            <ion-input type="text" value="xiaochengluyouqi"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>WIFI密码</ion-label>
+            <ion-input type="text" placeholder="请输入至少8位数密码"></ion-input>
+            <button clear item-right>
+                <img class="password-show" src="./build/static/img/home/guidance-eye.png" alt="">
+            </button>
+        </ion-item>
+    </ion-list>
+    <div class="verify">
+        <span>请填写WIFI密码！</span>
+    </div>
+  </div>
+  <div class="wf-next-button">
+    <button wifi block (click)="goToHome4()">下一步</button>
+    <button block clear (click)="goToHome4()" class="cancel-butto">跳过，暂不设置</button>
+  </div>
 </ion-content>

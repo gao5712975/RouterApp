@@ -1,58 +1,62 @@
 @import "home";
 @import "home1";
+@import "home2";
+@import "home3";
+@import "home4";
+$theme: #2F83F5;
 
-.md .button-margin-auto{
-    margin: 0.4rem auto;
-}
-
-.md .button-outline-margin-auto{
-    margin: 0.4rem auto;
-}
-
-.md .button-width-90{
-    width:90%;
-}
-
-.md .button-outline-width-90{
-    width:90%;
-}
-
-.md .text-center{
-  text-align: center;
+/**
+ *
+ */
+.md ion-label[fixed] {
+    flex: 0 0 70px;
+    width: 70px;
+    min-width: 70px;
 }
 /**
  * 下一步按钮绝对定位
  */
-.md .wf-next-button{
-  position: relative;
-  top: 47.5rem;
+.md .wf-next-button {
+    width: 90%;
+    position: absolute;
+    right: 5%;
+    bottom: 1rem;
 }
-.md .wf-cancel-button{
-  position: relative;
-  top: 48rem;
+.md .wf-next-button .button {
+    font-size: 18px;
 }
-
-@media screen and (max-width: 720px) {
-    .md{
-      $fontSize:16px;
-      font-size: 1.6rem;
-    }
+.md .wf-next-button .cancel-butto {
+    font-size: 14px;
+    color: #545454;
 }
-@media screen and (max-width: 480px) {
-    .md{
-      $fontSize:14px;
-      font-size: 1.4rem;
-    }
+/**
+ * 暂不设置影藏框
+ */
+.md .wf-next-button .hide-button {
+    width: auto;
+    height: 4.5rem;
 }
-@media screen and (max-width: 360px) {
-    .md{
-      $fontSize:12px;
-      font-size: 1.2rem;
-    }
-}
-@media screen and (max-width: 320px) {
-    .md{
-      $fontSize:10px;
-      font-size: 1rem;
-    }
-}
+// @media screen and (max-width: 720px) {
+//     .md{
+//       $fontSize:16px;
+//       font-size: 1.6rem;
+//     }
+// }
+// @media screen and (max-width: 480px) {
+//     .md{
+//       $fontSize:14px;
+//       font-size: 1.4rem;
+//     }
+// }
+// @media screen and (max-width: 360px) {
+//     .md{
+//       $fontSize:12px;
+//       font-size: 1.2rem;
+//     }
+// }
+// @media screen and (max-width: 320px) {
+//     .md{
+//       $fontSize:10px;
+//       font-size: 1rem;
+//     }
+// }

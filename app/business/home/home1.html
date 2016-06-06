@@ -1,5 +1,5 @@
 <ion-navbar *navbar hideBackButton="true" wifi>
-    <ion-title class="text-center">
+    <ion-title text-center>
         连线提示
     </ion-title>
 </ion-navbar>
@@ -13,6 +13,9 @@
       <span>以确保配置完成后您能够正常上网</span>
     </div>
 
-    <button wifi block width-90 margin-auto (click)="goToHome2()" class="wf-next-button">下一步</button>
+    <div class="wf-next-button">
+      <button wifi block (click)="goToHome2()" >下一步</button>
+      <div class="hide-button"></div>
+    </div>
   </div>
 </ion-content>

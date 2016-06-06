@@ -1,0 +1,26 @@
+.wf-wifi-config{
+  padding-top: 2.2rem;
+}
+.wf-wifi-config .item {
+    height: 5rem;
+}
+.wf-wifi-config .item-input ion-label {
+    color: #000;
+}
+// .wf-wifi-config ion-list > .item:first-child {
+//     border-top: 1px solid #f1f1f1;
+// }
+// .wf-wifi-config ion-list .item-inner {
+//     border-bottom: 1px solid #f1f1f1;
+// }
+// .wf-wifi-config ion-list > .item:last-child {
+//     border-bottom: 1px solid #f1f1f1;
+// }
+.wf-wifi-config .verify {
+    padding-left: 16px;
+    color: red;
+    font-size: 1.4rem;
+}
+.wf-wifi-config .password-show {
+    width: 1.6rem;
+}
