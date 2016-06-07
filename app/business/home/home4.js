@@ -56,13 +56,21 @@ export class Home4{
      * 密码显示
      * @return {[type]} [description]
      */
-    updateImg(){
-      if(this.inputType == 'password'){
-        this.inputType = 'text';
-        this.src = './build/static/img/home/guidance-eye1.png';
-      }else{
-        this.inputType = 'password';
-        this.src = './build/static/img/home/guidance-eye.png';
-      }
-    }
+     touchstart(){
+       this.inputType = 'text';
+       this.backgroundImg = true;
+     }
+     touchend(){
+       this.inputType = 'password';
+       this.backgroundImg = false;
+     }
+    // updateImg(){
+    //   if(this.inputType == 'password'){
+    //     this.inputType = 'text';
+    //     this.src = './build/static/img/home/guidance-eye1.png';
+    //   }else{
+    //     this.inputType = 'password';
+    //     this.src = './build/static/img/home/guidance-eye.png';
+    //   }
+    // }
 }

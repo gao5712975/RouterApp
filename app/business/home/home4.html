@@ -14,9 +14,7 @@
         <ion-item>
             <ion-label fixed>管理密码</ion-label>
             <ion-input [type]="inputType" [(ngModel)]="adminConfig.newPwd" placeholder="请输入至少8位数密码"></ion-input>
-            <button clear item-right>
-                <img class="password-show" (click)='updateImg()' [src]='src'>
-            </button>
+            <div class="background-img" item-right (touchstart)='touchstart()' (touchend)="touchend()" [ngClass]='{"background-img":!backgroundImg,"background-img1":backgroundImg}'></div>
         </ion-item>
     </ion-list>
     <p text-right>

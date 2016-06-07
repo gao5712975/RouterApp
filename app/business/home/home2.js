@@ -27,7 +27,7 @@ export class Home2{
         this.wifi = 'autoIp';
         this.inputType = 'password';
         this.src = './build/static/img/home/guidance-eye.png';
-
+        this.backgroundImg = false;
         /**
          * 表单
          */
@@ -92,14 +92,26 @@ export class Home2{
      * 密码显示
      * @return {[type]} [description]
      */
-    updateImg(){
-      if(this.inputType == 'password'){
-        this.inputType = 'text';
-        this.src = './build/static/img/home/guidance-eye1.png';
-      }else{
-        this.inputType = 'password';
-        this.src = './build/static/img/home/guidance-eye.png';
-      }
+    touchstart(){
+      this.inputType = 'text';
+      this.backgroundImg = true;
+      // this.src = './build/static/img/home/guidance-eye1.png';
     }
-
+    touchend(){
+      this.inputType = 'password';
+      this.backgroundImg = false;
+      // this.src = './build/static/img/home/guidance-eye.png';
+    }
+    // updateImg(){
+    //   if(this.inputType == 'password'){
+    //     this.inputType = 'text';
+    //     this.src = './build/static/img/home/guidance-eye1.png';
+    //   }else{
+    //     this.inputType = 'password';
+    //     this.src = './build/static/img/home/guidance-eye.png';
+    //   }
+    // }
+    testClick(){
+      console.info("ok");
+    }
 }
