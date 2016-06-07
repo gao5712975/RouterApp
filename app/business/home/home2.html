@@ -3,7 +3,7 @@
         上网方式
     </ion-title>
 </ion-navbar>
-<ion-content overflow-scroll="false">
+<ion-content>
 
     <div padding class="wf-segment-button">
         <ion-segment [(ngModel)]="wifi">
@@ -24,12 +24,12 @@
             <ion-list>
                 <ion-item>
                     <ion-label fixed>上网账号</ion-label>
-                    <ion-input type="text" placeholder="请输入您的上网账号"></ion-input>
+                    <ion-input type="text" [(ngModel)]="pppoe.pppoename" placeholder="请输入您的上网账号"></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label fixed>上网密码</ion-label>
-                    <ion-input [type]='inputType' placeholder="请输入您的上网密码"></ion-input>
+                    <ion-input [type]='inputType' [(ngModel)]="pppoe.pppoepwd" placeholder="请输入您的上网密码"></ion-input>
                     <button clear item-right>
                         <img class="password-show" (click)="updateImg()" [src]='src'>
                     </button>
@@ -39,46 +39,55 @@
             <div class="verify">
                 <span>请填写上网账号！</span>
             </div>
+            <div class="next-button">
+                <button wifi block (click)="goToHome3()">下一步</button>
+                <button block clear (click)="goToHome3()" class="cancel-butto">跳过，暂不设置</button>
+            </div>
         </div>
         <!--  -->
         <div *ngSwitchWhen="'autoIp'" class="wf-autoIp">
             <p>路由器连接运营商提供的端口即可以直接上网</p>
+            <div class="next-button">
+                <button wifi block (click)="goToHome3()">下一步</button>
+                <button block clear (click)="goToHome3()" class="cancel-butto">跳过，暂不设置</button>
+            </div>
         </div>
         <!--  -->
         <div *ngSwitchWhen="'manualIp'" class="wf-manualIp">
             <ion-list>
                 <ion-item>
                     <ion-label fixed>IP地址</ion-label>
-                    <ion-input type="text" placeholder="请输入你的IP地址"></ion-input>
+                    <ion-input type="text" [(ngModel)]="manualIp.ip" placeholder="请输入你的IP地址"></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label fixed>子网掩码</ion-label>
-                    <ion-input type="text" placeholder="请输入子网掩码"></ion-input>
+                    <ion-input type="text" value="255.255.255.0" [(ngModel)]="manualIp.mask" placeholder="请输入子网掩码"></ion-input>
                 </ion-item>
 
                 <ion-item>
-                    <ion-label fixed>默认网管</ion-label>
-                    <ion-input type="text" placeholder="请输入默认网管"></ion-input>
+                    <ion-label fixed>默认网关</ion-label>
+                    <ion-input type="text" [(ngModel)]="manualIp.gateway" placeholder="请输入默认网关"></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label fixed>首选DNS</ion-label>
-                    <ion-input type="text" placeholder="请输入首选DNS"></ion-input>
+                    <ion-input type="text" [(ngModel)]="manualIp.dns" placeholder="请输入首选DNS"></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label fixed>备用DNS</ion-label>
-                    <ion-input type="text" placeholder="请输入备用DNS"></ion-input>
+                    <ion-input type="text" [(ngModel)]="manualIp.dns2" placeholder="请输入备用DNS"></ion-input>
                 </ion-item>
             </ion-list>
             <div class="verify">
                 <span>请填写上网账号！</span>
             </div>
+            <div class="next-button">
+                <button wifi block (click)="goToHome3()">下一步</button>
+                <button block clear (click)="goToHome3()" class="cancel-butto">跳过，暂不设置</button>
+            </div>
         </div>
     </div>
-    <div class="wf-next-button">
-        <button wifi block (click)="goToHome3()">下一步</button>
-        <button block clear (click)="goToHome3()" class="cancel-butto">跳过，暂不设置</button>
-    </div>
+
 </ion-content>

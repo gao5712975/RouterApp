@@ -1,7 +1,7 @@
 /**
  * Created by moka on 16-5-26.
  */
-import {Page,NavController} from 'ionic-angular'
+import {Page,NavController,NavParams} from 'ionic-angular'
 import {IndexPage} from '../index/index'
 import {GetMenuPage} from '../menu/menu';
 
@@ -12,12 +12,14 @@ import {GetMenuPage} from '../menu/menu';
 export class Home6{
     static get parameters() {
         return [
-            [NavController]
+            [NavController],[NavParams]
         ];
     }
 
-    constructor(nav){
+    constructor(nav,navParams){
         this.nav = nav;
+        this.navParams = navParams;
+        this.data = this.navParams.data;
     }
 
     goToIndexPage(){

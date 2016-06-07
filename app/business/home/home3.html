@@ -3,17 +3,17 @@
         WIFI设置
     </ion-title>
 </ion-navbar>
-<ion-content overflow-scroll="false">
+<ion-content>
   <div class="wf-wifi-config">
     <ion-list>
         <ion-item>
             <ion-label fixed>WIFI名称</ion-label>
-            <ion-input type="text" value="xiaochengluyouqi"></ion-input>
+            <ion-input type="text" [(ngModel)]="wifiConfig.ssid"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label fixed>WIFI密码</ion-label>
-            <ion-input [type]="inputType" placeholder="请输入至少8位数密码"></ion-input>
+            <ion-input [type]="inputType" [(ngModel)]="wifiConfig.wifipassword" placeholder="请输入至少8位数密码"></ion-input>
             <button clear item-right>
                 <img class="password-show" (click)='updateImg()' [src]='src'>
             </button>
@@ -22,9 +22,10 @@
     <div class="verify">
         <span>请填写WIFI密码！</span>
     </div>
-  </div>
-  <div class="wf-next-button">
-    <button wifi block (click)="goToHome4()">下一步</button>
-    <button block clear (click)="goToHome4()" class="cancel-butto">跳过，暂不设置</button>
+
+    <div class="next-button">
+      <button wifi block (click)="goToHome4()">下一步</button>
+      <button block clear (click)="goToHome4()" class="cancel-butto">跳过，暂不设置</button>
+    </div>
   </div>
 </ion-content>

@@ -3,17 +3,21 @@
         连线提示
     </ion-title>
 </ion-navbar>
-<ion-content overflow-scroll="false">
+<ion-content>
   <div class="wf-home1-bj">
-  	<div class="wf-home1-img">
+  	<div class="img">
   		<img src="./build/static/img/home/guidance2.png">
   	</div>
-    <div class="wf-home1-text">
-      <span>请检查WAN口连接</span>
-      <span>以确保配置完成后您能够正常上网</span>
+    <div class="text">
+      <span text-center>请检查WAN口连接</span>
+      <span text-center>以确保配置完成后您能够正常上网</span>
     </div>
 
-    <div class="wf-next-button">
+    <!-- <div class="wf-next-button">
+      <button wifi block (click)="goToHome2()" >下一步</button>
+      <div class="hide-button"></div>
+    </div> -->
+    <div class="next-button">
       <button wifi block (click)="goToHome2()" >下一步</button>
       <div class="hide-button"></div>
     </div>

@@ -3,6 +3,9 @@ import {HTTP_PROVIDERS,XHRBackend,BrowserXhr,BaseRequestOptions,RequestOptions,R
 import {Observable} from 'rxjs/Observable';
 import {provide,Injectable} from '@angular/core';
 
+import {global} from '../application/global';
+import {Storage, LocalStorage} from 'ionic-angular';
+
 /**
  * 请求统一处理
  */
@@ -64,13 +67,22 @@ export class YXHRBackend extends XHRBackend {
 
   constructor(browserXhr,responseOptions) {
     super(browserXhr,responseOptions);
+    this.storage = new Storage(LocalStorage);
   }
 
   createConnection(request){
+    /**
+     * request 每次请求修改url地址；
+     */
+    if(this.storage.get('token')){
+      request.url = global.baseUrl + '/;stok=' + this.storage.get('token').__zone_symbol__value + request.url;
+    }else{
+      request.url = global.baseUrl + request.url;
+    }
     let xhrConnection = super.createConnection(request);
     xhrConnection.response = xhrConnection.response.catch((error) => {
       return Observable.throw(error);
-    })
+    });
 
     //请求结果的预处理，统一处理业务状态！！！！！！
     xhrConnection.response = xhrConnection.response.map(data => {
@@ -79,7 +91,7 @@ export class YXHRBackend extends XHRBackend {
       } catch (e) {
         return data._body;
       }
-    })
+    });
     return xhrConnection;
   }
 }

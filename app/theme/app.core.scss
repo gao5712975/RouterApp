@@ -5,8 +5,8 @@
 @import "home4";
 @import "home5";
 @import "home6";
+@import "menu";
 $theme: #2F83F5;
-
 /**
  * 更改ionic默认样式
  */
@@ -15,25 +15,30 @@ $theme: #2F83F5;
     width: 70px;
     min-width: 70px;
 }
-
+.md .toolbar {
+    min-height: 4.5rem;
+}
+.md ion-navbar {
+    min-height: 4.5rem;
+}
 /**
  * 自定义样式
  */
-[vertical-middle]{
-  vertical-align: middle;
+[vertical-middle] {
+    vertical-align: middle;
 }
-
 /**
  * 下一步按钮绝对定位
  */
-.md .wf-next-button {
-    width: 90%;
-    position: absolute;
-    right: 5%;
-    bottom: 1rem;
-}
-.md .wf-next-button .button {
+// .md .wf-next-button {
+//     width: 90%;
+//     position: absolute;
+//     right: 5%;
+//     bottom: 1rem;
+// }
+.md .next-button .button {
     font-size: 18px;
+    height: 4.2rem;
 }
 .md .wf-next-button .cancel-butto {
     font-size: 14px;
@@ -42,7 +47,7 @@ $theme: #2F83F5;
 /**
  * 暂不设置影藏框
  */
-.md .wf-next-button .hide-button {
+.md .hide-button {
     width: auto;
     height: 4.5rem;
 }

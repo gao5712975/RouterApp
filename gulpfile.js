@@ -56,13 +56,13 @@ function buildBrowserify(options) {
 gulp.task('default',['clean'],function (done) {
     runSequence(['font','html','css','js','static'],function () {
         gulpWatch('app/**/*.html',function () {
-            gulp.start('html')
+            gulp.start('html');
         });
         gulpWatch(['app/**/*.css','app/**/*.scss'],function () {
-            gulp.start('css')
+            gulp.start('css');
         });
         buildBrowserify({watch:true}).on('end', done);
-    })
+    });
 });
 
 /**
@@ -71,7 +71,7 @@ gulp.task('default',['clean'],function (done) {
 gulp.task('build',['clean'],function (done) {
     runSequence(['font','html','css','js','static'],function () {
         buildBrowserify({watch:false}).on('end', done);
-    })
+    });
 });
 
 /**
