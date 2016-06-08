@@ -29,7 +29,9 @@ export class FirstLogin{
       this.http.post(url,helpers.toBodyString(body)).subscribe(res => {
         if(res && res.code == 0){
           //默认登陆成功 保存token
-          this.storage.set('token',res.token);
+          if(res.token){
+            this.storage.set('token',res.token);
+          }
         }
         resolve(res);
       })

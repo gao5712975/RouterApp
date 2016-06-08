@@ -24,13 +24,14 @@ export class Home4{
          * @type {String}
          */
         this.inputType = 'password';
-        this.src = './build/static/img/home/guidance-eye.png';
         this.identical = true;
+        this.submitted = false;
         /**
          * 表单
          */
+        console.info(this.navParams.data);
         this.adminConfig = {};
-        this.adminConfig.name = "Cheng-C9";
+        this.adminConfig.name = "Cheng-C999";
         this.adminConfig.newPwd = this.navParams.data.wifipassword;
     }
 
@@ -42,15 +43,18 @@ export class Home4{
       }
     }
 
-    goToHome5(){
-      let data = this.navParams.data;
-      data.txpwr = 1;
-      data.oldPwd = helpers.encrypt.encPwd('admin');
-      data.nonce = helpers.encrypt.init();
-      this.adminConfig.newPwd = helpers.encrypt.newPwd(data.oldPwd,this.adminConfig.newPwd);
-      Object.assign(data,this.adminConfig);
-      console.info(data);
-      this.nav.push(Home5,data);
+    goToHome5(form){
+      this.submitted = true;
+      if(form){
+        let newPwdShow = this.adminConfig.newPwd;
+        this.adminConfig.newPwd = helpers.encrypt.newPwd('admin',this.adminConfig.newPwd);
+
+        let data = Object.assign(this.navParams.data,this.adminConfig);
+        data.oldPwd = helpers.encrypt.encPwd('admin');
+        data.nonce = helpers.encrypt.init();
+        data.newPwdShow = newPwdShow;
+        this.nav.push(Home5,data);
+      }
     }
     /**
      * 密码显示
@@ -64,13 +68,4 @@ export class Home4{
        this.inputType = 'password';
        this.backgroundImg = false;
      }
-    // updateImg(){
-    //   if(this.inputType == 'password'){
-    //     this.inputType = 'text';
-    //     this.src = './build/static/img/home/guidance-eye1.png';
-    //   }else{
-    //     this.inputType = 'password';
-    //     this.src = './build/static/img/home/guidance-eye.png';
-    //   }
-    // }
 }

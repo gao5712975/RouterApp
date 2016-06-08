@@ -39,3 +39,16 @@
   background-size: 2.2rem;
   background-position: 6px;
 }
+.wf-wifi-admin .eye-black {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    right: 0;
+    top: 7.2rem;
+}
+
+.wf-wifi-admin ion-label[fixed] {
+    flex: 0 0 70px;
+    width: 70px;
+    min-width: 70px;
+}

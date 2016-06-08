@@ -7,13 +7,13 @@
 
     <div padding class="wf-segment-button">
         <ion-segment [(ngModel)]="wifi">
-            <ion-segment-button value="pppoe">
+            <ion-segment-button value="pppoe" (click)="submitted=false">
                 宽带PPPOE
             </ion-segment-button>
-            <ion-segment-button value="autoIp">
+            <ion-segment-button value="autoIp" (click)="submitted=false">
                 动态IP
             </ion-segment-button>
-            <ion-segment-button value="manualIp">
+            <ion-segment-button value="manualIp" (click)="submitted=false">
                 静态IP
             </ion-segment-button>
         </ion-segment>
@@ -22,23 +22,22 @@
         <!--  -->
         <div *ngSwitchWhen="'pppoe'" class="wf-pppoe">
             <ion-list>
-                <ion-item>
-                    <ion-label fixed>上网账号</ion-label>
-                    <ion-input type="text" [(ngModel)]="pppoe.pppoename" placeholder="请输入您的上网账号"></ion-input>
-                </ion-item>
+                <form #wfPppoe="ngForm" novalidate>
+                  <ion-item>
+                      <ion-label fixed>上网账号</ion-label>
+                      <ion-input [ngClass]="{'valid-data':!pppoename.valid && submitted != false}" type="text" [(ngModel)]="pppoe.pppoename" placeholder="请输入您的上网账号" ngControl="pppoename" #pppoename="ngForm" required></ion-input>
+                  </ion-item>
 
-                <ion-item>
-                    <ion-label fixed>上网密码</ion-label>
-                    <ion-input [type]='inputType' [(ngModel)]="pppoe.pppoepwd" placeholder="请输入您的上网密码"></ion-input>
-                    <div class="background-img" item-right (touchstart)='touchstart()' (touchend)="touchend()" [ngClass]='{"background-img":!backgroundImg,"background-img1":backgroundImg}'></div>
-                </ion-item>
+                  <ion-item>
+                      <ion-label fixed>上网密码</ion-label>
+                      <ion-input [ngClass]="{'valid-data':!pppoepwd.valid && submitted != false}" [type]='inputType' [(ngModel)]="pppoe.pppoepwd" placeholder="请输入您的上网密码" ngControl="pppoepwd" #pppoepwd="ngForm" required></ion-input>
+                      <div class="background-img" item-right [ngClass]='{"background-img":!backgroundImg,"background-img1":backgroundImg}'></div>
+                  </ion-item>
+                </form>
+                <div class="eye-black" (touchstart)='touchstart()' (touchend)="touchend()"></div>
             </ion-list>
-
-            <div class="verify">
-                <span>请填写上网账号！</span>
-            </div>
             <div class="next-button">
-                <button wifi block (click)="goToHome3()">下一步</button>
+                <button wifi block (click)="goToHome3(wfPppoe.valid)">下一步</button>
                 <button block clear (click)="goToHome3()" class="cancel-butto">跳过，暂不设置</button>
             </div>
         </div>
@@ -46,43 +45,42 @@
         <div *ngSwitchWhen="'autoIp'" class="wf-autoIp">
             <p>路由器连接运营商提供的端口即可以直接上网</p>
             <div class="next-button">
-                <button wifi block (click)="goToHome3()">下一步</button>
+                <button wifi block (click)="goToHome3(true)">下一步</button>
                 <button block clear (click)="goToHome3()" class="cancel-butto">跳过，暂不设置</button>
             </div>
         </div>
         <!--  -->
         <div *ngSwitchWhen="'manualIp'" class="wf-manualIp">
             <ion-list>
+              <form #wfManualIp="ngForm" novalidate>
                 <ion-item>
                     <ion-label fixed>IP地址</ion-label>
-                    <ion-input type="text" [(ngModel)]="manualIp.ip" placeholder="请输入你的IP地址"></ion-input>
+                    <ion-input [ngClass]="{'valid-data':!ip.valid && submitted != false}" type="text" [(ngModel)]="manualIp.ip" placeholder="请输入你的IP地址" ngControl="ip" #ip="ngForm" required></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label fixed>子网掩码</ion-label>
-                    <ion-input type="text" value="255.255.255.0" [(ngModel)]="manualIp.mask" placeholder="请输入子网掩码"></ion-input>
+                    <ion-input [ngClass]="{'valid-data':!mask.valid && submitted != false}" type="text" value="255.255.255.0" [(ngModel)]="manualIp.mask" placeholder="请输入子网掩码" ngControl="mask" #mask="ngForm" required></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label fixed>默认网关</ion-label>
-                    <ion-input type="text" [(ngModel)]="manualIp.gateway" placeholder="请输入默认网关"></ion-input>
+                    <ion-input [ngClass]="{'valid-data':!gateway.valid && submitted != false}" type="text" [(ngModel)]="manualIp.gateway" placeholder="请输入默认网关" ngControl="gateway" #gateway="ngForm" required></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label fixed>首选DNS</ion-label>
-                    <ion-input type="text" [(ngModel)]="manualIp.dns" placeholder="请输入首选DNS"></ion-input>
+                    <ion-input [ngClass]="{'valid-data':!dns.valid && submitted != false}" type="text" [(ngModel)]="manualIp.dns" placeholder="请输入首选DNS" ngControl="dns" #dns="ngForm" required></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-label fixed>备用DNS</ion-label>
                     <ion-input type="text" [(ngModel)]="manualIp.dns2" placeholder="请输入备用DNS"></ion-input>
                 </ion-item>
+              </form>
             </ion-list>
-            <div class="verify">
-                <span>请填写上网账号！</span>
-            </div>
             <div class="next-button">
-                <button wifi block (click)="goToHome3()">下一步</button>
+                <button wifi block (click)="goToHome3(wfManualIp.valid)">下一步</button>
                 <button block clear (click)="goToHome3()" class="cancel-butto">跳过，暂不设置</button>
             </div>
         </div>

@@ -5,6 +5,7 @@ import {ViewChild} from '@angular/core';
 import {App, Platform,MenuController,Events} from 'ionic-angular';
 import {StatusBar, Splashscreen,BatteryStatus} from 'ionic-native';
 import {Home} from './business/home/home';
+import {IndexPage} from './business/index/index'
 import {GetMenuPage} from './business/menu/menu';
 
 import {interceptor} from './interceptor/HttpInterceptor';
@@ -20,6 +21,7 @@ import {FirstLogin} from './providers/FirstLogin';
         nav: new ViewChild('content')
     },
     // tabbarPlacement: "bottom",
+    // mode:"md",
     providers: [interceptor,FirstLogin]
 })
 class RouterApp {
@@ -44,8 +46,8 @@ class RouterApp {
         })
         //默认为首次加载app 给引导页面 之后直接给首页
         //首页
-        // this.rootPage = new GetMenuPage().getMenuPage()[0].page;
-        this.rootPage = Home;
+        this.rootPage = IndexPage;
+        // this.rootPage = Home;
 
         // this.rootPage = new GetMenuPage().pages[0].page;
         // Call any initial plugins when ready
@@ -57,27 +59,28 @@ class RouterApp {
             // StatusBar.hide 状态栏隐藏；
             // StatusBar.show 状态栏显示；
             Splashscreen.hide();
-            StatusBar.styleBlackTranslucent();
+            StatusBar.styleBlackOpaque();
         });
 
         //获取菜单
         this.appPages = new GetMenuPage().getMenuPage();
+        this.appSysPages = new GetMenuPage().getSYSMenuPage();
 
         this.events.subscribe('backButton',() => {
             this.nav.pop();
         })
-
-        //测试
-        //this.http = http;
-        // var body = `from=zh&to=en&query=你好&simple_means_flag=3`
-        // this.http.post('//fanyi.baidu.com/v2transapi',body).subscribe(data => {
-        //   console.info(data);
-        // })
     }
 
     openPage(p){
         this.menu.close().then((bo) => {
             this.nav.setRoot(p);
         });
+        // this.nav.setRoot(p);
+        // this.menu.close()
+
+    }
+
+    closeMenu(){
+      this.menu.close();
     }
 }

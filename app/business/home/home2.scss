@@ -49,42 +49,48 @@ $theme: #2F83F5;
 .wf-pppoe ion-list > .item:last-child {
     border-bottom: 1px solid #f1f1f1;
 }
-.wf-manualIp .verify,
-.wf-pppoe .verify {
-    padding-left: 16px;
-    color: red;
-    font-size: 1.4rem;
-}
+
 .wf-pppoe .password-show {
     width: 1.6rem;
 }
-
-.wf-autoIp .next-button{
-  padding-top: 15.45rem;
-  margin: 0 1.5rem;
+.wf-autoIp .next-button {
+    padding-top: 15.45rem;
+    margin: 0 1.5rem;
+}
+.wf-pppoe .next-button {
+    margin: 0 1.5rem;
+    padding-top: 21.6rem;
+}
+.wf-manualIp .next-button {
+    margin: 0 1.5rem;
+    padding-top: 6.55rem;
+}
+.wf-pppoe .background-img {
+    background: url("../static/img/home/guidance-eye.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
+}
+.wf-pppoe .background-img1 {
+    background: url("../static/img/home/guidance-eye1.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
+}
+.wf-pppoe .eye-black {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    right: 0;
+    top: 12.2rem;
 }
 
-.wf-pppoe .next-button{
-  margin: 0 1.5rem;
-  padding-top: 19.95rem;
-}
-
-.wf-manualIp .next-button{
-  margin: 0 1.5rem;
-  padding-top: 4.95rem;
-}
-
-.wf-pppoe .background-img{
-  background: url("../static/img/home/guidance-eye.png") no-repeat;
-  width: 39px;
-  height: 22px;
-  background-size: 2.2rem;
-  background-position: 6px;
-}
-.wf-pppoe .background-img1{
-  background: url("../static/img/home/guidance-eye1.png") no-repeat;
-  width: 39px;
-  height: 22px;
-  background-size: 2.2rem;
-  background-position: 6px;
+.wf-pppoe ion-label[fixed],
+.wf-manualIp ion-label[fixed],
+.wf-pppoe ion-label[fixed] {
+    flex: 0 0 70px;
+    width: 70px;
+    min-width: 70px;
 }

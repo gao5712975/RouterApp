@@ -10,11 +10,6 @@ $theme: #2F83F5;
 /**
  * 更改ionic默认样式
  */
-.md ion-label[fixed] {
-    flex: 0 0 70px;
-    width: 70px;
-    min-width: 70px;
-}
 .md .toolbar {
     min-height: 4.5rem;
 }
@@ -27,6 +22,14 @@ $theme: #2F83F5;
 [vertical-middle] {
     vertical-align: middle;
 }
+
+/**
+ * 表单验证
+ */
+.md .valid-data{
+  border: 1px solid #CC0033;
+}
+
 /**
  * 下一步按钮绝对定位
  */

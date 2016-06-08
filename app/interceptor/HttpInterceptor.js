@@ -74,7 +74,7 @@ export class YXHRBackend extends XHRBackend {
     /**
      * request 每次请求修改url地址；
      */
-    if(this.storage.get('token')){
+    if(this.storage.get('token').__zone_symbol__value){
       request.url = global.baseUrl + '/;stok=' + this.storage.get('token').__zone_symbol__value + request.url;
     }else{
       request.url = global.baseUrl + request.url;

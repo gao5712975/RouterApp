@@ -30,14 +30,14 @@ export class Home5{
           if(res && res.code == 0){
             console.info(res);
             nav.setRoot(Home6,data);
-          }else if(res && res.code == 1523){
+          }else if(res && res.code == 1523){//参数错误
             nav.setRoot(Home2);
           }
         })
     }
 
     internetMethod(body){
-      let url = '/cheng/orangesystem/set_router';
+      let url = '/cheng/orangesystem/set_router';//路由器设置
       body = helpers.toBodyString(body);
       return new Promise(resolve => {
         this.http.post(url ,body).subscribe(res => {

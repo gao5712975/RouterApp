@@ -4,9 +4,6 @@
 import {Page,NavController,NavParams} from 'ionic-angular'
 import {Home4} from './home4'
 
-import {Http} from '@angular/http';
-import * as helpers from '../../helpers/helpers';
-
 @Page({
     templateUrl: 'build/business/home/home3.html'
 })
@@ -14,48 +11,37 @@ import * as helpers from '../../helpers/helpers';
 export class Home3{
     static get parameters() {
         return [
-            [NavController],[Http],[NavParams]
+            [NavController],[NavParams]
         ];
     }
 
-    constructor(nav,http,navParams){
+    constructor(nav,navParams){
         this.nav = nav;
-        this.http = http;
         this.navParams = navParams
         /**
          * 默认参数
          * @type {String}
          */
         this.inputType = 'password';
-        this.src = './build/static/img/home/guidance-eye.png';
+        this.submitted = false;
 
         /**
          * 表单
          */
         this.wifiConfig = {};
-        this.wifiConfig.ssid = 'xiaochengluyouqi';
+        this.wifiConfig.ssid = 'xiaocheng';
     }
 
-    // internetMethod(body){
-    //   let url = '/cheng/networkmanager/set_wifi_setting';
-    //   body = helpers.toBodyString(body);
-    //   return new Promise(resolve => {
-    //     this.http.post(url ,body).subscribe(res => {
-    //       resolve(res);
-    //     })
-    //   })
-    // }
-
-    goToHome4(){
-      let data = this.navParams.data;
-      this.wifiConfig.encryption = 'psk2';//加密方式
-      Object.assign(data,this.wifiConfig);
-      this.nav.push(Home4,data);
-      // this.internetMethod(this.wifiConfig).then(res => {
-      //   if(res && res.code == 0){
-      //     this.nav.push(Home4,this.wifiConfig.wifipwd);
-      //   }
-      // });
+    goToHome4(form){
+      if(form == undefined){
+        this.nav.push(Home4);
+      }else if(!form){
+        this.submitted = true;
+      }else if(form){
+        this.wifiConfig.encryption = 'mixed-psk';//加密方式
+        let data = Object.assign(this.navParams.data,this.wifiConfig);
+        this.nav.push(Home4,data);
+      }
     }
     /**
      * 密码显示
@@ -69,13 +55,4 @@ export class Home3{
        this.inputType = 'password';
        this.backgroundImg = false;
      }
-    // updateImg(){
-    //   if(this.inputType == 'password'){
-    //     this.inputType = 'text';
-    //     this.src = './build/static/img/home/guidance-eye1.png';
-    //   }else{
-    //     this.inputType = 'password';
-    //     this.src = './build/static/img/home/guidance-eye.png';
-    //   }
-    // }
 }
