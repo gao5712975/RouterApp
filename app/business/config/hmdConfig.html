@@ -1,0 +1,61 @@
+<ion-navbar *navbar wifi>
+	<button menuToggle>
+		<ion-icon name="menu"></ion-icon>
+	</button>
+	<ion-title text-center>黑名单列表</ion-title>
+</ion-navbar>
+
+<ion-content class="outer-content" overflow-scroll="false">
+	<div class="wf-WIFI wf-hmdConfig">
+		<ion-grid>
+			<ion-row>
+				<ion-col width-10>
+					<img src="../../build/static/img/config/phone.png" />
+				</ion-col>
+
+				<ion-col width-30>
+					<p (click)="openPage(appPages[1].page)">Angelababy</p>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col width-10>
+					<img src="../../build/static/img/config/computer.png" />
+				</ion-col>
+
+				<ion-col width-30>
+					<p (click)="openPage(appPages[1].page)">Hakuna Matata</p>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col width-10>
+					<img src="../../build/static/img/config/ipd.png" />
+				</ion-col>
+
+				<ion-col width-30>
+					<p (click)="openPage(appPages[1].page)">Hakuna Matata</p>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-grid>
+			<ion-row>
+				<ion-col width-10>
+					<img src="../../build/static/img/config/computer.png" />
+				</ion-col>
+
+				<ion-col width-30>
+					<p (click)="openPage(appPages[1].page)">Hakuna Matata</p>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+	<div class="wf-skip-buttom">
+		<button wifi block (click)="goToHome3()">手动添加黑名单</button>
+	</div>
+</ion-content>

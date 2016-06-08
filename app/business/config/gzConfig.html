@@ -1,0 +1,21 @@
+<ion-navbar *navbar wifi>
+	<button menuToggle>
+		<ion-icon name="menu"></ion-icon>
+	</button>
+	<ion-title text-center>工作模式</ion-title>
+</ion-navbar>
+<ion-content>
+
+	<div class="wf-hmdConfig-empty wf-gzConfig">
+		<img src="../../build/static/img/config/gzLy.png" />
+	</div>
+
+	<div class="wf-skip-buttom wf-skip-buttom1">
+		<button wifi block (click)="GzConfig2()">切换至无线中继模式</button>
+	</div>
+
+	<div class="wf-skip-buttom wf-skip-buttom1">
+		<button wifi block (click)="GzConfig1()">切换至有线中继模式</button>
+	</div>
+
+</ion-content>
