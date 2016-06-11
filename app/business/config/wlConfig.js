@@ -11,5 +11,7 @@ export class WlConfigPage{
     constructor(){
         this.wifi = 'WAN';
     }
-    
+    goToHome3(){
+      console.info("ok");
+    }
 }

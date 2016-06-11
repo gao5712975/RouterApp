@@ -1,11 +1,12 @@
 /**
  * Created by moka on 16-5-30.
  */
-import {ConfigPage} from '../config/config'
-import {ActionSheetPage} from '../actionSheet/actionSheet'
-import {WlConfigPage} from '../config/wlConfig'
-import {HmdConfig} from '../config/hmdConfig'
-import {GzConfig} from '../config/gzConfig'
+import {ConfigPage} from '../config/config';
+import {ActionSheetPage} from '../actionSheet/actionSheet';
+import {WlConfigPage} from '../config/wlConfig';
+import {HmdConfig} from '../config/hmdConfig';
+import {GzConfig} from '../config/gzConfig';
+import {Home} from '../home/home';
 
 export class GetMenuPage{
 
@@ -20,7 +21,7 @@ export class GetMenuPage{
               page:WlConfigPage,
               index:1,
               title:"网络设置",
-              icon: 'globe-outline'
+              icon: 'ios-globe'
           },
           {
               page:HmdConfig,
@@ -35,13 +36,13 @@ export class GetMenuPage{
               icon:"md-apps"
           },
           {
-              page:GzConfig,
+              page:ActionSheetPage,
               index:3,
               title:"QOS限速",
               icon:"md-stopwatch"
           },
           {
-              page:GzConfig,
+              page:ConfigPage,
               index:3,
               title:"访客网络",
               icon:"md-contacts"
@@ -53,7 +54,7 @@ export class GetMenuPage{
               icon:"md-repeat"
           },
           {
-              page:GzConfig,
+              page:Home,
               index:3,
               title:"DMZ",
               icon:"contacts"

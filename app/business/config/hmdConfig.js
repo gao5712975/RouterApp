@@ -9,7 +9,21 @@ import {Page} from 'ionic-angular'
 
 export class HmdConfig{
     constructor(){
-        
+        this.hmdConfig = [
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+          {src:"../../build/static/img/config/phone.png",title:"Angelababy"},
+        ]
     }
-    
+
 }

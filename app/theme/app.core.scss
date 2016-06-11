@@ -6,21 +6,42 @@
 @import "home5";
 @import "home6";
 @import "menu";
+@import "hmdConfig";
+@import "wlConfig";
 $theme: #2F83F5;
 /**
  * 更改ionic默认样式
  */
+.md ion-content{
+  background-color: #F3F3F3;
+}
 .md .toolbar {
     min-height: 4.5rem;
 }
 .md ion-navbar {
     min-height: 4.5rem;
 }
+.item-input.input-has-focus::after {
+  border-bottom: none; }
+
+.item-input.ng-valid.input-has-value.input-has-focus::after {
+  border-bottom: none; }
+
+.item-input.ng-invalid.ng-touched.input-has-focus::after {
+  border-bottom: none; }
+
 /**
  * 自定义样式
  */
 [vertical-middle] {
     vertical-align: middle;
+}
+[padding-right-menu]{
+    padding-right: 44px;
+}
+
+.md .next-button{
+  background-color: #F3F3F3;
 }
 
 /**
@@ -33,12 +54,6 @@ $theme: #2F83F5;
 /**
  * 下一步按钮绝对定位
  */
-// .md .wf-next-button {
-//     width: 90%;
-//     position: absolute;
-//     right: 5%;
-//     bottom: 1rem;
-// }
 .md .next-button .button {
     font-size: 18px;
     height: 4.2rem;
@@ -54,27 +69,3 @@ $theme: #2F83F5;
     width: auto;
     height: 4.5rem;
 }
-// @media screen and (max-width: 720px) {
-//     .md{
-//       $fontSize:16px;
-//       font-size: 1.6rem;
-//     }
-// }
-// @media screen and (max-width: 480px) {
-//     .md{
-//       $fontSize:14px;
-//       font-size: 1.4rem;
-//     }
-// }
-// @media screen and (max-width: 360px) {
-//     .md{
-//       $fontSize:12px;
-//       font-size: 1.2rem;
-//     }
-// }
-// @media screen and (max-width: 320px) {
-//     .md{
-//       $fontSize:10px;
-//       font-size: 1rem;
-//     }
-// }

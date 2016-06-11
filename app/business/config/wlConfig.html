@@ -2,12 +2,10 @@
 	<button menuToggle>
 		<ion-icon name="menu"></ion-icon>
 	</button>
-	<ion-title text-center>网络设置</ion-title>
+	<ion-title text-center padding-right-menu>网络设置</ion-title>
 </ion-navbar>
-
 <ion-content class="wf-wlConfig-back">
-
-	<div padding class="wf-segment-button">
+	<div padding class="wf-segment-button wf-wlConfig">
 		<ion-segment [(ngModel)]="wifi">
 			<ion-segment-button value="WIFI">
 				WIFI
@@ -52,9 +50,11 @@
 					<ion-input text-right type="text" placeholder="强"></ion-input>
 				</ion-item>
 			</ion-list>
+			<div class="wlConfig-next-button">
+				<button wifi block (click)="goToHome3()">应用修改</button>
+				<div class="hide-button"></div>
+			</div>
 		</div>
-
-
 		<!--  -->
 		<div *ngSwitchWhen="'WAN'" class="wf-WIFI">
 			<ion-list>
@@ -91,6 +91,10 @@
 					<ion-input text-right type="text" placeholder="255.255.255.0"></ion-input>
 				</ion-item>
 			</ion-list>
+			<div class="wlConfig-next-button">
+				<button wifi block (click)="goToHome3()">应用修改</button>
+				<div class="hide-button"></div>
+			</div>
 		</div>
 
 		<!--  -->
@@ -107,9 +111,10 @@
 				</ion-item>
 
 			</ion-list>
+			<div class="wlConfig-next-button">
+				<button wifi block (click)="goToHome3()">应用修改</button>
+				<div class="hide-button"></div>
+			</div>
 		</div>
-	</div>
-	<div class="wf-skip-buttom">
-		<button wifi block (click)="goToHome3()">应用修改</button>
 	</div>
 </ion-content>

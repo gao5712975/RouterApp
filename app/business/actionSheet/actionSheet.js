@@ -13,7 +13,7 @@ export class ActionSheetPage{
     constructor(nav){
         this.nav = nav;
     }
-    
+
     showActionSheet(){
         let actionSheet = ActionSheet.create({
             title: 'Modify your album',
@@ -40,7 +40,7 @@ export class ActionSheetPage{
         })
         this.nav.present(actionSheet);
     }
-    
+
     showAlert(){
         let alert = Alert.create({
             title: 'New Friend!',
@@ -49,11 +49,11 @@ export class ActionSheetPage{
         })
         this.nav.present(alert);
     }
-    
+
     showAlert1(){
         let alert = Alert.create({
-            title: 'Login',
-            message: "Enter a name for this new album you're so keen on adding",
+            // title: 'Login',
+            message: `<div style="font-size: 1.8rem;color: #000;padding-top: 5rem;height: 10rem;">确认删除该规则？</div>`,
             buttons: [
                 {
                     text: '取消',
@@ -71,4 +71,51 @@ export class ActionSheetPage{
         })
         this.nav.present(alert);
     }
+
+    showAlert3(){
+        let alert = Alert.create({
+            message: `<div><img src="../../build/static/img/config/wf-await.gif" /></div>`
+        })
+        this.nav.present(alert);
+    }
+
+    showActionSheet1(){
+        let actionSheet = ActionSheet.create({
+          title:`<ion-list>
+
+  <ion-item>
+    <ion-label fixed>Username</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>Password</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+</ion-list>`,
+          buttons:[
+                  {
+              text: '取消',
+              handler: () => {
+                console.log('Destructive clicked');
+              }
+            },{
+              text: '确认',
+              handler: () => {
+                console.log('Archive clicked');
+              }
+            }
+          ]
+        })
+        this.nav.present(actionSheet);
+    }
+
+    presentLoading() {
+  let loading = Loading.create({
+    content: "Please wait...",
+    duration: 3000
+  });
+  this.nav.present(loading);
+}
 }

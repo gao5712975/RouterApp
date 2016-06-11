@@ -4,23 +4,22 @@
     </ion-title>
 </ion-navbar>
 <ion-content class="wf-success" overflow-scroll="false">
-
-  <div class="img">
-    <img src="./build/static/img/home/guidance7.png">
-  </div>
-  <div class="text">
-    <p text-center>
-      <span>请连接一下网络</span><br>
-      <span>{{data.ssid}}</span>
-    </p>
-  </div>
-  <div class="manager">
-    <p><span>管理员密码</span><span>{{data.newPwdShow}}</span></p>
-    <p><span>WIFI密码</span><span>{{data.wifipassword}}</span></p>
-  </div>
-  <div class="next-button">
-    <button wifi block (click)="goToIndexPage()">管理我的小橙</button>
-    <div class="hide-button"></div>
-  </div>
-
+    <div class="img">
+        <img src="./build/static/img/home/guidance7.png">
+    </div>
+    <div class="text">
+        <p text-center>
+            <span>请连接一下网络</span>
+            <br>
+            <span>{{data.ssid}}</span>
+        </p>
+    </div>
+    <div class="manager">
+        <p><span>管理员密码</span><span>{{data.newPwdShow}}</span></p>
+        <p><span>WIFI密码</span><span>{{data.wifipassword}}</span></p>
+    </div>
+    <div class="next-button">
+        <button wifi block (click)="goToIndexPage()">管理我的小橙</button>
+        <div class="hide-button"></div>
+    </div>
 </ion-content>

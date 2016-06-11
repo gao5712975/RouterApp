@@ -18,7 +18,6 @@ export class FirstLogin{
 
   login(){
     let url = "/cheng/orangesystem/login";
-    // let url = "/cheng/orangesystem/check_login";
     let body = {
       username:"admin",
       nonce:helpers.encrypt.init(),

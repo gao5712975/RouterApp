@@ -4,7 +4,7 @@
 			<ion-list-header>
 				网络管理
 				<hr>
-				<img (click)="closeMenu()" src="./build/static/img/config/menu-hide.png" />
+				<img (click)="closeMenu()" src="./build/static/img/config/menu-hide.png"/>
 			</ion-list-header>
 			<p ion-item *ngFor="let p of appPages" (click)="openPage(p.page)">
 				<ion-icon item-left [name]="p.icon"></ion-icon>

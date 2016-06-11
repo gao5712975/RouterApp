@@ -1,9 +1,17 @@
 $theme: #2F83F5;
 .wf-segment-button {
+    background-color: #F3F3F3;
     padding: 1.5rem;
 }
-.wf-segment-button .ion-segment-button {
+.wf-segment-button ion-segment {
     border: 1px solid #CCC;
+}
+.wf-segment-button .segment-button {
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+}
+.wf-segment-button .segment-button:last-child {
+    border-right: none;
 }
 .wf-segment-button .segment-button.segment-activated {
     background-color: $theme;
@@ -15,11 +23,9 @@ $theme: #2F83F5;
 .wf-segment-button .segment-button {
     font-size: 1.7rem;
     color: #a0a0a0;
-}
-.wf-segment-button .activated {
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-bottom-color: rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+    height: 3.7rem;
+    line-height: 3.7rem;
 }
 .wf-autoIp p {
     text-align: center;
@@ -49,21 +55,20 @@ $theme: #2F83F5;
 .wf-pppoe ion-list > .item:last-child {
     border-bottom: 1px solid #f1f1f1;
 }
-
 .wf-pppoe .password-show {
     width: 1.6rem;
 }
 .wf-autoIp .next-button {
-    padding-top: 15.45rem;
-    margin: 0 1.5rem;
+    margin-top: 15.45rem;
+    padding: 0 1.5rem;
 }
 .wf-pppoe .next-button {
-    margin: 0 1.5rem;
-    padding-top: 21.6rem;
+    padding: 0 1.5rem;
+    margin-top: 21.6rem;
 }
 .wf-manualIp .next-button {
-    margin: 0 1.5rem;
-    padding-top: 6.55rem;
+    padding: 0 1.5rem;
+    margin-top: 6.55rem;
 }
 .wf-pppoe .background-img {
     background: url("../static/img/home/guidance-eye.png") no-repeat;
@@ -84,11 +89,10 @@ $theme: #2F83F5;
     height: 5rem;
     position: absolute;
     right: 0;
-    top: 12.2rem;
+    top: 4.9rem;
 }
-
-.wf-pppoe ion-label[fixed],
 .wf-manualIp ion-label[fixed],
+.wf-pppoe ion-label[fixed],
 .wf-pppoe ion-label[fixed] {
     flex: 0 0 70px;
     width: 70px;

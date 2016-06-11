@@ -1,5 +1,5 @@
-.wf-wifi-admin{
-  padding-top: 2.2rem;
+.wf-wifi-admin {
+    padding-top: 2.2rem;
 }
 .wf-wifi-admin .item {
     height: 5rem;
@@ -7,37 +7,26 @@
 .wf-wifi-admin .item-input ion-label {
     color: #000;
 }
-// .wf-wifi-admin ion-list > .item:first-child {
-//     border-top: 1px solid #f1f1f1;
-// }
-// .wf-wifi-admin ion-list .item-inner {
-//     border-bottom: 1px solid #f1f1f1;
-// }
-// .wf-wifi-admin ion-list > .item:last-child {
-//     border-bottom: 1px solid #f1f1f1;
-// }
 .wf-wifi-admin .password-show {
     width: 1.6rem;
 }
-
-.wf-wifi-admin .next-button{
-  padding-top: 23.78rem;
-  margin: 0 1.5rem;
+.wf-wifi-admin .next-button {
+    margin-top: 23.78rem;
+    padding: 0 1.5rem;
 }
-
-.wf-wifi-admin .background-img{
-  background: url("../static/img/home/guidance-eye.png") no-repeat;
-  width: 39px;
-  height: 22px;
-  background-size: 2.2rem;
-  background-position: 6px;
+.wf-wifi-admin .background-img {
+    background: url("../static/img/home/guidance-eye.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
 }
-.wf-wifi-admin .background-img1{
-  background: url("../static/img/home/guidance-eye1.png") no-repeat;
-  width: 39px;
-  height: 22px;
-  background-size: 2.2rem;
-  background-position: 6px;
+.wf-wifi-admin .background-img1 {
+    background: url("../static/img/home/guidance-eye1.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
 }
 .wf-wifi-admin .eye-black {
     width: 5rem;
@@ -46,9 +35,22 @@
     right: 0;
     top: 7.2rem;
 }
-
 .wf-wifi-admin ion-label[fixed] {
     flex: 0 0 70px;
     width: 70px;
     min-width: 70px;
+}
+
+.wf-wifi-admin .wf-checkbox{
+    border: none;
+    height: 24px;
+    background-color: #F3F3F3;
+    margin-left: 16rem;
+    min-height: 24px;
+}
+.wf-wifi-admin .wf-checkbox ion-checkbox{
+    margin: 9px 9px 9px 4px;
+}
+.wf-wifi-admin .wf-checkbox .item-inner{
+    border: none;
 }

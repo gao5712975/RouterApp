@@ -4,25 +4,25 @@
     </ion-title>
 </ion-navbar>
 <ion-content>
-  <div class="wf-wifi-config">
-    <ion-list>
-        <form #configForm="ngForm" novalidate>
-          <ion-item>
-              <ion-label fixed>WIFI名称</ion-label>
-              <ion-input [(ngModel)]="wifiConfig.ssid" [ngClass]="{'valid-data':!ssid.valid && submitted != false}" type="text" placeholder="请输入WIFI名称" ngControl="ssid" #ssid="ngForm" required></ion-input>
-          </ion-item>
+    <div class="wf-wifi-config">
+        <ion-list>
+            <form #configForm="ngForm" novalidate>
+                <ion-item>
+                    <ion-label fixed>WIFI名称</ion-label>
+                    <ion-input [(ngModel)]="wifiConfig.ssid" [ngClass]="{'valid-data':!ssid.valid && submitted != false}" type="text" placeholder="请输入WIFI名称" ngControl="ssid" #ssid="ngForm" required></ion-input>
+                </ion-item>
 
-          <ion-item>
-              <ion-label fixed>WIFI密码</ion-label>
-              <ion-input [(ngModel)]="wifiConfig.wifipassword" [ngClass]="{'valid-data':!wifipassword.valid && submitted != false}" [type]="inputType" placeholder="请输入至少8位数密码" ngControl="wifipassword" #wifipassword="ngForm" required></ion-input>
-              <div class="background-img" item-right [ngClass]='{"background-img":!backgroundImg,"background-img1":backgroundImg}'></div>
-          </ion-item>
-        </form>
-        <div class="eye-black" (touchstart)='touchstart()' (touchend)="touchend()"></div>
-    </ion-list>
-    <div class="next-button">
-      <button wifi block (click)="goToHome4(configForm.valid)">下一步</button>
-      <button block clear (click)="goToHome4()" class="cancel-butto">跳过，暂不设置</button>
+                <ion-item>
+                    <ion-label fixed>WIFI密码</ion-label>
+                    <ion-input [(ngModel)]="wifiConfig.wifipassword" [ngClass]="{'valid-data':!wifipassword.valid && submitted != false}" [type]="inputType" placeholder="请输入至少8位数密码" ngControl="wifipassword" #wifipassword="ngForm" required></ion-input>
+                    <div class="background-img" item-right [ngClass]='{"background-img":!backgroundImg,"background-img1":backgroundImg}'></div>
+                </ion-item>
+            </form>
+            <div class="eye-black" (touchstart)='touchstart()' (touchend)="touchend()"></div>
+        </ion-list>
+        <div class="next-button">
+            <button wifi block (click)="goToHome4(configForm.valid)">下一步</button>
+            <button block clear (click)="goToHome4()" class="cancel-butto">跳过，暂不设置</button>
+        </div>
     </div>
-  </div>
 </ion-content>

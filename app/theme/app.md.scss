@@ -29,3 +29,34 @@
 // App Material Design Only Sass
 // --------------------------------------------------
 // CSS that should only apply to the Material Design app
+
+/**
+ * alert 弹窗
+ */
+.md .alert-head{
+  padding: 0;
+}
+.md .alert-message{
+  text-align: center;
+}
+.md .alert-wrapper{
+  min-width:28rem;
+}
+.md .alert-button-group{
+  border-top: 1px solid #ccc;
+  padding: 0;
+}
+.md .alert-button-group .alert-button{
+  display: inline-block;
+  width: 50%;
+  margin: 0;
+  height: 48px;
+  font-size: 1.8rem;
+}
+.md .alert-button-group .alert-button:first-child{
+  border-right: 1px solid #ccc;
+  color: #545454;
+}
+.md .alert-button-group .alert-button .button-inner{
+  justify-content:center;
+}

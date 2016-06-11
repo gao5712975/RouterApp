@@ -1,6 +1,6 @@
-html,body{;font-family: '黑体',simsun,arial;}
+html,body{font-family: '黑体',simsun,arial;}
 
-//菜单头部
+//菜单
 .wf-menu{
   background: url(../../build/static/img/config/bg.jpg);
 }
@@ -55,10 +55,6 @@ html,body{;font-family: '黑体',simsun,arial;}
 
 
 
-
-
-
-
 .wf-menu-header{height: 2.5rem;margin-top: 1rem;position: relative;}
 .wf-menu-header div{color: #999999;font-size: 1.6rem;line-height: 2.5rem;margin-left: 0.4rem;}
 .wf-menu-header span p{color: #999999;font-size: 1.6rem;}
@@ -80,7 +76,6 @@ html,body{;font-family: '黑体',simsun,arial;}
 //设置
 //网络设置
 .wf-wlConfig-back{background-color: #F3F3F3;}
-.md .toolbar-content ion-title{margin-right: 75px;}
 
 .wf-WIFI ion-label[fixed]{flex: 0 0 180px;}
 
