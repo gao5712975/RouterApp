@@ -1,9 +1,9 @@
 // import {bootstrap} from '@angular/platform-browser/browser';
 import {HTTP_PROVIDERS,XHRBackend,BrowserXhr,BaseRequestOptions,RequestOptions,ResponseOptions,BaseResponseOptions,Http,Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {provide,Injectable} from '@angular/core';
+import {provide,Injectable,Inject} from '@angular/core';
 
-import {global} from '../application/global';
+import {Global} from '../application/global';
 import {Storage, LocalStorage} from 'ionic-angular';
 
 /**
@@ -58,6 +58,7 @@ export class YResponseObtions extends BaseResponseOptions {
 /**
  * 监听所有的请求和响应 重写父类方法
  */
+
 export class YXHRBackend extends XHRBackend {
   static get parameters() {
       return [
@@ -74,10 +75,11 @@ export class YXHRBackend extends XHRBackend {
     /**
      * request 每次请求修改url地址；
      */
-    if(this.storage.get('token').__zone_symbol__value){
-      request.url = global.baseUrl + '/;stok=' + this.storage.get('token').__zone_symbol__value + request.url;
+    let token = this.storage.get('token').__zone_symbol__value;
+    if(token){
+      request.url = Global.getBaseUrl() + '/;stok=' + token + request.url;
     }else{
-      request.url = global.baseUrl + request.url;
+      request.url = Global.getBaseUrl() + request.url;
     }
     let xhrConnection = super.createConnection(request);
     xhrConnection.response = xhrConnection.response.catch((error) => {

@@ -2,25 +2,26 @@
  * Created by moka on 16-5-25. 入口文件
  */
 import {Component,ViewChild} from '@angular/core';
-import {ionicBootstrap, Platform,MenuController,Events} from 'ionic-angular';
+import {ionicBootstrap, Platform,MenuController,Events,Loading} from 'ionic-angular';
 import {StatusBar, Splashscreen,BatteryStatus} from 'ionic-native';
 import {Home} from './business/home/home';
 import {IndexPage} from './business/index/index'
 import {GetMenuPage} from './business/menu/menu';
 
 import {interceptor} from './interceptor/HttpInterceptor';
-
 /**
  * providers
  */
 import {FirstLogin} from './providers/FirstLogin';
+
+import {Global} from './application/global';
 
 @Component({
     templateUrl: 'build/app.html',
     queries: {
         nav: new ViewChild('content')
     },
-    providers: [interceptor,FirstLogin]
+    providers: [Global,FirstLogin]
 })
 class RouterApp {
     static get parameters() {
@@ -32,20 +33,8 @@ class RouterApp {
         this.events = events;
         this.platform = platform;
         this.menu = menu;
+        this.FirstLogin = FirstLogin;
 
-        /**
-         * 默认登陆
-         */
-        FirstLogin.login().then((res) => {
-          if(res && res.code == 0){
-            //TODO 默认登陆成功
-          }
-          console.info(res);
-        })
-        //默认为首次加载app 给引导页面 之后直接给首页
-        //首页
-        this.rootPage = IndexPage;
-        // this.rootPage = Home;
 
         // Call any initial plugins when ready
         this.initializeApp();
@@ -69,17 +58,60 @@ class RouterApp {
             // Here you can do any higher level native things you might need.
             Splashscreen.hide();
             StatusBar.styleBlackOpaque();
+
+            /**
+             * 获取WIFI IP；
+             */
+             Global.setBaseUrl('192.168.1.3');
+
+             /**
+              * 监听Ip变化
+              */
+              this.events.subscribe('global:baseUrl',(res) => {
+                console.info(res);
+                Global.setBaseUrl(res[0]);
+              })
+             /**
+              * 默认登陆
+              */
+             this.FirstLogin.login().then((res) => {
+               if(res && res.code == 0){
+                 //TODO 默认登陆成功
+               }
+               console.info(res);
+             })
+
+             //默认为首次加载app 给引导页面 之后直接给首页
+             //首页
+             this.rootPage = IndexPage;
+             // this.rootPage = Home;
         });
     }
 
     openPage(p){
-        // this.menu.close().then((bo) => {
-        //     this.nav.push(p);
-        // });
+        this.presentLoadingDefault();
         this.nav.push(p);
         this.menu.close()
     }
+    /**
+     * 菜单跳转 请求数据 显示遮罩层
+     * @return {[type]} [description]
+     */
+    presentLoadingDefault() {
+      let loading = Loading.create({
+        spinner:"ios",
+        cssClass:"menu-box"
+      });
 
+      this.nav.present(loading);
+      this.events.subscribe('loading:close',() => {
+        loading.dismiss();
+      })
+    }
+    /**
+     * 关闭菜单
+     * @return {[type]} [description]
+     */
     closeMenu(){
       this.menu.close();
     }
@@ -96,4 +128,4 @@ let config = {
     // modalLeave: 'modal-slide-out'
 }
 
-ionicBootstrap(RouterApp,[],config);
+ionicBootstrap(RouterApp,[interceptor],config);

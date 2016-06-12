@@ -1,0 +1,75 @@
+/**
+ * 黑名单
+ */
+.wf-hmdConfig ion-list {
+    padding-top: 2rem;
+}
+.wf-hmdConfig ion-avatar {
+    min-width: 2rem;
+    min-height: 2rem;
+}
+.wf-hmdConfig ion-avatar img {
+    width: 2rem;
+}
+.wf-hmdConfig ion-avatar[item-left] {
+    margin: 0;
+    padding: 14px 16px 14px 0;
+    border-bottom: 1px solid #dedede;
+}
+.wf-hmdConfig ion-item:last-child ion-avatar[item-left] {
+    border-bottom: none;
+}
+.wf-hmdConfig .wf-hmdConfig-empty {
+    position: relative;
+    top: -5rem;
+    padding-top: 50%;
+    padding-left: 50%;
+    right: 4rem;
+}
+.wf-hmdConfig .wf-hmdConfig-empty img {
+    width: 8rem;
+}
+.wf-hmdConfig .next-button {
+    padding: 0 1.5rem;
+}
+.wf-hmdConfig .removeHmd-bt{
+  position: absolute;
+    right: 0;
+    top: 0px;
+    height: 100%;
+    margin: 0;
+    padding: 0 1.3rem;
+    background-color: red;
+}
+/**
+ * 网络设置
+ */
+.wf-wlConfig .wf-triangle {
+    width: 15px;
+    height: 15px;
+    transform: rotate(45deg);
+    border-top: 1px solid #dedede;
+    border-left: 1px solid #dedede;
+    position: absolute;
+    top: -0.75rem;
+    right: 20px;
+    background-color: #f3f3f3;
+    margin: 0;
+}
+.wf-wlConfig ion-label[fixed] {
+    flex: 0 0 120px;
+}
+.wf-wlConfig .wan-config .conrent-text {
+    position: relative;
+}
+.wf-wlConfig .wan-config .conrent-text p {
+    border-top: 1px solid #E8E8E8;
+    padding: 1.5rem 2rem 1.5rem 0;
+    margin: 0 0 0 16px;
+}
+.wf-wlConfig .wan-config .conrent-text p:first-child {
+    border: none;
+}
+.wf-wlConfig .next-button {
+    padding: 0 1.5rem;
+}

@@ -1,3 +1,21 @@
-exports.global = {
-  baseUrl:"//192.168.1.3/cgi-bin/luci"
+import {Injectable} from '@angular/core';
+import {Events} from 'ionic-angular';
+
+@Injectable()
+export class Global {
+  static get parameters(){
+    return [
+      [Events]
+    ]
+  }
+  constructor(events) {
+    this.events = events;
+    this.baseUrl = "";
+  }
+  static setBaseUrl(ip) {
+    this.baseUrl = `//${ip}/cgi-bin/luci`;
+  }
+  static getBaseUrl() {
+    return this.baseUrl;
+  }
 }

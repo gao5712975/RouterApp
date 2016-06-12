@@ -3,7 +3,7 @@
         <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end>
-    <button>
+    <button (click)="presentPopover($event)">
       <ion-icon name="more"></ion-icon>
     </button>
   </ion-buttons>
@@ -23,9 +23,11 @@
         <ion-label>Start Time</ion-label>
         <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" ></ion-datetime>
     </ion-item>
-    
+
     <ion-item>
         <ion-label> Sam</ion-label>
         <ion-toggle checked="false"></ion-toggle>
     </ion-item>
+    <button class='removeHmd-bt' (hold)="removeHmdBtn = !removeHmdBtn" type="button" name="button">删除</button>
+    {{removeHmdBtn}}
 </ion-content>

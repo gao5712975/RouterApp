@@ -5,16 +5,22 @@
 	<ion-title text-center padding-right-menu>黑名单列表</ion-title>
 </ion-navbar>
 <ion-content class="outer-content" class="wf-hmdConfig">
-	<ion-list>
-		<ion-item *ngFor="let co of hmdConfig">
+	<ion-list (onHold)="removeBtn = !removeBtn">
+		<ion-item *ngFor="let co of hmdConfig" >
 			<ion-avatar item-left>
-				<img [src]="co.src" />
+				<img [src]="'../../build/static/img/config/phone.png'" />
 			</ion-avatar>
-			<h2>{{co.title}}</h2>
+			<span>{{co.name}}</span>
 			<p></p>
+			<button [hidden]="removeBtn" class='removeHmd-bt' (click)="removeHmd(co.mac)" type="button" name="button">删除</button>
+			<!-- <h2>{{co.name}} <p item-left>删除</p></h2> -->
+
 		</ion-item>
 	</ion-list>
-	<div class="hmdConfig-next-button">
+	<div *ngIf='hmdConfig.length == 0' class="wf-hmdConfig-empty">
+		<img src="../../build/static/img/config/zw.png" />
+	</div>
+	<div class="next-button">
 		<button wifi block (click)="goToHome3">手动添加黑名单</button>
 		<div class="hide-button"></div>
 	</div>

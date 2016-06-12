@@ -6,8 +6,7 @@
 @import "home5";
 @import "home6";
 @import "menu";
-@import "hmdConfig";
-@import "wlConfig";
+@import "config";
 $theme: #2F83F5;
 /**
  * 更改ionic默认样式
@@ -42,6 +41,13 @@ $theme: #2F83F5;
 
 .md .next-button{
   background-color: #F3F3F3;
+}
+.md .menu-box .loading-wrapper{
+  background:none;
+  box-shadow:none;
+}
+.md .menu-box ion-backdrop{
+  opacity:1;
 }
 
 /**
