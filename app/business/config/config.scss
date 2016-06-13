@@ -32,10 +32,10 @@
 .wf-hmdConfig .next-button {
     padding: 0 1.5rem;
 }
-.wf-hmdConfig .removeHmd-bt{
-  position: absolute;
+.wf-hmdConfig .removeHmd-bt {
+    position: absolute;
     right: 0;
-    top: 0px;
+    top: 0;
     height: 100%;
     margin: 0;
     padding: 0 1.3rem;
@@ -51,25 +51,142 @@
     border-top: 1px solid #dedede;
     border-left: 1px solid #dedede;
     position: absolute;
-    top: -0.75rem;
+    top: 10.7rem;
     right: 20px;
     background-color: #f3f3f3;
     margin: 0;
 }
+.wf-wlConfig .wan-config ion-list {
+    margin: 0;
+}
+.wf-wlConfig .wan-config ion-list:first-child {
+    margin: 0 0 16px;
+}
+.wf-wlConfig .wan-config ion-list:nth-child(4) {
+    margin: 0 0 16px;
+}
+.wf-wlConfig .wan-config ion-list:nth-child(6) .item {
+    border-top: none;
+}
 .wf-wlConfig ion-label[fixed] {
     flex: 0 0 120px;
 }
-.wf-wlConfig .wan-config .conrent-text {
-    position: relative;
+.wf-wlConfig .wan-config .conrent-text .item {
+    background-color: #f3f3f3;
 }
-.wf-wlConfig .wan-config .conrent-text p {
-    border-top: 1px solid #E8E8E8;
-    padding: 1.5rem 2rem 1.5rem 0;
-    margin: 0 0 0 16px;
-}
-.wf-wlConfig .wan-config .conrent-text p:first-child {
+.wf-wlConfig .wan-config .conrent-text .item:first-child {
     border: none;
+}
+.wf-wlConfig .wan-config .conrent-text .item:last-child {
+    border: none;
+}
+.wf-wlConfig .wifi-config .conrent-text .item {
+    background-color: #f3f3f3;
+}
+.wf-wlConfig .wifi-config ion-list {
+    margin: 0;
+}
+.wf-wlConfig .wifi-config ion-list:first-child .item{
+    border-bottom: none;
+}
+.wf-wlConfig .wifi-config ion-list .item {
+    border-top: none;
+}
+.wf-wlConfig .wifi-config ion-list:first-child .item {
+    border-top: 1px solid #dedede;
+}
+.wf-wlConfig .wifi-config ion-list:nth-child(2) {
+    border-top: 1px solid #dedede;
 }
 .wf-wlConfig .next-button {
     padding: 0 1.5rem;
+}
+/**
+ * 工作模式
+ */
+.wf-gzConfig .img-empty {
+    position: relative;
+    top: -5rem;
+    padding-top: 50%;
+    padding-left: 50%;
+    right: 6rem;
+}
+.wf-gzConfig .img-empty img {
+    width: 12rem;
+}
+.wf-gzConfig .next-button {
+    padding: 0 1.5rem;
+}
+.wf-gzConfig .next-button {
+    padding-bottom: 1rem;
+}
+.wf-gzConfig1 .gzConfig1 {
+    margin: 10rem auto 0;
+}
+.wf-gzConfig1 .gzConfig1 h5,
+.wf-gzConfig1 .gzConfig1 p {
+    text-align: center;
+}
+.wf-gzConfig1 .gzConfig1 h5 {
+    font-size: 1.8rem;
+    color: #4991F3;
+}
+.wf-gzConfig1 .gzConfig1 p {
+    font-size: 1.4rem;
+    color: #9C9C9C;
+}
+.wf-gzConfig1 .gzConfig1:nth-child(2) {
+    margin: 5rem auto 10rem;
+}
+.wf-gzConfig1 .next-button {
+    padding: 0 1.5rem;
+}
+.wf-gzConfig1 .next-button {
+    padding-bottom: 1rem;
+}
+.wf-gzConfig2 .wf-triangle {
+    width: 15px;
+    height: 15px;
+    transform: rotate(45deg);
+    border-top: 1px solid #dedede;
+    border-left: 1px solid #dedede;
+    position: absolute;
+    top: 8.2rem;
+    right: 20px;
+    background-color: #f3f3f3;
+    margin: 0;
+}
+.wf-gzConfig2 ion-list {
+    margin: 0;
+}
+.wf-gzConfig2 ion-list .item {
+    border-top: none;
+}
+.wf-gzConfig2 .conrent-text .item {
+    background-color: #f3f3f3;
+}
+.wf-gzConfig2 ion-list:nth-child(4) {
+    border-bottom: none;
+    margin: 0 0 16px;
+}
+.wf-gzConfig2 ion-list:nth-child(4) .wf-checkbox {
+    border-bottom: none;
+}
+.wf-gzConfig2 ion-list:nth-child(4) .item:first-child {
+    border-bottom: 1px solid #dedede;
+}
+.wf-gzConfig2 ion-list:nth-child(4) .item:first-child .item-inner {
+    border-bottom: none;
+}
+.wf-gzConfig2 .wf-checkbox {
+    height: 2.8rem;
+    background-color: #F3F3F3;
+    margin-left: 16rem;
+    min-height: 24px;
+}
+.wf-gzConfig2 .wf-checkbox ion-checkbox {
+    margin: 9px 9px 9px 4px;
+}
+.wf-gzConfig2 .wf-checkbox .item-inner {
+    border: none;
 }

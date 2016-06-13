@@ -5,16 +5,15 @@
 	<ion-title text-center padding-right-menu>黑名单列表</ion-title>
 </ion-navbar>
 <ion-content class="outer-content" class="wf-hmdConfig">
-	<ion-list (onHold)="removeBtn = !removeBtn">
-		<ion-item *ngFor="let co of hmdConfig" >
+	<ion-list>
+		<ion-item *ngFor="let co of hmdConfig">
 			<ion-avatar item-left>
 				<img [src]="'../../build/static/img/config/phone.png'" />
 			</ion-avatar>
 			<span>{{co.name}}</span>
 			<p></p>
-			<button [hidden]="removeBtn" class='removeHmd-bt' (click)="removeHmd(co.mac)" type="button" name="button">删除</button>
+			<button [hidden]="co.removeBtn" class='removeHmd-bt' (click)="removeHmd(co.mac,$event)" type="button" name="button">删除</button>
 			<!-- <h2>{{co.name}} <p item-left>删除</p></h2> -->
-
 		</ion-item>
 	</ion-list>
 	<div *ngIf='hmdConfig.length == 0' class="wf-hmdConfig-empty">

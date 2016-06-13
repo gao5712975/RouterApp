@@ -20,7 +20,4 @@ export class GzConfig1{
         this.nav = nav;
     }
 
-    goToHome1(){
-//      this.nav.push(Home2)
-    }
 }

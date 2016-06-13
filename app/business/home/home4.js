@@ -29,7 +29,6 @@ export class Home4{
         /**
          * 表单
          */
-        console.info(this.navParams.data);
         this.adminConfig = {};
         this.adminConfig.name = "Cheng-C999";
         this.adminConfig.newPwd = this.navParams.data.wifipassword;
@@ -47,12 +46,12 @@ export class Home4{
       this.submitted = true;
       if(form){
         let newPwdShow = this.adminConfig.newPwd;
-        this.adminConfig.newPwd = helpers.encrypt.newPwd('admin',this.adminConfig.newPwd);
-
         let data = Object.assign(this.navParams.data,this.adminConfig);
-        data.oldPwd = helpers.encrypt.encPwd('admin');
         data.nonce = helpers.encrypt.init();
+        data.oldPwd = helpers.encrypt.encPwd('admin');
+        data.newPwd = helpers.encrypt.newPwd(data.oldPwd,data.newPwd);
         data.newPwdShow = newPwdShow;
+        data.txpwr = 1;
         this.nav.push(Home5,data);
       }
     }

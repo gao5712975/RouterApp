@@ -12,7 +12,7 @@ import {Storage, LocalStorage} from 'ionic-angular';
 export class YRequestObtions extends BaseRequestOptions {
   constructor(){
     super();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
+    this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
   }
 }
 
@@ -75,7 +75,7 @@ export class YXHRBackend extends XHRBackend {
     /**
      * request 每次请求修改url地址；
      */
-    let token = this.storage.get('token').__zone_symbol__value;
+    let token = Global.getToken();
     if(token){
       request.url = Global.getBaseUrl() + '/;stok=' + token + request.url;
     }else{

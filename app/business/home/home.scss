@@ -28,3 +28,321 @@
     border: 2px solid #fff;
     color: #fff;
 }
+
+// -------------------------------home1------------------------------------
+
+$theme: #2F83F5;
+
+.wf-home1-bj {
+    width: 100%;
+    height: 100%;
+}
+.wf-home1-bj .img {
+    padding-top: 12.5rem;
+    margin-left: 50%;
+    position: relative;
+    right: 4.25rem;
+}
+.wf-home1-bj img {
+    width: 8.5rem;
+}
+.wf-home1-bj .text {
+    padding-top: 2.3rem;
+}
+.wf-home1-bj .text span:first-child {
+    display: block;
+    font-size: 1.9rem;
+    color: $theme;
+}
+.wf-home1-bj .text span:nth-child(2) {
+    display: block;
+    font-size: 1.5rem;
+    color: #a0a0a0;
+}
+.wf-home1-bj .next-button{
+    padding-top: 13.4rem;
+    margin: 0 1.5rem;
+}
+
+
+// -------------------------------home2------------------------------------
+
+$theme: #2F83F5;
+.wf-segment-button {
+    background-color: #F3F3F3;
+    padding: 1.5rem;
+}
+.wf-segment-button ion-segment {
+    border: 1px solid #CCC;
+}
+.wf-segment-button .segment-button {
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+}
+.wf-segment-button .segment-button:last-child {
+    border-right: none;
+}
+.wf-segment-button .segment-button.segment-activated {
+    background-color: $theme;
+    color: #FFF;
+    font-size: 1.6rem;
+    height: 3.7rem;
+    line-height: 3.7rem;
+}
+.wf-segment-button .segment-button {
+    font-size: 1.7rem;
+    color: #a0a0a0;
+    border-bottom: none;
+    height: 3.7rem;
+    line-height: 3.7rem;
+}
+.wf-autoIp p {
+    text-align: center;
+    font-size: 1.8rem;
+    color: $theme;
+    margin: 0 5.8rem;
+    padding-top: 13rem;
+}
+.wf-autoIp .item,
+.wf-manualIp .item,
+.wf-pppoe .item {
+    height: 5rem;
+}
+.wf-manualIp .item-input ion-label,
+.wf-pppoe .item-input ion-label {
+    color: #000;
+}
+.wf-manualIp ion-list > .item:first-child,
+.wf-pppoe ion-list > .item:first-child {
+    border-top: 1px solid #f1f1f1;
+}
+.wf-manualIp ion-list .item-inner,
+.wf-pppoe ion-list .item-inner {
+    border-bottom: 1px solid #f1f1f1;
+}
+.wf-manualIp ion-list > .item:last-child,
+.wf-pppoe ion-list > .item:last-child {
+    border-bottom: 1px solid #f1f1f1;
+}
+.wf-pppoe .password-show {
+    width: 1.6rem;
+}
+.wf-autoIp .next-button {
+    margin-top: 15.45rem;
+    padding: 0 1.5rem;
+}
+.wf-pppoe .next-button {
+    padding: 0 1.5rem;
+    margin-top: 21.6rem;
+}
+.wf-manualIp .next-button {
+    padding: 0 1.5rem;
+    margin-top: 6.55rem;
+}
+.wf-pppoe .background-img {
+    background: url("../static/img/home/guidance-eye.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
+}
+.wf-pppoe .background-img1 {
+    background: url("../static/img/home/guidance-eye1.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
+}
+.wf-pppoe .eye-black {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    right: 0;
+    top: 4.9rem;
+}
+.wf-manualIp ion-label[fixed],
+.wf-pppoe ion-label[fixed],
+.wf-pppoe ion-label[fixed] {
+    flex: 0 0 70px;
+    width: 70px;
+    min-width: 70px;
+}
+
+
+// ------------------------------home3-------------------------------------
+
+.wf-wifi-config {
+    padding-top: 2.2rem;
+}
+.wf-wifi-config .item {
+    height: 5rem;
+}
+.wf-wifi-config .item-input ion-label {
+    color: #000;
+}
+.wf-wifi-config .password-show {
+    width: 1.6rem;
+}
+.wf-wifi-config .next-button {
+    margin-top: 24.95rem;
+    padding: 0 1.5rem;
+}
+.wf-wifi-config .background-img {
+    background: url("../static/img/home/guidance-eye.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
+}
+.wf-wifi-config .background-img1 {
+    background: url("../static/img/home/guidance-eye1.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
+}
+.wf-wifi-config .eye-black {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    right: 0;
+    top: 7.2rem;
+}
+.wf-wifi-config ion-label[fixed] {
+    flex: 0 0 70px;
+    width: 70px;
+    min-width: 70px;
+}
+
+
+// -------------------------------home4------------------------------------
+
+.wf-wifi-admin {
+    padding-top: 2.2rem;
+}
+.wf-wifi-admin .item {
+    height: 5rem;
+}
+.wf-wifi-admin .item-input ion-label {
+    color: #000;
+}
+.wf-wifi-admin .password-show {
+    width: 1.6rem;
+}
+.wf-wifi-admin .next-button {
+    margin-top: 23.78rem;
+    padding: 0 1.5rem;
+}
+.wf-wifi-admin .background-img {
+    background: url("../static/img/home/guidance-eye.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
+}
+.wf-wifi-admin .background-img1 {
+    background: url("../static/img/home/guidance-eye1.png") no-repeat;
+    width: 39px;
+    height: 22px;
+    background-size: 2.2rem;
+    background-position: 6px;
+}
+.wf-wifi-admin .eye-black {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    right: 0;
+    top: 7.2rem;
+}
+.wf-wifi-admin ion-label[fixed] {
+    flex: 0 0 70px;
+    width: 70px;
+    min-width: 70px;
+}
+
+.wf-wifi-admin .wf-checkbox{
+    border: none;
+    height: 24px;
+    background-color: #F3F3F3;
+    margin-left: 16rem;
+    min-height: 24px;
+}
+.wf-wifi-admin .wf-checkbox ion-checkbox{
+    margin: 9px 9px 9px 4px;
+}
+.wf-wifi-admin .wf-checkbox .item-inner{
+    border: none;
+}
+
+
+// --------------------------------home5-----------------------------------
+
+.wf-wait-content {
+    background-color: #4690F6 !important;
+}
+.wf-wait-img {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    margin-left: -3.5rem;
+}
+.wf-wait-img img {
+    width: 7rem;
+}
+.wf-wait-text {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+}
+.wf-wait-text p {
+    color: #fff;
+    font-size: 15px;
+}
+
+
+// --------------------------------home6-----------------------------------
+
+.wf-success .img {
+    padding-left: 50%;
+    right: 4.25rem;
+    padding-top: 9.5rem;
+    position: relative;
+}
+.wf-success .img img {
+    width: 8.5rem;
+}
+.wf-success .text {
+    border-bottom: 1px solid #ccc;
+    margin: 0 1.8rem;
+}
+.wf-success .text span:first-child {
+    color: #8A8A8A;
+}
+.wf-success .text span:last-child {
+    color: #5A5A5A;
+    font-size: 23px;
+}
+.wf-success .next-button {
+    margin-top: 9.15rem;
+    padding: 0 1.5rem;
+}
+.wf-success .manager p {
+    margin-bottom: 0;
+}
+.wf-success .manager p:last-child {
+    margin-top: 0;
+}
+.wf-success .manager span {
+    display: inline-block;
+    width: 50%;
+}
+.wf-success .manager p span:nth-child(even) {
+    color: #4faaff;
+    font-size: 20px;
+}
+.wf-success .manager p span:nth-child(odd) {
+    text-align: right;
+    padding-right: 16px;
+    color: #8a8a8a;
+}

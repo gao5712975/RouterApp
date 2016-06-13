@@ -4,35 +4,49 @@
 	</button>
 	<ion-title text-center padding-right-menu>工作模式</ion-title>
 </ion-navbar>
-<ion-content class="wf-wlConfig-back wf-gzConfig2">
-	<div class="wf-manualIp">
-		<div class="top-text">被放大的网络</div>
-		<ion-list>
-			<ion-item>
-				<ion-label fixed>网络名称</ion-label>
-				<ion-input type="text" text-right placeholder="中继网络"></ion-input>
+<ion-content class="wf-gzConfig2">
+	<ion-list>
+		<ion-list-header>
+			被放大的网络
+		</ion-list-header>
+			<ion-item (click)='wtfmbpShow = !wtfmbpShow'>
+				<span>网络名称</span>
+				<span item-right>{{wtfmbpShow}}</span>
 			</ion-item>
+	</ion-list>
 
-			<ion-item>
-				<ion-label fixed>密码</ion-label>
-				<ion-input type="text" text-right placeholder="01234567"></ion-input>
-			</ion-item>
+	<div [hidden]="!wtfmbpShow" class="wf-triangle" item-right></div>
+	<ion-list [hidden]="!wtfmbpShow"  class="conrent-text">
+		<ion-item>
+			<p text-right (click)="wtfmbpShow = 'WPA-PSK';wtfmbpShow = !wtfmbpShow">WPA-PSK</p>
+		</ion-item>
+		<ion-item>
+			<p text-right (click)="wtfmbpShow = 'WPA-PSK';wtfmbpShow = !wtfmbpShow">WPA-PSK</p>
+		</ion-item>
+	</ion-list>
+	<ion-list>
+		<ion-item>
+			<ion-label fixed>密码</ion-label>
+			<ion-input type="text" text-right placeholder="01234567"></ion-input>
+		</ion-item>
 
-			<div class="content-text">
-				<label for="WIFI">
-					<input type="checkbox" id="WIFI"> 与WIFI密码相同 </label>
-				端口转发规则
-			</div>
+		<ion-item class="wf-checkbox">
+			<ion-label>与WIFI密码相同</ion-label>
+			<ion-checkbox dark checked="true" [(ngModel)]="identical"></ion-checkbox>
+		</ion-item>
+	</ion-list>
+	<ion-list>
+		<ion-list-header>
+			端口转发规则
+		</ion-list-header>
+		<ion-item>
+			<ion-label fixed>网络名称</ion-label>
+			<ion-input type="text" text-right placeholder="小橙路由中继网络"></ion-input>
+		</ion-item>
 
-			<ion-item>
-				<ion-label fixed>网络名称</ion-label>
-				<ion-input type="text" text-right placeholder="小橙路由中继网络"></ion-input>
-			</ion-item>
-
-			<ion-item>
-				<ion-label fixed>密码</ion-label>
-				<ion-input type="text" text-right placeholder="01234567"></ion-input>
-			</ion-item>
-		</ion-list>
-	</div>
+		<ion-item>
+			<ion-label fixed>密码</ion-label>
+			<ion-input type="text" text-right placeholder="01234567"></ion-input>
+		</ion-item>
+	</ion-list>
 </ion-content>

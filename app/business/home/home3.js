@@ -38,7 +38,7 @@ export class Home3{
       }else if(!form){
         this.submitted = true;
       }else if(form){
-        this.wifiConfig.encryption = 'mixed-psk';//加密方式
+        this.wifiConfig.encryption = 'psk-mixed';//加密方式
         let data = Object.assign(this.navParams.data,this.wifiConfig);
         this.nav.push(Home4,data);
       }

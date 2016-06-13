@@ -18,97 +18,198 @@
 			</ion-segment-button>
 		</ion-segment>
 	</div>
+	<!-- -  - - - - - - - - - - - -  -->
 	<div [ngSwitch]="wifi">
-		<div *ngSwitchWhen="'WIFI'" class="wifi-config">
+		<div *ngSwitchWhen="'WIFI'">
 			<ion-list>
 				<ion-item>
-					<ion-label fixed>WIFI名称</ion-label>
-					<ion-input text-right type="text" [placeholder]="wlConfig.ssid || '请输入WIFI名称'"></ion-input>
-				</ion-item>
-
-				<ion-item>
-					<ion-label fixed>加密方式</ion-label>
-					<ion-input text-right type="text" [placeholder]="wlConfig.encryption || '请输入加密方式'"></ion-input>
-				</ion-item>
-
-				<ion-item>
-					<ion-label fixed>WiFi密码</ion-label>
-					<ion-input text-right type="text" [placeholder]="wlConfig.password || '请输入WiFi密码'"></ion-input>
-				</ion-item>
-
-				<ion-item>
-					<ion-label fixed>信道</ion-label>
-					<ion-input text-right type="text" [placeholder]="wlConfig.realChannel || '请输入信道'"></ion-input>
-				</ion-item>
-
-				<ion-item>
-					<ion-label fixed>频道宽带</ion-label>
-					<ion-input text-right type="text" [placeholder]="wlConfig.bandwidth || '请输入频道宽带'"></ion-input>
-				</ion-item>
-				<ion-item>
-					<ion-label fixed>信号强度</ion-label>
-					<ion-input text-right type="text" [placeholder]="wlConfig.txpower || '请输入信号强度'"></ion-input>
+					<ion-label fixed>功能开关</ion-label>
+					<ion-toggle checked="false" [(ngModel)]="wifiShow"></ion-toggle>
 				</ion-item>
 			</ion-list>
-			<div class="next-button">
-				<button wifi block (click)="applicationModify()">应用修改</button>
-				<div class="hide-button"></div>
-			</div>
-		</div>
-		<!--  -->
-		<div *ngSwitchWhen="'WAN'" class="wan-config">
-			<ion-list>
-				<!-- <ion-item>
-					<ion-label fixed>联网方式</ion-label>
-					<ion-input text-right type="text" [placeholder]="wanConfig.wanType || '请输入联网方式'"></ion-input>
-				</ion-item> -->
+			<div [hidden]='!wifiShow' class="wifi-config">
+				<ion-list>
+					<ion-item>
+						<ion-label fixed>WIFI名称</ion-label>
+						<ion-input text-right type="text" [placeholder]="wlConfig.ssid || '请输入WIFI名称'"></ion-input>
+					</ion-item>
+				</ion-list>
 
+				<ion-list>
+					<ion-item (click)='encryptionShow = !encryptionShow'>
+						<span>加密方式</span>
+						<span item-right>{{wlConfig.encryption}}</span>
+					</ion-item>
+				</ion-list>
+
+				<div [hidden]="!encryptionShow" class="wf-triangle" item-right></div>
+
+				<ion-list [hidden]="!encryptionShow" class="conrent-text">
+					<ion-item>
+						<p text-right (click)="wlConfig.encryption = '不加密';encryptionShow = !encryptionShow">不加密</p>
+					</ion-item>
+					<ion-item>
+						<p text-right (click)="wlConfig.encryption = 'WPA2-PSK';encryptionShow = !encryptionShow">WPA2-PSK</p>
+					</ion-item>
+					<ion-item>
+						<p text-right (click)="wlConfig.encryption = 'WPA-PSK';encryptionShow = !encryptionShow">WPA-PSK</p>
+					</ion-item>
+				</ion-list>
+
+				<ion-list>
+					<ion-item>
+						<ion-label fixed>WiFi密码</ion-label>
+						<ion-input text-right type="text" [placeholder]="wlConfig.password || '请输入WiFi密码'"></ion-input>
+					</ion-item>
+				</ion-list>
+
+				<ion-list>
+					<ion-item (click)='realChannelShow = !realChannelShow'>
+						<span>信道</span>
+						<span item-right>{{wlConfig.realChannel}}</span>
+					</ion-item>
+				</ion-list>
+
+				<div [hidden]="!realChannelShow" class="wf-triangle" item-right></div>
+
+				<ion-list [hidden]="!realChannelShow" class="conrent-text">
+					<ion-item>
+						<p text-right (click)="wlConfig.realChannel = '1';realChannelShow = !realChannelShow">1</p>
+					</ion-item>
+					<ion-item>
+						<p text-right (click)="wlConfig.realChannel = '2';realChannelShow = !realChannelShow">2</p>
+					</ion-item>
+					<ion-item>
+						<p text-right (click)="wlConfig.realChannel = '3';realChannelShow = !realChannelShow">3</p>
+					</ion-item>
+					<ion-item>
+						<p text-right (click)="wlConfig.realChannel = '4';realChannelShow = !realChannelShow">4</p>
+					</ion-item>
+				</ion-list>
+
+				<ion-list>
+					<ion-item>
+						<ion-label fixed>频道宽带</ion-label>
+						<ion-input text-right type="text" [placeholder]="wlConfig.bandwidth || '请输入频道宽带'"></ion-input>
+					</ion-item>
+				</ion-list>
+
+				<ion-list>
+					<ion-item (click)='txpowerShow = !txpowerShow'>
+						<span>信号强度</span>
+						<span item-right>{{wlConfig.txpower}}</span>
+					</ion-item>
+				</ion-list>
+				<div [hidden]="!txpowerShow" class="wf-triangle" item-right></div>
+
+				<ion-list [hidden]="!txpowerShow" class="conrent-text">
+					<ion-item>
+						<p text-right (click)="wlConfig.txpower = '强';txpowerShow = !txpowerShow">强</p>
+					</ion-item>
+					<ion-item>
+						<p text-right (click)="wlConfig.txpower = '中';txpowerShow = !txpowerShow">中</p>
+					</ion-item>
+					<ion-item>
+						<p text-right (click)="wlConfig.txpower = '弱';txpowerShow = !txpowerShow">弱</p>
+					</ion-item>
+				</ion-list>
+
+				<div class="next-button">
+					<button wifi block (click)="applicationModify()">应用修改</button>
+					<div class="hide-button"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- -  - - - - - - - - - - - -  -->
+		<div *ngSwitchWhen="'WAN'" class="wan-config">
+
+			<ion-list>
 				<ion-item (click)='lwConfigShow = !lwConfigShow'>
 					<span>联网方式</span>
-					<span item-right>{{wanConfig.wanType}}</span>
+					<span item-right>{{wanConfig.wanType | switchName}}</span>
 				</ion-item>
-				<div [hidden]="lwConfigShow" class="conrent-text">
-					<p text-right (click)="wanConfig.wanType = 'PPPOE';lwConfigShow = !lwConfigShow">PPPOE</p>
-					<p text-right (click)="wanConfig.wanType = '静态IP';lwConfigShow = !lwConfigShow">静态IP</p>
-					<p text-right (click)="wanConfig.wanType = '动态IP';lwConfigShow = !lwConfigShow">动态IP</p>
-					<div class="wf-triangle" item-right></div>
-				</div>
+			</ion-list>
 
+			<div [hidden]="!lwConfigShow" class="wf-triangle" item-right></div>
+
+			<ion-list [hidden]="!lwConfigShow" class="conrent-text">
+				<ion-item>
+					<p text-right (click)="wanConfigM.wanType = 'pppoe';wanConfig.wanType = 'pppoe';lwConfigShow = !lwConfigShow;serviceShow = false">PPPOE</p>
+				</ion-item>
+				<ion-item>
+					<p text-right (click)="wanConfigM.wanType = 'static';wanConfig.wanType = 'static';lwConfigShow = !lwConfigShow;serviceShow = false">静态IP</p>
+				</ion-item>
+				<ion-item>
+					<p text-right (click)="wanConfigM.wanType = 'dhcp';wanConfig.wanType = 'dhcp';lwConfigShow = !lwConfigShow;serviceShow = false">动态IP</p>
+				</ion-item>
+			</ion-list>
+
+			<ion-list [hidden]="wanConfig.wanType != 'pppoe'">
 				<ion-item>
 					<ion-label fixed>上网账号</ion-label>
-					<ion-input text-right type="text" [placeholder]="wanConfig.pppoeName || '请输入上网账号'"></ion-input>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.pppoeName" [placeholder]="wanConfig.pppoeName || '请输入上网账号'"></ion-input>
 				</ion-item>
 
 				<ion-item>
 					<ion-label fixed>上网密码</ion-label>
-					<ion-input text-right type="text" [placeholder]="wanConfig.pppoePassword || '请输入上网密码'"></ion-input>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.pppoePassword" [placeholder]="wanConfig.pppoePassword || '请输入上网密码'"></ion-input>
 				</ion-item>
 
 				<ion-item>
 					<ion-label fixed>最大传输单元</ion-label>
-					<ion-input text-right type="text" [placeholder]="wanConfig.mtu || '请输入最大传输单元'"></ion-input>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.mtu" [placeholder]="wanConfig.mtu || '请输入最大传输单元'"></ion-input>
 				</ion-item>
+			</ion-list>
 
+			<ion-list [hidden]="wanConfig.wanType == 'static'">
 				<ion-item>
 					<ion-label fixed>静态域名服务器</ion-label>
-					<ion-input text-right type="text" [placeholder]="wanConfig.service || '请输入静态域名服务器'"></ion-input>
+					<ion-toggle checked="false" [(ngModel)]="serviceShow"></ion-toggle>
 				</ion-item>
+			</ion-list>
+			<ion-list [hidden]="!serviceShow">
 				<ion-item>
 					<ion-label fixed>主DNS</ion-label>
-					<ion-input text-right type="text" [placeholder]="wanConfig.dnsAddrs || '请输入主DNS'"></ion-input>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.dnsAddrs" [placeholder]="wanConfig.dnsAddrs || '请输入主DNS'"></ion-input>
 				</ion-item>
 				<ion-item>
 					<ion-label fixed>备用DNS</ion-label>
-					<ion-input text-right type="text" [placeholder]="wanConfig.dnsAddrs1 || '请输入备用DNS'"></ion-input>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.dnsAddrs1" [placeholder]="wanConfig.dnsAddrs1 || '请输入备用DNS'"></ion-input>
 				</ion-item>
 			</ion-list>
+
+			<ion-list [hidden]="wanConfig.wanType != 'static'">
+				<ion-item>
+					<ion-label fixed>路由器IP地址</ion-label>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.ip" [(ngModel)]="wanConfig.ip" [placeholder]="wanConfig.ip || '请输入路由器IP地址'"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label fixed>子网掩码</ion-label>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.mask" [(ngModel)]="wanConfig.mask" [placeholder]="wanConfig.mask || '请输入子网掩码'"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label fixed>默认网关</ion-label>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.gateway" [(ngModel)]="wanConfig.gateway" [placeholder]="wanConfig.gateway || '请输入子网掩码'"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label fixed>主DNS</ion-label>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.dnsAddrs" [placeholder]="wanConfig.dnsAddrs || '请输入主DNS'"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label fixed>备用DNS</ion-label>
+					<ion-input text-right type="text" ([ngModel])="wanConfigM.dnsAddrs1" [placeholder]="wanConfig.dnsAddrs1 || '请输入备用DNS'"></ion-input>
+				</ion-item>
+			</ion-list>
+
 			<div class="next-button">
-				<button wifi block (click)="applicationModify()">应用修改</button>
+				<button wifi block (click)="applicationModifyWan()">应用修改</button>
 				<div class="hide-button"></div>
 			</div>
 		</div>
 
-		<!--  -->
+		<!-- -  - - - - - - - - - - - -  -->
 		<div *ngSwitchWhen="'LAN'" class="lan-config">
 			<ion-list>
 				<ion-item>

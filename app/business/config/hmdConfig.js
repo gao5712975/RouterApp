@@ -16,6 +16,10 @@ export class HmdConfig{
       ]
     }
     constructor(http,events){
+      /**
+       * 默认值
+       * @type {[type]}
+       */
       this.http = http;
       this.events = events;
       this.hmdConfig = [];
@@ -32,7 +36,7 @@ export class HmdConfig{
      * 获取黑名单
      */
      internetMethod() {
-       let url = `/cheng/networkmanager/get_mac_filter`;
+       let url = '/cheng/networkmanager/get_mac_filter';
        return new Promise(resolve => {
          this.http.get(url).subscribe(res => {
            resolve(res);
@@ -40,7 +44,8 @@ export class HmdConfig{
        })
      }
 
-     removeHmd(mac){
+     removeHmd(mac,event){
+       event.stopPropagation();
        console.info(mac);
      }
 }

@@ -6,6 +6,7 @@ import {ActionSheetPage} from '../actionSheet/actionSheet';
 import {WlConfigPage} from '../config/wlConfig';
 import {HmdConfig} from '../config/hmdConfig';
 import {GzConfig} from '../config/gzConfig';
+import {QosConfig} from '../config/qosConfig';
 import {Home} from '../home/home';
 
 export class GetMenuPage{
@@ -36,7 +37,7 @@ export class GetMenuPage{
               icon:"md-apps"
           },
           {
-              page:ActionSheetPage,
+              page:QosConfig,
               index:3,
               title:"QOS限速",
               icon:"md-stopwatch"

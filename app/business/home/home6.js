@@ -3,7 +3,6 @@
  */
 import {Page,NavController,NavParams} from 'ionic-angular'
 import {IndexPage} from '../index/index'
-import {GetMenuPage} from '../menu/menu';
 
 @Page({
     templateUrl: 'build/business/home/home6.html'
@@ -23,6 +22,6 @@ export class Home6{
     }
 
     goToIndexPage(){
-        this.nav.setRoot(new GetMenuPage().getMenuPage()[0].page);
+        this.nav.setRoot(IndexPage);
     }
 }

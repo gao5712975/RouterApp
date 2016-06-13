@@ -4,28 +4,20 @@
 	</button>
 	<ion-title text-center padding-right-menu>工作模式</ion-title>
 </ion-navbar>
-<ion-content>
-	<div class="wf-popup">
-		<div class="popup-content">
-			<img src="../../build/static/img/config/wf-await.gif" />
-			<p>操作生效中</p>
-			<p>请不要关闭页面或断开路由器</p>
-		</div>
-	</div>
-	<div class="wf-gzConfig1">
+<ion-content class="wf-gzConfig1">
+	<div class="gzConfig1">
 		<h5>STEP 1</h5>
 		<p>开始中继前请确保将小橙路由器的WAN口</p>
 		<p>与主路由器的LAN口通过网线相连</p>
 	</div>
 
-	<div class="wf-gzConfig1 wf-gzConfig1-top">
+	<div class="gzConfig1">
 		<h5>STEP 2</h5>
 		<p>中继后小橙路由部分功能将被屏蔽</p>
 		<p>可以通过主路由器进行网络管理</p>
 	</div>
 
-	<div class="wf-skip-buttom wf-skip-buttom1">
+	<div class="next-button">
 		<button wifi block (click)="GzConfig1()">开始中继</button>
 	</div>
-
 </ion-content>

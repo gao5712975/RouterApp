@@ -4,62 +4,69 @@
 import {Page,Events} from 'ionic-angular'
 import {Http} from '@angular/http';
 import * as helpers from '../../helpers/helpers';
+import {SwitchName} from '../../pipe/switchName';
 
 @Page({
-  templateUrl: 'build/business/config/wlConfig.html'
+  templateUrl: 'build/business/config/wlConfig.html',
+  pipes:[SwitchName]
 })
-
 export class WlConfigPage {
   static get parameters() {
     return [
-      [Http],[Events]
+      [Http],
+      [Events]
     ]
   }
-  constructor(http,events) {
+  constructor(http, events) {
     this.http = http;
     this.events = events;
     /**
      * 默认值
      */
     this.wifi = 'WAN';
-    this.lwConfigShow = true;
-
     /**
      * 表单
      */
     this.wlConfig = {};
+    this.wlConfig.encryption = '不加密';
+    this.wlConfig.txpower = '强';
+    this.wlConfig.realChannel = '4';
     this.wanConfig = {};
     this.lanConfig = {};
 
+
     Promise.all([
-      this.internetMethodWifi().then((res) => {
-        if (res && res.code == 0) {
-          this.wlConfig = res.wifiinfo;
-        }
-      }),
-      this.internetMethodWan().then((res) => {
-        if (res && res.code == 0) {
-          this.wanConfig.pppoePassword = res.pppoePassword;
-          this.wanConfig.pppoeName = res.pppoeName;
-          this.wanConfig.mtu = res.info.mtu;
-          this.wanConfig.wanType = res.info.details.wanType;
-          this.wanConfig.service = res.info.details.service;
-          this.wanConfig.dnsAddrs = res.info.dnsAddrs;
-          this.wanConfig.dnsAddrs1 = res.info.dnsAddrs1;
-        }
-      }),
-      this.internetMethodLan().then((res) => {
-        if (res && res.code == 0) {
-          this.lanConfig = res.info.lanIp[0];
-        }
+        this.internetMethodWifi().then((res) => {
+          if (res && res.code == 0) {
+            this.wlConfig = res.wifiinfo;
+          }
+        }),
+        this.internetMethodWan().then((res) => {
+          if (res && res.code == 0) {
+            this.wanConfig.pppoePassword = res.pppoePassword;
+            this.wanConfig.pppoeName = res.pppoeName;
+            this.wanConfig.mtu = res.info.mtu;
+            this.wanConfig.wanType = res.info.details.wanType;
+            // this.wanConfig.service = res.info.details.service;
+            this.wanConfig.dnsAddrs = res.info.dnsAddrs;
+            this.wanConfig.dnsAddrs1 = res.info.dnsAddrs1;
+          }
+        }),
+        this.internetMethodLan().then((res) => {
+          if (res && res.code == 0) {
+            this.lanConfig = res.info.lanIp[0];
+          }
+        })
+      ]).then(() => {
+        this.events.publish('loading:close');
+      }).catch((err) => {
+        console.info('黑名单请求错误')
       })
-    ]).then(() => {
-      this.events.publish('loading:close');
-    }).catch((err) => {console.info('黑名单请求错误')})
-    /**
-     * 提交表单
-     */
+      /**
+       * 提交表单
+       */
     this.lanConfigM = {};
+    this.wanConfigM = {};
   }
 
   /**
@@ -89,22 +96,22 @@ export class WlConfigPage {
      * 获取LAN口上网配置信息
      */
   internetMethodLan() {
-      let url = `/cheng/networkmanager/get_lan_dhcp`;
-      return new Promise(resolve => {
-        this.http.get(url).subscribe(res => {
-          resolve(res);
-        })
+    let url = `/cheng/networkmanager/get_lan_dhcp`;
+    return new Promise(resolve => {
+      this.http.get(url).subscribe(res => {
+        resolve(res);
       })
-    }
-    /**
-     * 修改LAN口上网配置信息
-     */
+    })
+  }
 
+  /**
+   * 修改LAN口上网配置信息
+   */
   internetModifyLan() {
     let url = `/cheng/networkmanager/set_lan_ip_and_mask`;
-    var query = this.lanConfigM;
-    query.mask == undefined?(query.mask = this.lanConfig.mask):(void 0);
-    let body = helpers.toBodyString(this.lanConfigM);
+    var query = Object.assign({}, this.lanConfig);
+    var query = Object.assign(query, this.lanConfigM);
+    let body = helpers.toBodyString(query);
     return new Promise(resolve => {
       this.http.post(url, body).subscribe(res => {
         resolve(res);
@@ -112,10 +119,42 @@ export class WlConfigPage {
     })
   }
 
+  /**
+   * 修改WAN口上网配置信息
+   */
+  internetModifyWan() {
+    let url = `/cheng/networkmanager/set_wan`;
+    var query = Object.assign({}, this.wanConfig);
+    var query = Object.assign(query, this.wanConfigM);
+    console.info(query);
+    let body = helpers.toBodyString(query);
+    return new Promise(resolve => {
+      this.http.post(url, body).subscribe(res => {
+        resolve(res);
+      })
+    })
+  }
+
+  /**
+   * 提交 Lan修改
+   * @return {[type]} [description]
+   */
   applicationModifyLan() {
     this.internetModifyLan().then((res) => {
-      if(res && res.code == 0){
-        this.events.publish('global:baseUrl',res.ip)
+      if (res && res.code == 0) {
+        this.events.publish('global:baseUrl', res.ip)
+      }
+    });
+  }
+
+  /**
+   * 提交 Wan修改
+   * @return {[type]} [description]
+   */
+  applicationModifyWan() {
+    this.internetModifyWan().then((res) => {
+      if (res && res.code == 0) {
+        this.events.publish('global:baseUrl', res.ip)
       }
     });
   }

@@ -35,7 +35,6 @@ class RouterApp {
         this.menu = menu;
         this.FirstLogin = FirstLogin;
 
-
         // Call any initial plugins when ready
         this.initializeApp();
         //获取菜单
@@ -71,25 +70,29 @@ class RouterApp {
                 console.info(res);
                 Global.setBaseUrl(res[0]);
               })
-             /**
-              * 默认登陆
-              */
-             this.FirstLogin.login().then((res) => {
-               if(res && res.code == 0){
-                 //TODO 默认登陆成功
-               }
-               console.info(res);
-             })
 
-             //默认为首次加载app 给引导页面 之后直接给首页
-             //首页
-             this.rootPage = IndexPage;
-             // this.rootPage = Home;
+             this.FirstLogin.firstLogin().then((res) => {
+               if (res && res.code == 0) {
+                 switch (res.inited) {
+                   case 0:
+                     /**
+                      * 默认登陆
+                      */
+                     this.FirstLogin.login();
+                     this.rootPage = Home;
+                     break;
+                   case 1:
+                     this.FirstLogin.checkLogin();
+                     this.rootPage = IndexPage;
+                     break;
+                 }
+               }
+             })
         });
     }
 
     openPage(p){
-        this.presentLoadingDefault();
+        // this.presentLoadingDefault();
         this.nav.push(p);
         this.menu.close()
     }

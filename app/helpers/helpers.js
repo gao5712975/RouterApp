@@ -13,7 +13,7 @@ var encrypt = {
     },
     nonceCreat: function() {
         var type = 0;
-        var deviceId = '40:8D:5C:3B:99:E5';
+        var deviceId = '00:e0:4c:36:49:8e';
         var time = Math.floor(new Date().getTime() / 1000);
         var random = Math.floor(Math.random() * 10000);
         return [type, deviceId, time, random].join('_');
@@ -43,7 +43,7 @@ function toQueryPair(key, value) {
 export function toQueryString(obj) {
     var ret = [];
     for (var key in obj) {
-        key = encodeURIComponent(key);
+        // key = encodeURIComponent(key);
         var values = obj[key];
         if (values && values.constructor == Array) { //数组
             var queryValues = [];
@@ -65,7 +65,7 @@ export function toQueryString(obj) {
 export function toBodyString(obj) {
     var ret = [];
     for (var key in obj) {
-        key = encodeURIComponent(key);
+        // key = encodeURIComponent(key);
         var values = obj[key];
         if (values && values.constructor == Array) { //数组
             var queryValues = [];
