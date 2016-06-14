@@ -77,176 +77,56 @@
 		</div>
 	</div>
 
-	<!-- <div class="wf-qos">
-		<span class="qos-top-text">外网带宽</span>
+	<ion-list radio-group [(ngModel)]="autoManufacturers">
+	  <ion-item>
+	    <ion-label>智能限速模式</ion-label>
+	    <ion-radio value="cord"></ion-radio>
+	  </ion-item>
+	  <ion-item>
+	    <ion-label>手动限速模式</ion-label>
+	    <ion-radio value="duesenberg"></ion-radio>
+	  </ion-item>
+	</ion-list>
 
-		<ion-grid class="qos-top-case">
-			<ion-row>
-				<ion-col width-30>
-					<div>
-						<span class="qos-top-number">348</span>
-						<span class="qos-top-kb">KB/S</span>
-					</div>
-					<p>
-						上传宽带
-						<img src="../../build/static/img/config/QOS-top.png" />
-					</p>
-				</ion-col>
-
-				<img src="../../build/static/img/config/QOS1.png" class="top-case-img" />
-
-				<ion-col width-30>
-					<div>
-						<span class="qos-top-number">348</span>
-						<span class="qos-top-kb">KB/S</span>
-					</div>
-					<p>
-						上载带宽
-						<img src="../../build/static/img/config/QOS-bottom.png" />
-					</p>
-				</ion-col>
-			</ion-row>
-
-			<div class="wf-skip-buttom qos-buttom" (click)="cancel=!cancel">
-				<button wifi block>手动修改</button>
+	<ion-list class="qos-list">
+		<ion-list-header>
+		  在线设备
+		</ion-list-header>
+		<ion-item>
+			<ion-avatar item-left>
+				<img [src]="'../../build/static/img/config/phone.png'"/>
+			</ion-avatar>
+			<span>Angelababy1111</span>
+			<!-- <p></p> -->
+			<div item-right class="qos-wifi-ms">
+				<p class="qos-wifi-none">不限速</p>
 			</div>
+		</ion-item>
+		<ion-item>
+			<ion-avatar item-left>
+				<img [src]="'../../build/static/img/config/phone.png'"/>
+			</ion-avatar>
+			<span>Angelababy1111</span>
+			<!-- <p></p> -->
+			<div item-right class="qos-wifi-ms">
+				<p><span>不限速</span><img src="../../build/static/img/config/QOS-color-bottom.png"></p>
+				<p><span>{{'234'}}KB/S</span><img src="../../build/static/img/config/QOS-color-top.png"></p>
+			</div>
+		</ion-item>
+		<ion-item>
+			<ion-avatar item-left>
+				<img [src]="'../../build/static/img/config/phone.png'"/>
+			</ion-avatar>
+			<span>Angelababy1111</span>
+			<!-- <p></p> -->
+			<div item-right class="qos-wifi-ms">
+				<p><span>{{'234'}}KB/S</span><img src="../../build/static/img/config/QOS-color-bottom.png"></p>
+				<p><span>{{'234'}}KB/S</span><img src="../../build/static/img/config/QOS-color-top.png"></p>
+			</div>
+		</ion-item>
+	</ion-list>
 
-		</ion-grid>
-
-	</div> -->
-
-	<ion-grid class="qos-pattern" (click)='qosconfirm = !qosconfirm;qosconfirm1 = !qosconfirm1'>
-		<ion-row>
-			<ion-col width-30>
-				<p>智能限速模式</p>
-			</ion-col>
-
-			<ion-col width-10 [hidden]='qosconfirm'>
-				<img src="../../build/static/img/config/QOS-confirm.png" />
-			</ion-col>
-		</ion-row>
-	</ion-grid>
-
-	<ion-grid class="qos-pattern" (click)='qosconfirm1 = !qosconfirm1;qosconfirm = !qosconfirm'>
-		<ion-row>
-			<ion-col width-30>
-				<p>手动限速模式</p>
-			</ion-col>
-
-			<ion-col width-10 [hidden]='qosconfirm1'>
-				<img src="../../build/static/img/config/QOS-confirm.png" />
-			</ion-col>
-		</ion-row>
-	</ion-grid>
-
-
-
-
-	<!--<ion-list radio-group>
-	  <ion-list-header>
-	    Language
-	  </ion-list-header>
-
-	  <ion-item>
-	    <ion-label>Go</ion-label>
-	    <ion-radio checked="true" value="go"></ion-radio>
-	  </ion-item>
-
-	  <ion-item>
-	    <ion-label>Rust</ion-label>
-	    <ion-radio value="rust"></ion-radio>
-	  </ion-item>
-
-	  <ion-item>
-	    <ion-label>Python</ion-label>
-	    <ion-radio value="python" disabled="true"></ion-radio>
-	  </ion-item>
-	</ion-list>-->
-
-
-
-
-	<div class="qos-equipment">
-		<p>在线设备</p>
-	</div>
-
-	<div class="wf-WIFI wf-hmdConfig">
-		<ion-grid>
-			<ion-row>
-				<ion-col width-10>
-					<img src="../../build/static/img/config/phone.png" />
-				</ion-col>
-
-				<ion-col width-30>
-					<p>Angelababy1111</p>
-				</ion-col>
-
-				<ion-col width-25>
-					<p>不限速</p>
-				</ion-col>
-
-			</ion-row>
-		</ion-grid>
-
-		<ion-grid>
-			<ion-row>
-				<ion-col width-10>
-					<img src="../../build/static/img/config/computer.png" />
-				</ion-col>
-
-				<ion-col width-30>
-					<p>Hakuna Matata2222222222</p>
-				</ion-col>
-
-				<ion-col width-25>
-					<div class="qos-uploading">
-						<div>
-							<span class="qos-top-number">348</span>
-							<span class="qos-top-kb">KB/S</span>
-							<img src="../../build/static/img/config/QOS-color-top.png" />
-						</div>
-
-						<div>
-							<span class="qos-top-number">348</span>
-							<span class="qos-top-kb">KB/S</span>
-							<img src="../../build/static/img/config/QOS-color-bottom.png" />
-						</div>
-					</div>
-				</ion-col>
-
-			</ion-row>
-		</ion-grid>
-
-		<ion-grid>
-			<ion-row>
-				<ion-col width-10>
-					<img src="../../build/static/img/config/ipd.png" />
-				</ion-col>
-
-				<ion-col width-30>
-					<p>Hakuna Matata333333333</p>
-				</ion-col>
-
-				<ion-col width-25>
-					<p>不限速</p>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
-
-		<ion-grid>
-			<ion-row>
-				<ion-col width-10>
-					<img src="../../build/static/img/config/computer.png" />
-				</ion-col>
-
-				<ion-col width-30>
-					<p>Hakuna Matata444444</p>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
-	</div>
-
-	<div class="wf-skip-buttom">
+	<div class="next-button">
 		<button wifi block (click)="goToHome3()">手动添加黑名单</button>
 	</div>
 </ion-content>

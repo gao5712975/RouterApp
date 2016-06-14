@@ -70,24 +70,24 @@ class RouterApp {
                 console.info(res);
                 Global.setBaseUrl(res[0]);
               })
-
-             this.FirstLogin.firstLogin().then((res) => {
-               if (res && res.code == 0) {
-                 switch (res.inited) {
-                   case 0:
-                     /**
-                      * 默认登陆
-                      */
-                     this.FirstLogin.login();
-                     this.rootPage = Home;
-                     break;
-                   case 1:
-                     this.FirstLogin.checkLogin();
-                     this.rootPage = IndexPage;
-                     break;
-                 }
-               }
-             })
+             this.rootPage = IndexPage;
+            //  this.FirstLogin.firstLogin().then((res) => {
+            //    if (res && res.code == 0) {
+            //      switch (res.inited) {
+            //        case 0:
+            //          /**
+            //           * 默认登陆
+            //           */
+            //          this.FirstLogin.login();
+            //          this.rootPage = Home;
+            //          break;
+            //        case 1:
+            //          this.FirstLogin.checkLogin();
+            //          this.rootPage = IndexPage;
+            //          break;
+            //      }
+            //    }
+            //  })
         });
     }
 

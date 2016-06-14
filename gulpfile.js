@@ -110,7 +110,7 @@ gulp.task('html',function () {
  */
 gulp.task('css',function () {
     var options = {
-        src: 'app/theme/app.+(md).scss',
+        src: 'app/theme/app.+(md|ios).scss',
         dest: 'www/build/css',
         sassOptions: {
             includePaths: [

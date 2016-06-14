@@ -265,17 +265,52 @@
 .wf-qos .qos-header .top-value img{
   height: 0.8rem;
 }
+.wf-qos .qos-list ion-avatar {
+    min-width: 2rem;
+    min-height: 2rem;
+}
+.wf-qos .qos-list ion-avatar img {
+    width: 2rem;
+}
+.wf-qos .qos-list ion-avatar[item-left] {
+    margin: 0;
+    padding: 14px 16px 14px 0;
+    border-bottom: 1px solid #dedede;
+}
+.wf-qos .qos-list ion-item:last-child ion-avatar[item-left] {
+    border-bottom: none;
+}
+.wf-qos .qos-list .qos-wifi-ms p{
+    font-size: 12px;
+    margin: 0;
+}
+.wf-qos .qos-list .qos-wifi-ms p.qos-wifi-none{
+    font-size: 1.6rem;
+}
+.wf-qos .qos-list .qos-wifi-ms span{
+    margin-right: .5rem;
+}
+.wf-qos .qos-list .qos-wifi-ms img{
+    font-size: 12px;
+    height: 0.75rem;
+    display: inline-block;
+    float: right;
+    margin-top: .4rem
+}
+.wf-qos .next-button{
+    padding: 0 1.5rem;
+}
 
 // .wf-qos .qos-top-text{display: block;text-align: center;color: #ACC8FA;margin-top: 0.5rem;font-size: 12px;}
-.wf-qos .top-case-img{height: 8rem;}
-.wf-qos .qos-top-case div{text-align: center;}
-.wf-qos .qos-top-case .qos-top-number{color: #fff;font-size: 30px;}
-.wf-qos .qos-top-case .qos-top-kb{font-size: 12px;color: #99C2FA; }
-.wf-qos .qos-top-case p{font-size: 12px;color: #99C2FA;text-align: center;}
-.wf-qos .qos-top-case p img{height: 1rem;}
-.qos-buttom button{border: 1px #fff solid;}
-.qos-pattern img{height: 10px;margin-top: 1.2rem;}
-.qos-uploading div{position: relative;}
-.qos-uploading img{position: absolute;top: 0.5rem;right: 0.5rem;height: 0.7rem;margin: 0;width: inherit;}
-.qos-equipment{background-color: #FAFAFA;height: 5rem;}
-.qos-equipment p{line-height: 5rem;padding-left: 0.7rem;font-size: 12px;}
+// .wf-qos .top-case-img{height: 8rem;}
+// .wf-qos .qos-top-case div{text-align: center;}
+// .wf-qos .qos-top-case .qos-top-number{color: #fff;font-size: 30px;}
+// .wf-qos .qos-top-case .qos-top-kb{font-size: 12px;color: #99C2FA; }
+// .wf-qos .qos-top-case p{font-size: 12px;color: #99C2FA;text-align: center;}
+// .wf-qos .qos-top-case p img{height: 1rem;}
+// .qos-buttom button{border: 1px #fff solid;}
+// .qos-pattern img{height: 10px;margin-top: 1.2rem;}
+// .qos-uploading div{position: relative;}
+// .qos-uploading img{position: absolute;top: 0.5rem;right: 0.5rem;height: 0.7rem;margin: 0;width: inherit;}
+// .qos-equipment{background-color: #FAFAFA;height: 5rem;}
+// .qos-equipment p{line-height: 5rem;padding-left: 0.7rem;font-size: 12px;}

@@ -60,3 +60,40 @@
 .md .alert-button-group .alert-button .button-inner{
   justify-content:center;
 }
+
+/**
+ * 采用 ios 单选样式
+ */
+.md .radio-icon {
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 21px;
+    border: none;
+}
+.radio-checked .radio-inner{
+    position: absolute;
+    top: 4px;
+    left: 7px;
+    width: 5px;
+    height: 12px;
+    border-width: 2px;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-style: solid;
+    border-color: #387ef5;
+    transform: rotate(45deg);
+}
+
+.radio-inner{
+    position:static;
+    top:0;
+    left: 0;
+    width:0;
+    height: 0;
+    border: none;
+    border-radius:0;
+    transition: all 0ms ease;
+    background-color:#fff;
+}
+/* --------------------  */
