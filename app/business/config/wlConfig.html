@@ -36,86 +36,78 @@
 				</ion-list>
 
 				<ion-list>
+					<div [hidden]="!encryptionShow" class="wf-triangle wf-triangle-encryp" item-right></div>
 					<ion-item (click)='encryptionShow = !encryptionShow'>
 						<span>加密方式</span>
-						<span item-right>{{wlConfig.encryption}}</span>
+						<span item-right>{{wlConfig.encryption | switchName:'wlConfig'}}</span>
 					</ion-item>
 				</ion-list>
 
-				<div [hidden]="!encryptionShow" class="wf-triangle" item-right></div>
+
 
 				<ion-list [hidden]="!encryptionShow" class="conrent-text">
 					<ion-item>
-						<p text-right (click)="wlConfig.encryption = '不加密';encryptionShow = !encryptionShow">不加密</p>
+						<p text-right (click)="wlConfigM.encryption = 'none';wlConfig.encryption = 'none';encryptionShow = !encryptionShow">不加密</p>
 					</ion-item>
 					<ion-item>
-						<p text-right (click)="wlConfig.encryption = 'WPA2-PSK';encryptionShow = !encryptionShow">WPA2-PSK</p>
+						<p text-right (click)="wlConfigM.encryption = 'psk-mixed';wlConfig.encryption = 'psk-mixed';encryptionShow = !encryptionShow">WPA2-PSK</p>
 					</ion-item>
 					<ion-item>
-						<p text-right (click)="wlConfig.encryption = 'WPA-PSK';encryptionShow = !encryptionShow">WPA-PSK</p>
+						<p text-right (click)="wlConfigM.encryption = 'psk2';wlConfig.encryption = 'psk2';encryptionShow = !encryptionShow">WPA-PSK</p>
 					</ion-item>
 				</ion-list>
 
 				<ion-list>
 					<ion-item>
 						<ion-label fixed>WiFi密码</ion-label>
-						<ion-input text-right type="text" [placeholder]="wlConfig.password || '请输入WiFi密码'"></ion-input>
+						<ion-input text-right type="text" ([ngModel])='wlConfigM.password' [placeholder]="wlConfig.password || '请输入WiFi密码'"></ion-input>
 					</ion-item>
 				</ion-list>
 
 				<ion-list>
+					<div [hidden]="!realChannelShow" class="wf-triangle wf-triangle-real" item-right></div>
 					<ion-item (click)='realChannelShow = !realChannelShow'>
 						<span>信道</span>
-						<span item-right>{{wlConfig.realChannel}}</span>
+						<span item-right>{{wlConfig.realChannel | switchName:'wlConfig'}}</span>
 					</ion-item>
 				</ion-list>
 
-				<div [hidden]="!realChannelShow" class="wf-triangle" item-right></div>
 
 				<ion-list [hidden]="!realChannelShow" class="conrent-text">
 					<ion-item>
-						<p text-right (click)="wlConfig.realChannel = '1';realChannelShow = !realChannelShow">1</p>
-					</ion-item>
-					<ion-item>
-						<p text-right (click)="wlConfig.realChannel = '2';realChannelShow = !realChannelShow">2</p>
-					</ion-item>
-					<ion-item>
-						<p text-right (click)="wlConfig.realChannel = '3';realChannelShow = !realChannelShow">3</p>
-					</ion-item>
-					<ion-item>
-						<p text-right (click)="wlConfig.realChannel = '4';realChannelShow = !realChannelShow">4</p>
+						<p text-right (click)="wlConfigM.realChannel = 0;wlConfig.realChannel = 0;realChannelShow = !realChannelShow">自动</p>
 					</ion-item>
 				</ion-list>
 
 				<ion-list>
 					<ion-item>
 						<ion-label fixed>频道宽带</ion-label>
-						<ion-input text-right type="text" [placeholder]="wlConfig.bandwidth || '请输入频道宽带'"></ion-input>
+						<ion-input text-right type="text" ([ngModel])='wlConfigM.bandwidth' [placeholder]="wlConfig.bandwidth || '请输入频道宽带'"></ion-input>
 					</ion-item>
 				</ion-list>
 
 				<ion-list>
+					<div [hidden]="!txpowerShow" class="wf-triangle wf-triangle-txpower" item-right></div>
 					<ion-item (click)='txpowerShow = !txpowerShow'>
 						<span>信号强度</span>
-						<span item-right>{{wlConfig.txpower}}</span>
+						<span item-right>{{wlConfig.txpower | switchName:'wlConfig'}}</span>
 					</ion-item>
 				</ion-list>
-				<div [hidden]="!txpowerShow" class="wf-triangle" item-right></div>
 
 				<ion-list [hidden]="!txpowerShow" class="conrent-text">
 					<ion-item>
-						<p text-right (click)="wlConfig.txpower = '强';txpowerShow = !txpowerShow">强</p>
+						<p text-right (click)="wlConfigM.txpower = 100;wlConfig.txpower = 100;txpowerShow = !txpowerShow">强</p>
 					</ion-item>
 					<ion-item>
-						<p text-right (click)="wlConfig.txpower = '中';txpowerShow = !txpowerShow">中</p>
+						<p text-right (click)="wlConfigM.txpower = 70;wlConfig.txpower = 70;txpowerShow = !txpowerShow">中</p>
 					</ion-item>
 					<ion-item>
-						<p text-right (click)="wlConfig.txpower = '弱';txpowerShow = !txpowerShow">弱</p>
+						<p text-right (click)="wlConfigM.txpower = 40;wlConfig.txpower = 40;txpowerShow = !txpowerShow">弱</p>
 					</ion-item>
 				</ion-list>
 
 				<div class="next-button">
-					<button wifi block (click)="applicationModify()">应用修改</button>
+					<button wifi block (click)="applicationModifyWifi()">应用修改</button>
 					<div class="hide-button"></div>
 				</div>
 			</div>
@@ -123,12 +115,13 @@
 		</div>
 
 		<!-- -  - - - - - - - - - - - -  -->
+
 		<div *ngSwitchWhen="'WAN'" class="wan-config">
 
 			<ion-list>
 				<ion-item (click)='lwConfigShow = !lwConfigShow'>
 					<span>联网方式</span>
-					<span item-right>{{wanConfig.wanType | switchName}}</span>
+					<span item-right>{{wanConfig.wanType | switchName:'lwConfig'}}</span>
 				</ion-item>
 			</ion-list>
 

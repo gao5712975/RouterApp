@@ -11,42 +11,43 @@
 		</ion-list-header>
 			<ion-item (click)='wtfmbpShow = !wtfmbpShow'>
 				<span>网络名称</span>
-				<span item-right>{{wtfmbpShow}}</span>
+				<span item-right>{{wtfmbp.remotessid}}</span>
 			</ion-item>
 	</ion-list>
 
 	<div [hidden]="!wtfmbpShow" class="wf-triangle" item-right></div>
 	<ion-list [hidden]="!wtfmbpShow"  class="conrent-text">
-		<ion-item>
-			<p text-right (click)="wtfmbpShow = 'WPA-PSK';wtfmbpShow = !wtfmbpShow">WPA-PSK</p>
-		</ion-item>
-		<ion-item>
-			<p text-right (click)="wtfmbpShow = 'WPA-PSK';wtfmbpShow = !wtfmbpShow">WPA-PSK</p>
+		<ion-item *ngFor='let li of routerWifiList;let i = index'>
+			<p text-right (click)="wtfmbp.remotessid = li.ssid;wtfmbpShow = !wtfmbpShow;wtfmbp.remoteencryption = li.encryption">{{li.ssid}}</p>
 		</ion-item>
 	</ion-list>
 	<ion-list>
-		<ion-item>
+		<ion-item [hidden]="wtfmbp.remoteencryption == 'none'">
 			<ion-label fixed>密码</ion-label>
-			<ion-input type="text" text-right placeholder="01234567"></ion-input>
+			<ion-input type="text" text-right [(ngModel)]='wtfmbp.remotepassword' placeholder="请填写路由器密码"></ion-input>
 		</ion-item>
 
 		<ion-item class="wf-checkbox">
 			<ion-label>与WIFI密码相同</ion-label>
-			<ion-checkbox dark checked="true" [(ngModel)]="identical"></ion-checkbox>
+			<ion-checkbox dark [(ngModel)]="wtfmbpEquallyShow" (ionChange)='wtfmbpEqually()'></ion-checkbox>
 		</ion-item>
 	</ion-list>
-	<ion-list>
+	<ion-list [hidden]='wtfmbpEquallyShow'>
 		<ion-list-header>
 			端口转发规则
 		</ion-list-header>
 		<ion-item>
 			<ion-label fixed>网络名称</ion-label>
-			<ion-input type="text" text-right placeholder="小橙路由中继网络"></ion-input>
+			<ion-input type="text" [(ngModel)]='wtfmbp.APssid' text-right placeholder="小橙路由中继网络"></ion-input>
 		</ion-item>
 
 		<ion-item>
 			<ion-label fixed>密码</ion-label>
-			<ion-input type="text" text-right placeholder="01234567"></ion-input>
+			<ion-input type="text" text-right [(ngModel)]='wtfmbp.APpassword' placeholder="请填写路由器密码"></ion-input>
 		</ion-item>
 	</ion-list>
+
+	<div class="next-button">
+		<button wifi block (click)="goRelay()">开始中继</button>
+	</div>
 </ion-content>

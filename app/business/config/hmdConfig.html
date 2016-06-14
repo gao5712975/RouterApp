@@ -6,14 +6,13 @@
 </ion-navbar>
 <ion-content class="outer-content" class="wf-hmdConfig">
 	<ion-list>
-		<ion-item *ngFor="let co of hmdConfig">
+		<ion-item *ngFor="let co of hmdConfig;let i = index" (click)='showRemoveBtn(co)'>
 			<ion-avatar item-left>
-				<img [src]="'../../build/static/img/config/phone.png'" />
+				<img [src]="'../../build/static/img/config/phone.png'"/>
 			</ion-avatar>
 			<span>{{co.name}}</span>
 			<p></p>
-			<button [hidden]="co.removeBtn" class='removeHmd-bt' (click)="removeHmd(co.mac,$event)" type="button" name="button">删除</button>
-			<!-- <h2>{{co.name}} <p item-left>删除</p></h2> -->
+			<button [hidden]="!co.removeBtn" class='removeHmd-bt' (click)="removeHmd(co.mac,i,$event)" type="button" name="button">删除</button>
 		</ion-item>
 	</ion-list>
 	<div *ngIf='hmdConfig.length == 0' class="wf-hmdConfig-empty">

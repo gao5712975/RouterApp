@@ -67,7 +67,8 @@ export class ActionSheetPage{
                         console.log('确定 clicked');
                     }
                 }
-            ]
+            ],
+            enableBackdropDismiss:true
         })
         this.nav.present(alert);
     }

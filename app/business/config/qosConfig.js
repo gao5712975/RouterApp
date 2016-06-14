@@ -12,5 +12,5 @@ export class QosConfig{
        this.qosconfirm1=true;
        this.cancel=true;
     }
-
+    
 }

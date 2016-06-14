@@ -28,9 +28,6 @@ export class WlConfigPage {
      * 表单
      */
     this.wlConfig = {};
-    this.wlConfig.encryption = '不加密';
-    this.wlConfig.txpower = '强';
-    this.wlConfig.realChannel = '4';
     this.wanConfig = {};
     this.lanConfig = {};
 
@@ -60,6 +57,7 @@ export class WlConfigPage {
       ]).then(() => {
         this.events.publish('loading:close');
       }).catch((err) => {
+        // this.events.publish('loading:close');
         console.info('黑名单请求错误')
       })
       /**
@@ -67,6 +65,7 @@ export class WlConfigPage {
        */
     this.lanConfigM = {};
     this.wanConfigM = {};
+    this.wlConfigM = {};
   }
 
   /**
@@ -136,6 +135,21 @@ export class WlConfigPage {
   }
 
   /**
+   * 修改WIFI口上网配置信息
+   */
+  internetModifyWifi() {
+    let url = `/cheng/networkmanager/set_wifi_setting`;
+    var query = Object.assign({}, this.wlConfig);
+    var query = Object.assign(query, this.wlConfigM);
+    let body = helpers.toBodyString(query);
+    return new Promise(resolve => {
+      this.http.post(url, body).subscribe(res => {
+        resolve(res);
+      })
+    })
+  }
+
+  /**
    * 提交 Lan修改
    * @return {[type]} [description]
    */
@@ -153,6 +167,18 @@ export class WlConfigPage {
    */
   applicationModifyWan() {
     this.internetModifyWan().then((res) => {
+      if (res && res.code == 0) {
+        this.events.publish('global:baseUrl', res.ip)
+      }
+    });
+  }
+
+  /**
+   * 提交 WIFI修改
+   * @return {[type]} [description]
+   */
+  applicationModifyWifi() {
+    this.internetModifyWifi().then((res) => {
       if (res && res.code == 0) {
         this.events.publish('global:baseUrl', res.ip)
       }

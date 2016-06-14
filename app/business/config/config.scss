@@ -4,6 +4,9 @@
 .wf-hmdConfig ion-list {
     padding-top: 2rem;
 }
+.wf-hmdConfig ion-list .item-inner{
+    margin-right: 8px;
+}
 .wf-hmdConfig ion-avatar {
     min-width: 2rem;
     min-height: 2rem;
@@ -34,12 +37,14 @@
 }
 .wf-hmdConfig .removeHmd-bt {
     position: absolute;
-    right: 0;
+    right: 8px;
     top: 0;
     height: 100%;
     margin: 0;
     padding: 0 1.3rem;
     background-color: red;
+    font-size: 1.8rem;
+    color: #fff
 }
 /**
  * 网络设置
@@ -51,10 +56,11 @@
     border-top: 1px solid #dedede;
     border-left: 1px solid #dedede;
     position: absolute;
-    top: 10.7rem;
     right: 20px;
     background-color: #f3f3f3;
     margin: 0;
+    z-index: 1;
+    bottom: -0.6rem;
 }
 .wf-wlConfig .wan-config ion-list {
     margin: 0;
@@ -97,6 +103,13 @@
 }
 .wf-wlConfig .wifi-config ion-list:nth-child(2) {
     border-top: 1px solid #dedede;
+    position: relative;
+}
+.wf-wlConfig .wifi-config ion-list:nth-child(5) {
+    position: relative;
+}
+.wf-wlConfig .wifi-config ion-list:nth-child(8) {
+    position: relative;
 }
 .wf-wlConfig .next-button {
     padding: 0 1.5rem;
@@ -190,3 +203,79 @@
 .wf-gzConfig2 .wf-checkbox .item-inner {
     border: none;
 }
+
+/**
+ * Qos限速
+ */
+ // .wf-hmdConfig ion-row{border-bottom: 1px #EEEEEE solid;}
+.wf-qos .qos-header{height: 20rem;background-color: #2780F8;padding: 0 2rem;border-top: 1px solid #3F8CF4;}
+.wf-qos .qos-header >p{
+  margin: 0;
+  padding-top: 0.5rem;
+  font-size: 12px;
+  color: #ACC8FA;
+}
+.wf-qos .qos-massage{
+  padding-top: 2rem;
+  height: 10rem;
+}
+.wf-qos .qos-massage div{
+  height: 8rem;
+}
+.wf-qos .qos-massage div:nth-child(1){
+  float: left;
+  width: 40%;
+}
+.wf-qos .qos-massage div:nth-child(2){
+  float: left;
+  width: 20%;
+}
+.wf-qos .qos-massage div:nth-child(2) img{
+  height: 8rem;
+}
+.wf-qos .qos-massage div:nth-child(3){
+  float: left;
+  width: 40%;
+}
+.wf-qos .qos-massage p{
+  margin: 0;
+}
+.wf-qos .qos-header .qos-btn{
+  margin-top: 2.2rem;
+}
+.wf-qos .qos-header .qos-btn button{
+  color: #fff;
+  border: 1px solid #fff;
+}
+.wf-qos .qos-header .top-number{
+  margin-right: 0.2rem;
+  color: #fff;
+  font-size: 30px;
+}
+.wf-qos .qos-header .top-kb{
+  font-size: 12px;
+  color: #99C2FA;
+}
+.wf-qos .qos-header .top-value{
+  font-size: 12px;color: #99C2FA;
+}
+.wf-qos .qos-header .top-value span{
+  margin-right: 0.2rem;
+}
+.wf-qos .qos-header .top-value img{
+  height: 0.8rem;
+}
+
+// .wf-qos .qos-top-text{display: block;text-align: center;color: #ACC8FA;margin-top: 0.5rem;font-size: 12px;}
+.wf-qos .top-case-img{height: 8rem;}
+.wf-qos .qos-top-case div{text-align: center;}
+.wf-qos .qos-top-case .qos-top-number{color: #fff;font-size: 30px;}
+.wf-qos .qos-top-case .qos-top-kb{font-size: 12px;color: #99C2FA; }
+.wf-qos .qos-top-case p{font-size: 12px;color: #99C2FA;text-align: center;}
+.wf-qos .qos-top-case p img{height: 1rem;}
+.qos-buttom button{border: 1px #fff solid;}
+.qos-pattern img{height: 10px;margin-top: 1.2rem;}
+.qos-uploading div{position: relative;}
+.qos-uploading img{position: absolute;top: 0.5rem;right: 0.5rem;height: 0.7rem;margin: 0;width: inherit;}
+.qos-equipment{background-color: #FAFAFA;height: 5rem;}
+.qos-equipment p{line-height: 5rem;padding-left: 0.7rem;font-size: 12px;}

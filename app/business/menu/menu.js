@@ -91,7 +91,7 @@ export class GetMenuPage{
             icon:"md-arrow-round-up"
         },
         {
-            page:GzConfig,
+            page:ActionSheetPage,
             index:3,
             title:"重启路由器",
             icon:"power"
