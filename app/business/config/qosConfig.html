@@ -1,7 +1,7 @@
 <ion-navbar *navbar wifi>
 	<button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-    </button>
+		<ion-icon name="menu"></ion-icon>
+	</button>
 	<ion-title text-center padding-right-menu>QOS限速</ion-title>
 </ion-navbar>
 
@@ -77,37 +77,38 @@
 		</div>
 	</div>
 
-	<ion-list radio-group [(ngModel)]="autoManufacturers">
-	  <ion-item>
-	    <ion-label>智能限速模式</ion-label>
-	    <ion-radio value="cord"></ion-radio>
-	  </ion-item>
-	  <ion-item>
-	    <ion-label>手动限速模式</ion-label>
-	    <ion-radio value="duesenberg"></ion-radio>
-	  </ion-item>
+	<ion-list radio-group [(ngModel)]="autoConfig" (ionChange)='autoConfigChange()'>
+		<ion-item>
+			<ion-label>不限速</ion-label>
+			<ion-radio [disabled]='switchBlock' value='-1'></ion-radio>
+		</ion-item>
+		<ion-item>
+			<ion-label>智能限速模式</ion-label>
+			<ion-radio [disabled]='switchBlock' value='0'></ion-radio>
+		</ion-item>
+		<ion-item>
+			<ion-label>手动限速模式</ion-label>
+			<ion-radio [disabled]='switchBlock' value='2'></ion-radio>
+		</ion-item>
 	</ion-list>
-
-	<ion-list class="qos-list">
+	<ion-list class="qos-list" [hidden]='autoConfigShow'>
 		<ion-list-header>
-		  在线设备
+			在线设备
 		</ion-list-header>
 		<ion-item>
 			<ion-avatar item-left>
-				<img [src]="'../../build/static/img/config/phone.png'"/>
+				<img [src]="'../../build/static/img/config/phone.png'" />
 			</ion-avatar>
 			<span>Angelababy1111</span>
-			<!-- <p></p> -->
 			<div item-right class="qos-wifi-ms">
 				<p class="qos-wifi-none">不限速</p>
 			</div>
 		</ion-item>
 		<ion-item>
 			<ion-avatar item-left>
-				<img [src]="'../../build/static/img/config/phone.png'"/>
+				<img [src]="'../../build/static/img/config/phone.png'" />
 			</ion-avatar>
 			<span>Angelababy1111</span>
-			<!-- <p></p> -->
 			<div item-right class="qos-wifi-ms">
 				<p><span>不限速</span><img src="../../build/static/img/config/QOS-color-bottom.png"></p>
 				<p><span>{{'234'}}KB/S</span><img src="../../build/static/img/config/QOS-color-top.png"></p>
@@ -115,10 +116,9 @@
 		</ion-item>
 		<ion-item>
 			<ion-avatar item-left>
-				<img [src]="'../../build/static/img/config/phone.png'"/>
+				<img [src]="'../../build/static/img/config/phone.png'" />
 			</ion-avatar>
 			<span>Angelababy1111</span>
-			<!-- <p></p> -->
 			<div item-right class="qos-wifi-ms">
 				<p><span>{{'234'}}KB/S</span><img src="../../build/static/img/config/QOS-color-bottom.png"></p>
 				<p><span>{{'234'}}KB/S</span><img src="../../build/static/img/config/QOS-color-top.png"></p>
@@ -127,6 +127,6 @@
 	</ion-list>
 
 	<div class="next-button">
-		<button wifi block (click)="goToHome3()">手动添加黑名单</button>
+		<button wifi block (click)="goToHome3()">应用修改</button>
 	</div>
 </ion-content>
