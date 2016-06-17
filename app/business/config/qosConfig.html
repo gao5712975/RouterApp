@@ -63,12 +63,12 @@
 		<p text-center>外网带宽</p>
 		<div class="qos-massage">
 			<div>
-				<p text-center><span class="top-number">348</span><span class="top-kb">KB/S</span></p>
+				<p text-center><span class="top-number">{{band.upload}}</span><span class="top-kb">M/S</span></p>
 				<p text-center class="top-value"><span>上传宽带</span><img src="../../build/static/img/config/QOS-top.png"></p>
 			</div>
 			<div text-center><img src="../../build/static/img/config/QOS1.png"></div>
 			<div>
-				<p text-center><span class="top-number">348</span><span class="top-kb">KB/S</span></p>
+				<p text-center><span class="top-number">{{band.download}}</span><span class="top-kb">M/S</span></p>
 				<p text-center class="top-value"><span>上载带宽</span><img src="../../build/static/img/config/QOS-bottom.png"></p>
 			</div>
 		</div>
@@ -95,33 +95,15 @@
 		<ion-list-header>
 			在线设备
 		</ion-list-header>
-		<ion-item>
+		<ion-item *ngFor='let list of userlist;let i = index'>
 			<ion-avatar item-left>
-				<img [src]="'../../build/static/img/config/phone.png'" />
+				<img [src]="'../../build/static/img/config/phone.png'"/>
 			</ion-avatar>
-			<span>Angelababy1111</span>
+			<span>{{list.hostname}}</span>
 			<div item-right class="qos-wifi-ms">
-				<p class="qos-wifi-none">不限速</p>
-			</div>
-		</ion-item>
-		<ion-item>
-			<ion-avatar item-left>
-				<img [src]="'../../build/static/img/config/phone.png'" />
-			</ion-avatar>
-			<span>Angelababy1111</span>
-			<div item-right class="qos-wifi-ms">
-				<p><span>不限速</span><img src="../../build/static/img/config/QOS-color-bottom.png"></p>
-				<p><span>{{'234'}}KB/S</span><img src="../../build/static/img/config/QOS-color-top.png"></p>
-			</div>
-		</ion-item>
-		<ion-item>
-			<ion-avatar item-left>
-				<img [src]="'../../build/static/img/config/phone.png'" />
-			</ion-avatar>
-			<span>Angelababy1111</span>
-			<div item-right class="qos-wifi-ms">
-				<p><span>{{'234'}}KB/S</span><img src="../../build/static/img/config/QOS-color-bottom.png"></p>
-				<p><span>{{'234'}}KB/S</span><img src="../../build/static/img/config/QOS-color-top.png"></p>
+				<p [hidden]="!(list.qos.downmax == '0' && list.qos.upmax == '0')" class="qos-wifi-none">不限速</p>
+				<p [hidden]="list.qos.downmax == '0' && list.qos.upmax == '0'"><span>{{list.qos.downmax | switchName:'qosConfig'}}</span><img src="../../build/static/img/config/QOS-color-bottom.png"></p>
+				<p [hidden]="list.qos.downmax == '0' && list.qos.upmax == '0'"><span>{{list.qos.upmax | switchName:'qosConfig'}}</span><img src="../../build/static/img/config/QOS-color-top.png"></p>
 			</div>
 		</ion-item>
 	</ion-list>

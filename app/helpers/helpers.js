@@ -1,4 +1,5 @@
 var md5 = require('md5');
+import {Global} from '../application/global';
 /**
  * 加密模块
  */
@@ -13,7 +14,7 @@ var encrypt = {
     },
     nonceCreat: function() {
         var type = 0;
-        var deviceId = '00:e0:4c:36:49:8e';
+        var deviceId = Global.getDeviceMac();
         var time = Math.floor(new Date().getTime() / 1000);
         var random = Math.floor(Math.random() * 10000);
         return [type, deviceId, time, random].join('_');

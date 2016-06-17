@@ -8,12 +8,17 @@ import {Home} from './business/home/home';
 import {IndexPage} from './business/index/index'
 import {GetMenuPage} from './business/menu/menu';
 
-import {interceptor} from './interceptor/HttpInterceptor';
+import {Interceptor} from './interceptor/HttpInterceptor';
+
+// import {ViewOverride} from './injectable/viewOverride';
 /**
  * providers
  */
 import {FirstLogin} from './providers/FirstLogin';
 
+/**
+ * 全局变量
+ */
 import {Global} from './application/global';
 
 @Component({
@@ -53,7 +58,6 @@ class RouterApp {
             // StatusBar.styleBlackOpaque 状态栏黑色不透明。我测了下，还是白色的，跟上面一样，适合深色背景；
             // StatusBar.hide 状态栏隐藏；
             // StatusBar.show 状态栏显示；
-            // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             Splashscreen.hide();
             StatusBar.styleBlackOpaque();
@@ -131,4 +135,4 @@ let config = {
     // modalLeave: 'modal-slide-out'
 }
 
-ionicBootstrap(RouterApp,[interceptor],config);
+ionicBootstrap(RouterApp,[Interceptor],config);

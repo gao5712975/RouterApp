@@ -12,6 +12,7 @@ export class Global {
     this.events = events;
     this.baseUrl = "";
     this.token = "";
+    this.deviceMac = '00:e0:4c:36:49:8e';
   }
   static setBaseUrl(ip) {
     this.baseUrl = `//${ip}/cgi-bin/luci`;
@@ -25,5 +26,12 @@ export class Global {
   }
   static getToken() {
     return this.token;
+  }
+
+  static setDeviceMac(mac) {
+    this.deviceMac = mac;
+  }
+  static getDeviceMac() {
+    return this.deviceMac;
   }
 }

@@ -54,6 +54,15 @@ export class SwitchName {
           return value;
       }
     }
+    if(args == 'qosConfig'){
+      if(Number(value)>=1024){
+        return  `${Math.floor(Number(value)/1024*100)/100}M/S`;
+      }else if(Number(value) == 0){
+        return `不限速`;
+      }else{
+        return `${value}KB/S`;
+      }
+    }
     return value;
   }
 }

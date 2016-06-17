@@ -27,7 +27,7 @@ export class HmdConfig{
 
       this.internetMethodList().then((res) => {
         this.events.publish('loading:close');
-        if(res && res.code == 0){
+        if(res && res.code == 0 && res.macfilter instanceof Array){
           this.hmdConfig = res.macfilter;
         }
       })
@@ -92,7 +92,7 @@ export class HmdConfig{
       */
      showAlertSuccess(){
          let alert = Alert.create({
-             message:`<div style="font-size: 1.8rem;color: #000;padding-top: 4rem;height: 16rem;"><img style='width: 6rem;' src='./build/static/img/config/wf-await.gif'><p>解除拉黑成功</p></div>`
+             message:`<div style="font-size: 1.8rem;color: #000;padding-top: 4rem;height: 16rem;"><img style='width: 6rem;' src='./build/static/img/config/wf-true.png'><p>解除拉黑成功</p></div>`
          })
          this.nav.present(alert);
      }

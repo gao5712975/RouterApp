@@ -72,6 +72,7 @@ export class YXHRBackend extends XHRBackend {
   }
 
   createConnection(request){
+    console.info(request);
     /**
      * request 每次请求修改url地址；
      */
@@ -98,7 +99,7 @@ export class YXHRBackend extends XHRBackend {
   }
 }
 
-exports.interceptor =  [
+exports.Interceptor =  [
   provide(RequestOptions,{useClass: YRequestObtions}),
   provide(ResponseOptions,{useClass: YResponseObtions}),
   provide(XHRBackend,{useClass:YXHRBackend})

@@ -1,17 +1,15 @@
 /**
  * Created by moka on 16-5-30.
  */
-import {
-  Page
-} from 'ionic-angular';
-import {
-  Http
-} from '@angular/http';
+import {Page} from 'ionic-angular';
+import {Http} from '@angular/http';
 
+import {SwitchName} from '../../pipe/switchName';
 import * as helpers from '../../helpers/helpers';
 
 @Page({
-  templateUrl: 'build/business/config/qosConfig.html'
+  templateUrl: 'build/business/config/qosConfig.html',
+  pipes:[SwitchName]
 })
 
 export class QosConfig {
@@ -28,9 +26,13 @@ export class QosConfig {
      * 默认值
      * @type {Number}
      */
-    this.autoConfigShow = true;
+    this.autoConfigShow = true;//手动限速 显示用户列表
 
-    this.switchBlock = false;
+    this.switchBlock = false;//禁用选择按钮 阻止重复提交
+
+    this.band = {upload:0,download:0}; //外网宽带
+
+    this.userlist = [];//用户列表
 
     /**
      * 状态初始化
@@ -45,7 +47,9 @@ export class QosConfig {
         }else if(res.status.mode == 2 && res.status.on == 1){
           this.autoConfig = 2;
           this.autoConfigShow = false;
+          this.userlist = res.list;
         }
+        this.band = res.band;
       }
     })
   }
@@ -61,11 +65,11 @@ export class QosConfig {
       case '-1':
         this.switchBlock = true;
         Promise.all([this.internetMethodSwitch(0)]).then((res) => {
-          console.info(res);
           this.internetMethodStatus().then((res) => {
-            console.info(res);
             this.autoConfigShow = true;
             this.switchBlock = false;
+
+            this.band = res.band;
           })
         })
         break;
@@ -74,9 +78,10 @@ export class QosConfig {
         Promise.all([this.internetMethodSwitch(1),this.internetMethodMode(this.autoConfig)]).then((res) => {
           console.info(res);
           this.internetMethodStatus().then((res) => {
-            console.info(res);
             this.autoConfigShow = true;
             this.switchBlock = false;
+
+            this.band = res.band;
           })
         })
         break;
@@ -85,9 +90,11 @@ export class QosConfig {
         Promise.all([this.internetMethodSwitch(1),this.internetMethodMode(this.autoConfig)]).then((res) => {
           console.info(res);
           this.internetMethodStatus().then((res) => {
-            console.info(res);
             this.autoConfigShow = false;
             this.switchBlock = false;
+
+            this.band = res.band;
+            this.userlist = res.list;
           })
         })
         break;
