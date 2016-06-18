@@ -1,7 +1,7 @@
 // import {bootstrap} from '@angular/platform-browser/browser';
-import {HTTP_PROVIDERS,XHRBackend,BrowserXhr,BaseRequestOptions,RequestOptions,ResponseOptions,BaseResponseOptions,Http,Response} from '@angular/http';
+import {HTTP_PROVIDERS, XHRBackend, BrowserXhr, BaseRequestOptions, RequestOptions, ResponseOptions, BaseResponseOptions, Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {provide,Injectable,Inject} from '@angular/core';
+import {provide, Injectable, Inject} from '@angular/core';
 
 import {Global} from '../application/global';
 import {Storage, LocalStorage} from 'ionic-angular';
@@ -10,19 +10,19 @@ import {Storage, LocalStorage} from 'ionic-angular';
  * 请求统一处理
  */
 export class YRequestObtions extends BaseRequestOptions {
-  constructor(){
-    super();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-  }
+    constructor() {
+        super();
+        this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    }
 }
 
 /**
  * 响应统一处理
  */
 export class YResponseObtions extends BaseResponseOptions {
-  constructor(){
-    super();
-  }
+    constructor() {
+        super();
+    }
 }
 
 /**
@@ -60,52 +60,52 @@ export class YResponseObtions extends BaseResponseOptions {
  */
 
 export class YXHRBackend extends XHRBackend {
-  static get parameters() {
-      return [
-          [BrowserXhr],[ResponseOptions]
-      ];
-  }
-
-  constructor(browserXhr,responseOptions) {
-    super(browserXhr,responseOptions);
-    this.storage = new Storage(LocalStorage);
-  }
-
-  createConnection(request){
-    console.info(request);
-    /**
-     * request 每次请求修改url地址；
-     */
-    let token = Global.getToken();
-    if(token){
-      request.url = Global.getBaseUrl() + '/;stok=' + token + request.url;
-    }else{
-      request.url = Global.getBaseUrl() + request.url;
+    static get parameters() {
+        return [
+            [BrowserXhr], [ResponseOptions]
+        ];
     }
-    let xhrConnection = super.createConnection(request);
-    xhrConnection.response = xhrConnection.response.catch((error) => {
-      return Observable.throw(error);
-    });
 
-    //请求结果的预处理，统一处理业务状态！！！！！！
-    xhrConnection.response = xhrConnection.response.map(data => {
-      try {
-        return data.json();
-      } catch (e) {
-        return data._body;
-      }
-    });
-    return xhrConnection;
-  }
+    constructor(browserXhr, responseOptions) {
+        super(browserXhr, responseOptions);
+        this.storage = new Storage(LocalStorage);
+    }
+
+    createConnection(request) {
+        console.info(request);
+        /**
+         * request 每次请求修改url地址；
+         */
+        let token = Global.getToken();
+        if (token) {
+            request.url = Global.getBaseUrl() + '/;stok=' + token + request.url;
+        } else {
+            request.url = Global.getBaseUrl() + request.url;
+        }
+        let xhrConnection = super.createConnection(request);
+        xhrConnection.response = xhrConnection.response.catch((error) => {
+            return Observable.throw(error);
+        });
+
+        //请求结果的预处理，统一处理业务状态！！！！！！
+        xhrConnection.response = xhrConnection.response.map(data => {
+            try {
+                return data.json();
+            } catch (e) {
+                return data._body;
+            }
+        });
+        return xhrConnection;
+    }
 }
 
-exports.Interceptor =  [
-  provide(RequestOptions,{useClass: YRequestObtions}),
-  provide(ResponseOptions,{useClass: YResponseObtions}),
-  provide(XHRBackend,{useClass:YXHRBackend})
-  // provide(Http,{
-  //   useFactory: (backend, defaultOptions) => new YHttp(backend, defaultOptions),
-  //   deps: [XHRBackend, RequestOptions]
-  // }),
+exports.Interceptor = [
+    provide(RequestOptions, { useClass: YRequestObtions }),
+    provide(ResponseOptions, { useClass: YResponseObtions }),
+    provide(XHRBackend, { useClass: YXHRBackend })
+    // provide(Http,{
+    //   useFactory: (backend, defaultOptions) => new YHttp(backend, defaultOptions),
+    //   deps: [XHRBackend, RequestOptions]
+    // }),
 
 ]

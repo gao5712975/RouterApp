@@ -7,23 +7,23 @@ var encrypt = {
     key: 'a2ffa5c9be07488bbb04a3a47d3c5f6a',
     iv: '64175472480004614961023454661220',
     nonce: null,
-    init: function() {
+    init: function () {
         var nonce = this.nonceCreat();
         this.nonce = nonce;
         return this.nonce;
     },
-    nonceCreat: function() {
+    nonceCreat: function () {
         var type = 0;
         var deviceId = Global.getDeviceMac();
         var time = Math.floor(new Date().getTime() / 1000);
         var random = Math.floor(Math.random() * 10000);
         return [type, deviceId, time, random].join('_');
     },
-    encPwd: function(pwd) {
+    encPwd: function (pwd) {
         var md5pwd = md5(pwd);
         return md5(this.nonce + md5pwd);
     },
-    newPwd: function(pwd, newpwd) {
+    newPwd: function (pwd, newpwd) {
         var md5pwd = md5(newpwd);
         return md5pwd;
     }

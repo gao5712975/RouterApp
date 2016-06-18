@@ -1,7 +1,7 @@
 /**
  * Created by moka on 16-5-26.
  */
-import {Page,NavController} from 'ionic-angular'
+import {Page, NavController} from 'ionic-angular'
 import {StatusBar} from 'ionic-native';
 import {Home1} from './home1'
 
@@ -9,13 +9,13 @@ import {Home1} from './home1'
     templateUrl: 'build/business/home/home.html'
 })
 
-export class Home{
+export class Home {
 
-    constructor(private nav:NavController){
-        
+    constructor(private nav: NavController) {
+
     }
 
-    goToHome1(){
+    goToHome1() {
         this.nav.push(Home1)
     }
 }

@@ -1,6 +1,6 @@
-import {Component,ViewChild} from '@angular/core';
-import {ionicBootstrap, Platform,MenuController,Events,Loading,NavController} from 'ionic-angular';
-import {StatusBar, Splashscreen,BatteryStatus} from 'ionic-native';
+import {Component, ViewChild} from '@angular/core';
+import {ionicBootstrap, Platform, MenuController, Events, Loading, NavController} from 'ionic-angular';
+import {StatusBar, Splashscreen, BatteryStatus} from 'ionic-native';
 
 import {IndexPage} from './business/index/index';
 import {GetMenuPage} from './business/menu/menu';
@@ -14,20 +14,20 @@ import {GetMenuPage} from './business/menu/menu';
 
 class RouterApp {
 
-	private rootPage:any;
-	private appPages:any;
-	private appSysPages:any;
-	private nav:any;
+    private rootPage: any;
+    private appPages: any;
+    private appSysPages: any;
+    private nav: any;
 
-	constructor(private platform:Platform,private menu:MenuController,private events:Events){
+    constructor(private platform: Platform, private menu: MenuController, private events: Events) {
         // Call any initial plugins when ready
         this.initializeApp();
-		this.rootPage = IndexPage;
+        this.rootPage = IndexPage;
 
         //获取菜单
         this.appPages = new GetMenuPage().getMenuPage();
         this.appSysPages = new GetMenuPage().getSYSMenuPage();
-	}
+    }
 
     initializeApp() {
         this.platform.ready().then(() => {
@@ -40,10 +40,10 @@ class RouterApp {
             // Here you can do any higher level native things you might need.
             Splashscreen.hide();
             StatusBar.styleBlackOpaque();
-   		});
+        });
     }
-	
-    openPage(p){
+
+    openPage(p) {
         // this.presentLoadingDefault();
         this.nav.push(p);
         this.menu.close()
@@ -54,23 +54,23 @@ class RouterApp {
      * @return {[type]} [description]
      */
     presentLoadingDefault() {
-      let loading = Loading.create({
-        spinner:"ios",
-        cssClass:"menu-box"
-      });
+        let loading = Loading.create({
+            spinner: "ios",
+            cssClass: "menu-box"
+        });
 
-      this.nav.present(loading);
-      this.events.subscribe('loading:close',() => {
-        loading.dismiss();
-      })
+        this.nav.present(loading);
+        this.events.subscribe('loading:close', () => {
+            loading.dismiss();
+        })
     }
 
 	/**
      * 关闭菜单
      * @return {[type]} [description]
      */
-    closeMenu(){
-      this.menu.close();
+    closeMenu() {
+        this.menu.close();
     }
 }
 
@@ -85,4 +85,4 @@ let config = {
     // modalLeave: 'modal-slide-out'
 }
 
-ionicBootstrap(RouterApp,[],config);
+ionicBootstrap(RouterApp, [], config);
