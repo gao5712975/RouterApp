@@ -3,16 +3,12 @@ import {Events} from 'ionic-angular';
 
 @Injectable()
 export class Global {
-  static get parameters(){
-    return [
-      [Events]
-    ]
-  }
-  constructor(events) {
-    this.events = events;
-    this.baseUrl = "";
-    this.token = "";
-    this.deviceMac = '00:e0:4c:36:49:8e';
+
+  private baseUrl:string;
+  private token:string;
+  private deviceMac:string = '00:e0:4c:36:49:8e'
+  constructor(private events:Events) {
+    
   }
   static setBaseUrl(ip) {
     this.baseUrl = `//${ip}/cgi-bin/luci`;

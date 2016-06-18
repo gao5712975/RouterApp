@@ -1,6 +1,6 @@
-@import "home";
-@import "menu";
-@import "config";
+@import "../business/home/home";
+@import "../business/menu/menu";
+@import "../business/config/config";
 $theme: #2F83F5;
 /**
  * 更改ionic默认样式

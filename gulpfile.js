@@ -1,84 +1,74 @@
-var gulp = require('gulp');
-var watchify = require('watchify');//加速browserify编译
-var babelify = require('babelify');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var pretty = require('prettysize'); //文字格式化
-var del = require('del'); //文件删除
-var assign = require('lodash.merge'); //lodash.merge 对象继承
-var runSequence = require('run-sequence'); //异步任务
-var gulpWatch = require('gulp-watch'); //监听插件
-var babelES2015Preset = require('babel-preset-es2015');//解析ES6
-var babelDecoratorsTransform = require('babel-plugin-transform-decorators-legacy').default; //解析ES7
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var buffer = require('gulp-buffer');
-var autoprefixer = require('gulp-autoprefixer');//根据设置浏览器版本自动处理浏览器前缀
+var gulp = require('gulp'),
+    gulpWatch = require('gulp-watch'),
+    del = require('del'),
+    runSequence = require('run-sequence'),
+    argv = process.argv;
+
 
 /**
- * js文件编译
- * @param options 修改默认配置
- * @returns {*}
+ * Ionic hooks
+ * Add ':before' or ':after' to any Ionic project command name to run the specified
+ * tasks before or after the command.
  */
-function buildBrowserify(options) {
-    var defaultOptions = {
-        watch:false
-    };
-    options = assign(defaultOptions,options);
+gulp.task('serve:before', ['watch']);
+gulp.task('emulate:before', ['build']);
+gulp.task('deploy:before', ['build']);
+gulp.task('build:before', ['build']);
 
-    var b = browserify({
-        entries: ['app/app.js'],
-        debug: false
-    }).transform(babelify, {
-        presets: [babelES2015Preset],
-        plugins: [babelDecoratorsTransform]
-    });
-
-    if(options.watch){
-        b = watchify(b);
-        b.on('update',bundle);
-        b.on('log',onLog);
-    }
-    return bundle();
-    function bundle() {
-        return b.bundle()  // 多个文件打包成一个文件
-            .on('error', onError)
-            .pipe(source('app.bundle.js'))
-            // .pipe(buffer())
-            // .pipe(uglify())
-            .pipe(gulp.dest('www/build/js'));
-    }
-}
+// we want to 'watch' when livereloading
+var shouldWatch = argv.indexOf('-l') > -1 || argv.indexOf('--livereload') > -1;
+gulp.task('run:before', [shouldWatch ? 'watch' : 'build']);
 
 /**
- * 任务监听
+ * Ionic Gulp tasks, for more information on each see
+ * https://github.com/driftyco/ionic-gulp-tasks
+ *
+ * Using these will allow you to stay up to date if the default Ionic 2 build
+ * changes, but you are of course welcome (and encouraged) to customize your
+ * build however you see fit.
  */
-gulp.task('default',['clean'],function (done) {
-    runSequence(['font','html','css','js','static'],function () {
-        gulpWatch('app/**/*.html',function () {
-            gulp.start('html');
-        });
-        gulpWatch(['app/**/*.css','app/**/*.scss'],function () {
-            gulp.start('css');
-        });
-        buildBrowserify({watch:true}).on('end', done);
-    });
+var buildBrowserify = require('ionic-gulp-browserify-typescript');
+var buildSass = require('ionic-gulp-sass-build');
+var copyHTML = require('ionic-gulp-html-copy');
+var copyFonts = require('ionic-gulp-fonts-copy');
+var copyScripts = require('ionic-gulp-scripts-copy');
+
+var isRelease = argv.indexOf('--release') > -1;
+
+gulp.task('watch', ['clean'], function(done){
+  runSequence(
+    ['static','sass', 'html', 'fonts', 'scripts'],
+    function(){
+      gulpWatch('app/**/*.scss', function(){ gulp.start('sass'); });
+      gulpWatch('app/**/*.html', function(){ gulp.start('html'); });
+      buildBrowserify({ watch: true }).on('end', done);
+    }
+  );
 });
 
-/**
- * 手动编译
- */
-gulp.task('build',['clean'],function (done) {
-    runSequence(['font','html','css','js','static'],function () {
-        buildBrowserify({watch:false}).on('end', done);
-    });
+gulp.task('build', ['clean'], function(done){
+  runSequence(
+    ['static','sass', 'html', 'fonts', 'scripts'],
+    function(){
+      buildBrowserify({
+        minify: isRelease,
+        browserifyOptions: {
+          debug: !isRelease
+        },
+        uglifyOptions: {
+          mangle: false
+        }
+      }).on('end', done);
+    }
+  );
 });
 
-/**
- * 清除编译文件
- */
+gulp.task('sass', buildSass);
+gulp.task('html', copyHTML);
+gulp.task('fonts', copyFonts);
+gulp.task('scripts', copyScripts);
 gulp.task('clean', function(){
-    return del('www/build');
+  return del('www/build');
 });
 
 /**
@@ -88,93 +78,3 @@ gulp.task('static',function () {
     return gulp.src(['static/**'])
         .pipe(gulp.dest('www/build/static'));
 });
-
-/**
- * 拷贝字体文件
- */
-gulp.task('font',function () {
-    return gulp.src(['node_modules/ionic-angular/fonts/**/*.+(ttf|woff|woff2)'])
-        .pipe(gulp.dest('www/build/fonts'));
-});
-
-/**
- * 拷贝html文件
- */
-gulp.task('html',function () {
-    return gulp.src(['app/**/*.html'])
-        .pipe(gulp.dest('www/build'));
-});
-
-/**
- * 拷贝css文件 编译scss文件
- */
-gulp.task('css',function () {
-    var options = {
-        src: 'app/theme/app.+(md|ios).scss',
-        dest: 'www/build/css',
-        sassOptions: {
-            includePaths: [
-                'node_modules/ionic-angular',
-                'node_modules/ionicons/dist/scss',
-                'app/business/home',
-                'app/business/menu',
-                'app/business/config',
-                'app/business/index'
-            ]
-        },
-        onError: function(err) {
-            console.error(err.message);
-            this.emit('end');
-        },
-        autoprefixerOptions:{
-            browsers: [
-                'last 2 versions',
-                'iOS >= 7',
-                'Android >= 4',
-                'Explorer >= 10',
-                'ExplorerMobile >= 11'
-            ],
-            cascade: false
-        }
-    };
-    return gulp.src(options.src)
-        .pipe(sass(options.sassOptions))
-        .on('error', options.onError)
-        // .pipe(autoprefixer(options.autoprefixerOptions))
-        .pipe(gulp.dest(options.dest))
-});
-
-/**
- * 拷贝js文件
- */
-gulp.task('js',function () {
-    return gulp.src(
-        [
-            'static/lib/**', 'node_modules/zone.js/dist/zone.js',
-            'node_modules/reflect-metadata/Reflect.js',
-            'node_modules/es6-shim/es6-shim.min.js'
-        ]
-    )
-    .pipe(uglify())
-    .pipe(gulp.dest('www/build/js'));
-});
-
-
-function onError(err){
-    console.error(err.toString());
-}
-
-Date.prototype.dateFormat = function (str) {
-    str = str || "yyyy-MM-dd";
-    var y = this.getFullYear();
-    var M = this.getMonth() + 1;
-    var d = this.getDate();
-    var H = this.getHours();
-    var m = this.getMinutes();
-    var s = this.getSeconds();
-    return str.replace("yyyy", y).replace("MM", M).replace("dd", d).replace("HH", H).replace("mm", m).replace("ss", s);
-};
-
-function onLog(log){
-    console.log((log = log.split(' '), log[0] = pretty(log[0]), log.join(' '), log += ' ' + new Date().dateFormat("yyyy-MM-dd HH:mm:ss")));
-}
