@@ -2,14 +2,33 @@ import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Events, Loading, NavController} from 'ionic-angular';
 import {StatusBar, Splashscreen, BatteryStatus} from 'ionic-native';
 
+/**
+ * 请求拦截器
+ */
+import {Interceptor} from './interceptor/HttpInterceptor';
+
+/**
+ * 模板
+ */
+import {Home} from './business/home/home';
 import {IndexPage} from './business/index/index';
 import {GetMenuPage} from './business/menu/menu';
+
+/**
+ * 全局变量
+ */
+import {Global} from './application/global';
+/**
+ * providers
+ */
+import {FirstLogin} from './providers/FirstLogin';
 
 @Component({
     templateUrl: 'build/app.html',
     queries: {
         nav: new ViewChild('content')
-    }
+    },
+    providers: [FirstLogin]
 })
 
 class RouterApp {
@@ -19,14 +38,14 @@ class RouterApp {
     private appSysPages: any;
     private nav: any;
 
-    constructor(private platform: Platform, private menu: MenuController, private events: Events) {
+    constructor(private platform: Platform, private menu: MenuController, private events: Events,private login:FirstLogin) {
         // Call any initial plugins when ready
         this.initializeApp();
-        this.rootPage = IndexPage;
 
         //获取菜单
         this.appPages = new GetMenuPage().getMenuPage();
         this.appSysPages = new GetMenuPage().getSYSMenuPage();
+        console.info(FirstLogin);
     }
 
     initializeApp() {
@@ -40,6 +59,40 @@ class RouterApp {
             // Here you can do any higher level native things you might need.
             Splashscreen.hide();
             StatusBar.styleBlackOpaque();
+
+            /**
+             * 获取WIFI IP；
+             */
+            Global.setBaseUrl('192.168.1.3');
+            /**
+             * 监听Ip变化
+             */
+            this.events.subscribe('global:baseUrl', (res) => {
+                console.info(res);
+                Global.setBaseUrl(res[0]);
+            })
+            /**
+             * 加载首页
+             */
+            this.rootPage = IndexPage;
+            this.login.firstLogin().then((res: any) => {
+                if (res && res.code == 0) {
+                    switch (res.inited) {
+                        case 0:
+                            /**
+                             * 默认登陆
+                             */
+                            this.login.login();
+                            this.rootPage = Home;
+                            break;
+                        case 1:
+                            this.login.checkLogin();
+                            this.rootPage = IndexPage;
+                            break;
+                    }
+                }
+            })
+
         });
     }
 
@@ -85,4 +138,4 @@ let config = {
     // modalLeave: 'modal-slide-out'
 }
 
-ionicBootstrap(RouterApp, [], config);
+ionicBootstrap(RouterApp, [Interceptor], config);

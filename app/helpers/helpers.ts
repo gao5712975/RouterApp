@@ -1,4 +1,4 @@
-import md5 = require('md5');
+import {Md5 as md5} from 'ts-md5/dist/md5';
 import {Global} from '../application/global';
 /**
  * 加密模块
@@ -20,11 +20,11 @@ var encrypt = {
         return [type, deviceId, time, random].join('_');
     },
     encPwd: function (pwd) {
-        var md5pwd = md5(pwd);
-        return md5(this.nonce + md5pwd);
+        var md5pwd = md5.hashStr(pwd);
+        return md5.hashStr(this.nonce + md5pwd);
     },
     newPwd: function (pwd, newpwd) {
-        var md5pwd = md5(newpwd);
+        var md5pwd = md5.hashStr(newpwd);
         return md5pwd;
     }
 };
