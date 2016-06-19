@@ -1,4 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
+import { CACHED_TEMPLATE_PROVIDER ,BROWSER_APP_COMPILER_PROVIDERS} from '@angular/platform-browser-dynamic';
 import {ionicBootstrap, Platform, MenuController, Events, Loading, NavController} from 'ionic-angular';
 import {StatusBar, Splashscreen, BatteryStatus} from 'ionic-native';
 
@@ -22,13 +23,18 @@ import {Global} from './application/global';
  * providers
  */
 import {FirstLogin} from './providers/FirstLogin';
+/**
+ * template
+ */
+import {ViewOverride} from './injectable/viewOverride';
 
 @Component({
     templateUrl: 'build/app.html',
     queries: {
         nav: new ViewChild('content')
     },
-    providers: [FirstLogin]
+    providers: [FirstLogin],
+    viewProviders:[ViewOverride]
 })
 
 class RouterApp {
@@ -41,11 +47,9 @@ class RouterApp {
     constructor(private platform: Platform, private menu: MenuController, private events: Events,private login:FirstLogin) {
         // Call any initial plugins when ready
         this.initializeApp();
-
         //获取菜单
         this.appPages = new GetMenuPage().getMenuPage();
         this.appSysPages = new GetMenuPage().getSYSMenuPage();
-        console.info(FirstLogin);
     }
 
     initializeApp() {
