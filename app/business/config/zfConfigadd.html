@@ -1,0 +1,52 @@
+<ion-navbar *navbar wifi>
+	<button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+	<ion-title text-center>新增规则</ion-title>
+</ion-navbar>
+
+<ion-content class="wf-wlConfig-back wf-WIFI wf-manualIp">
+
+	<ion-list>
+		
+		<ion-item>
+		    <ion-label fixed>规则名称</ion-label>
+		    <ion-input text-right type="text" placeholder="转发1"></ion-input>
+		</ion-item>
+		
+		<ion-item (click)='zfConfigShow = !zfConfigShow'>		  
+		    <ion-label fixed>协议</ion-label> 
+		    <p  item-right class="WIFI-top-text">{{zfConfig}}</p>
+		</ion-item>
+		<div [hidden]="zfConfigShow" class="conrent-text">
+			<div></div>
+			<p text-right class="conrent-text2" (click)="zfConfig = 'TCP';zfConfigShow = !zfConfigShow">TCP</p>
+			<p text-right class="conrent-text2" (click)="zfConfig = 'UDP';zfConfigShow = !zfConfigShow">UDP</p>
+			<p text-right (click)="zfConfig = 'TCP/UDP';zfConfigShow = !zfConfigShow">TCP/UDP</p>
+		</div>
+		
+		
+		
+		<ion-item>
+		    <ion-label fixed>外部端口</ion-label>
+		    <ion-input text-right type="text" placeholder="123"></ion-input>
+		</ion-item>
+		
+		<ion-item>
+		    <ion-label fixed>内部IP地址</ion-label>
+		    <ion-input text-right type="text" placeholder="192.168.0.154"></ion-input>
+		</ion-item>
+		
+		<ion-item>
+		    <ion-label fixed>内部端口</ion-label>
+		    <ion-input text-right type="text" placeholder="8888"></ion-input>
+		</ion-item>
+    </ion-list>
+    
+    <div class="wf-skip-buttom">
+		<button wifi block (click)="goToHome3()">确认新增</button>
+	</div>
+    
+    
+ </ion-content>  
+

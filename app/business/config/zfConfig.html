@@ -1,0 +1,39 @@
+<ion-navbar *navbar wifi>
+	<button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+	<ion-title text-center>端口转发</ion-title>
+</ion-navbar>
+
+<ion-content class="wf-wlConfig-back">
+
+	<ion-list class="zf-frame zf-frame-back">
+		<ion-item>端口转发规则</ion-item>
+	</ion-list>
+
+	<ion-list class="zf-frame">
+		<ion-item>规则1</ion-item>
+		<ion-item>规则2</ion-item>
+		<ion-item class="zf-add" (click)="ZfConfiga()">
+			新增规则
+			<img src="../../build/static/img/config/zf-add.png" />
+		</ion-item>
+	</ion-list>
+
+	<ion-list class="zf-frame zf-frame-back">
+		<ion-item>范围转发规则</ion-item>
+	</ion-list>
+
+	<ion-list class="zf-frame">
+		<ion-item class="zf-without">暂无规则</ion-item>
+		<ion-item class="zf-add" (click)="ZfConfiga()">
+			新增规则
+			<img src="../../build/static/img/config/zf-add.png" />
+		</ion-item>
+	</ion-list>
+
+	<div class="wf-skip-buttom">
+		<button wifi block (click)="goToHome3()">应用修改</button>
+	</div>
+
+</ion-content>

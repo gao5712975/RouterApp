@@ -1,0 +1,45 @@
+<ion-navbar *navbar wifi>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>访客网络</ion-title>
+</ion-navbar>
+<ion-content class="wf-fkConfig">
+    <ion-list>
+        <ion-item class="top-switch">
+            <ion-label fixed>网络开关</ion-label>
+            <ion-toggle [disabled]="fkStatusShow" [(ngModel)]="wifiinfo.status" (ionChange)='closeFkWifi()'></ion-toggle>
+        </ion-item>
+    </ion-list>
+    <ion-list [hidden]='!wifiinfo.status'>
+        <div [hidden]="!fkEncrypShow" class="wf-triangle" item-right></div>
+        <ion-item>
+            <ion-label fixed>名称</ion-label>
+            <ion-input text-right type="text" [placeholder]="wifiinfo.ssid || '请输入访客名称'"></ion-input>
+        </ion-item>
+        <ion-item (click)='!fkEncrypShow = !fkEncrypShow'>
+            <ion-label fixed>加密方式</ion-label>
+            <p item-right>{{wifiinfo.encryption | switchName:'wlConfig'}}</p>
+        </ion-item>
+    </ion-list>
+    <ion-list [hidden]="!fkEncrypShow || !wifiinfo.status" class="conrent-text">
+        <ion-item>
+            <p text-right (click)="wifiinfo.encryption = 'none';fkEncrypShow = !fkEncrypShow">不加密</p>
+        </ion-item>
+        <ion-item>
+            <p text-right (click)="wifiinfo.encryption = 'psk-mixed';fkEncrypShow = !fkEncrypShow">WPA2-PSK</p>
+        </ion-item>
+        <ion-item>
+            <p text-right (click)="wifiinfo.encryption = 'psk2';fkEncrypShow = !fkEncrypShow">WPA-PSK</p>
+        </ion-item>
+    </ion-list>
+    <ion-list [hidden]='!wifiinfo.status'>
+        <ion-item>
+            <ion-label fixed>密码</ion-label>
+            <ion-input text-right type="text" [placeholder]="wifiinfo.password || '请输入密码'"></ion-input>
+        </ion-item>
+    </ion-list>
+    <div class="next-button" [hidden]='!wifiinfo.status'>
+        <button wifi block (click)="configSave()">应用修改</button>
+    </div>
+</ion-content>

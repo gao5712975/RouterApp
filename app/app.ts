@@ -78,7 +78,7 @@ class RouterApp {
             /**
              * 加载首页
              */
-            this.rootPage = IndexPage;
+            // this.rootPage = IndexPage;
             this.login.firstLogin().then((res: any) => {
                 if (res && res.code == 0) {
                     switch (res.inited) {

@@ -4,6 +4,8 @@ import {WlConfigPage} from '../config/wlConfig';
 import {HmdConfig} from '../config/hmdConfig';
 import {GzConfig} from '../config/gzConfig';
 import {QosConfig} from '../config/qosConfig';
+import {FkConfig} from '../config/fkConfig';
+import {ZfConfig} from '../config/zfConfig';
 // import {Home} from '../home/home';
 
 export class GetMenuPage {
@@ -42,13 +44,13 @@ export class GetMenuPage {
         icon: "md-stopwatch"
       },
       {
-        page: ConfigPage,
+        page: FkConfig,
         index: 3,
         title: "访客网络",
         icon: "md-contacts"
       },
       {
-        page: GzConfig,
+        page: ZfConfig,
         index: 3,
         title: "端口转发",
         icon: "md-repeat"
