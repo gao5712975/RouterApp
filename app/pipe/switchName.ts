@@ -58,6 +58,18 @@ export class SwitchName implements PipeTransform {
                 return `${value}KB/S`;
             }
         }
+        if(args == 'zfConfig'){
+          switch (value) {
+              case 1:
+                  return 'TCP';
+              case 2:
+                  return 'UDP';
+              case 3:
+                  return 'TCP/UDP';
+              default:
+                  return value;
+          }
+        }
         return value;
     }
 }

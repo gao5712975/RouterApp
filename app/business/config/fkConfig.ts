@@ -60,13 +60,14 @@ export class FkConfig {
      */
     configSave() {
         this.internetMethodClose(1).then((res: any) => {
-            if(res && res.code == 0){
-                
+            if (res && res.code == 0) {
+
             }
         })
     }
 
     closeFkWifi() {
+        /*判断是否第一次进入*/
         if (isNaN(parseInt(this.wifiinfo.status))) {
             this.fkStatusShow = true;
             if (!this.wifiinfo.status) {

@@ -12,12 +12,23 @@ import {ZfConfiga} from './zfConfigadd'
 export class ZfConfig{
 
     constructor(private nav:NavController){
-        
+
     }
-    
-    ZfConfiga(){
+
+    /**
+     * 按端口添加转发
+     * @return {[type]} [description]
+     */
+    addConfigPort(){
+      this.nav.push(ZfConfiga)
+    }
+
+    /**
+     * 按范围添加转发
+     * @return {[type]} [description]
+     */
+    addConfigRange(){
         this.nav.push(ZfConfiga)
     }
 
 }
-

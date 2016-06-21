@@ -1,39 +1,32 @@
 <ion-navbar *navbar wifi>
 	<button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-    </button>
-	<ion-title text-center>端口转发</ion-title>
+		<ion-icon name="menu"></ion-icon>
+	</button>
+	<ion-title text-center padding-right-menu>端口转发</ion-title>
 </ion-navbar>
-
-<ion-content class="wf-wlConfig-back">
-
-	<ion-list class="zf-frame zf-frame-back">
-		<ion-item>端口转发规则</ion-item>
-	</ion-list>
-
-	<ion-list class="zf-frame">
+<ion-content class="wf-zfConfig">
+	<ion-list>
+		<ion-list-header>
+			端口转发规则
+		</ion-list-header>
 		<ion-item>规则1</ion-item>
 		<ion-item>规则2</ion-item>
-		<ion-item class="zf-add" (click)="ZfConfiga()">
-			新增规则
-			<img src="../../build/static/img/config/zf-add.png" />
+		<ion-item>
+			<span class='port' text-center (click)="addConfigPort()">新增规则 <img src="../../build/static/img/config/zf-add.png"></span>
 		</ion-item>
 	</ion-list>
-
-	<ion-list class="zf-frame zf-frame-back">
-		<ion-item>范围转发规则</ion-item>
-	</ion-list>
-
-	<ion-list class="zf-frame">
-		<ion-item class="zf-without">暂无规则</ion-item>
-		<ion-item class="zf-add" (click)="ZfConfiga()">
-			新增规则
-			<img src="../../build/static/img/config/zf-add.png" />
+	<ion-list>
+		<ion-list-header>
+			端口转发规则
+		</ion-list-header>
+		<ion-item>
+			<p class='noZfConfig' text-center>暂无规则</p>
+		</ion-item>
+		<ion-item>
+			<span class='port' text-center (click)="addConfigRange()">新增规则 <img src="../../build/static/img/config/zf-add.png"></span>
 		</ion-item>
 	</ion-list>
-
-	<div class="wf-skip-buttom">
+	<div class="next-button">
 		<button wifi block (click)="goToHome3()">应用修改</button>
 	</div>
-
 </ion-content>

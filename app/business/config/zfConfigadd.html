@@ -1,52 +1,56 @@
 <ion-navbar *navbar wifi>
 	<button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-    </button>
-	<ion-title text-center>新增规则</ion-title>
+		<ion-icon name="menu"></ion-icon>
+	</button>
+	<ion-title text-center padding-right-menu>新增规则</ion-title>
 </ion-navbar>
 
-<ion-content class="wf-wlConfig-back wf-WIFI wf-manualIp">
+<ion-content class="wf-zfAddPort">
+	<ion-list>
+		<ion-item>
+			<ion-label fixed>规则名称</ion-label>
+			<ion-input text-right type="text" placeholder="" [(ngModel)]="zfConfig.name"></ion-input>
+		</ion-item>
+
+		<div [hidden]="!zfProtoShow" class="wf-triangle" item-right></div>
+
+		<ion-item (click)='zfProtoShow = !zfProtoShow'>
+			<ion-label fixed>协议</ion-label>
+			<p item-right>{{zfConfig.proto | switchName:'zfConfig'}}</p>
+		</ion-item>
+	</ion-list>
+
+	<ion-list [hidden]="!zfProtoShow" class="conrent-text">
+		<ion-item>
+			<p text-right (click)="zfConfig.proto = 1;zfProtoShow = !zfProtoShow">TCP</p>
+		</ion-item>
+		<ion-item>
+			<p text-right (click)="zfConfig.proto = 2;zfProtoShow = !zfProtoShow">UDP</p>
+		</ion-item>
+		<ion-item>
+			<p text-right (click)="zfConfig.proto = 3;zfProtoShow = !zfProtoShow">TCP/UDP</p>
+		</ion-item>
+	</ion-list>
 
 	<ion-list>
-		
 		<ion-item>
-		    <ion-label fixed>规则名称</ion-label>
-		    <ion-input text-right type="text" placeholder="转发1"></ion-input>
+			<ion-label fixed>外部端口</ion-label>
+			<ion-input text-right type="text" placeholder="" [(ngModel)]="zfConfig.sport"></ion-input>
 		</ion-item>
-		
-		<ion-item (click)='zfConfigShow = !zfConfigShow'>		  
-		    <ion-label fixed>协议</ion-label> 
-		    <p  item-right class="WIFI-top-text">{{zfConfig}}</p>
-		</ion-item>
-		<div [hidden]="zfConfigShow" class="conrent-text">
-			<div></div>
-			<p text-right class="conrent-text2" (click)="zfConfig = 'TCP';zfConfigShow = !zfConfigShow">TCP</p>
-			<p text-right class="conrent-text2" (click)="zfConfig = 'UDP';zfConfigShow = !zfConfigShow">UDP</p>
-			<p text-right (click)="zfConfig = 'TCP/UDP';zfConfigShow = !zfConfigShow">TCP/UDP</p>
-		</div>
-		
-		
-		
+
 		<ion-item>
-		    <ion-label fixed>外部端口</ion-label>
-		    <ion-input text-right type="text" placeholder="123"></ion-input>
+			<ion-label fixed>内部IP地址</ion-label>
+			<ion-input text-right type="text" placeholder="" [(ngModel)]="zfConfig.ip"></ion-input>
 		</ion-item>
-		
+
 		<ion-item>
-		    <ion-label fixed>内部IP地址</ion-label>
-		    <ion-input text-right type="text" placeholder="192.168.0.154"></ion-input>
+			<ion-label fixed>内部端口</ion-label>
+			<ion-input text-right type="text" placeholder="" [(ngModel)]="zfConfig.dport"></ion-input>
 		</ion-item>
-		
-		<ion-item>
-		    <ion-label fixed>内部端口</ion-label>
-		    <ion-input text-right type="text" placeholder="8888"></ion-input>
-		</ion-item>
-    </ion-list>
-    
-    <div class="wf-skip-buttom">
+	</ion-list>
+
+	<div class="next-button">
 		<button wifi block (click)="goToHome3()">确认新增</button>
 	</div>
-    
-    
- </ion-content>  
 
+</ion-content>
