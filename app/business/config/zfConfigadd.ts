@@ -26,7 +26,9 @@ export class ZfConfiga {
     }
 
     addZfConfigPort(){
-      this.internetMethodAdd().then((res:a))
+      this.internetMethodAdd().then((res:any) => {
+        console.info(res);
+      })
     }
 
     internetMethodAdd(){
